@@ -1,34 +1,34 @@
 # CyberKit
 
-<ins>**Proyecto CyberKit**</ins>
+<ins>**CyberKit Project**</ins>
 
-**Materia:** Algoritmos y Estructuras de Datos I
+**Subject:** Algorithms and Data Structures I
 
-**Docente:** Guillermo Maquieira
+**Teacher:** Guillermo Maquieira
 
-**Grupo N°8 - Integrantes:** Julián Curi y Joaquín Suárez Vallejos
+**Group No. 8 - Members:** Julián Curi and Joaquín Suárez Vallejos
 
-**Nombre del Proyecto:** CyberKit
+**Project Name:** CyberKit
 
-**Idea:** Una website con temática de ciberseguridad que posea las siguientes funcionalidades:
-+ **Generador de contraseñas seguras.** El usuario también puede descargar un archivo (.txt / .json / .docx), con todas las contraseñas generadas.
-+ **Tester / verificador de una contraseña ingresada.** Informa al usuario qué tan fuerte es la contraseña, y cuánto tiempo tardaría en crackearse en un ataque de fuerza bruta.
-+ **Encriptador de texto.** El usuario puede elegir entre algunos métodos de encriptación.
+**Idea:** A cybersecurity-themed website with the following functionalities:
++ **Secure password generator.** The user can also download a file (.txt / .json / .docx), with all the generated passwords.
++ **Password tester / verifier.** Informs the user how strong the password is, and how long it would take to crack in a brute force attack.
++ **Text encryptor.** The user can choose between different encryption methods.
 
-**Herramientas:**
+**Tools:**
 + Python
-+ Flask (microframework web para Python)
++ Flask (web microframework for Python)
 + HTML
 + CSS
-+ Pico CSS (microframework para CSS)
++ Pico CSS (microframework for CSS)
 + JavaScript
 
-**Temas de la materia incluidos:**
-+ Arrays o Listas
-+ Strings (cadenas de caracteres)
-+ Archivos
-+ Expresiones regulares (regex)
-+ Excepciones
+**Subject topics included:**
++ Arrays / Lists
++ Strings
++ Files
++ Regular expressions (regex)
++ Exceptions
 + Git / GitHub
-+ Pruebas unitarias (unit tests)?
-+ Diccionarios?
++ Unit tests?
++ Dictionaries?
