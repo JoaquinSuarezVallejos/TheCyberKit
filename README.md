@@ -1,6 +1,6 @@
 # CyberKit
 
-<ins>Proyecto CyberKit</ins>
+<ins>**Proyecto CyberKit**</ins>
 
 **Materia:** Algoritmos y Estructuras de Datos I
 
