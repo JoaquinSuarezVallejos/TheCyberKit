@@ -8,10 +8,6 @@
 
 **Grupo N°8 - Integrantes:** Julián Curi y Joaquín Suárez Vallejos
 
-Links de ideas de proyectos:
-+ https://codewithreplit.com/: proyectos 2, 4, 7, 9, 11.
-+ https://www.dataquest.io/blog/python-projects-for-beginners/
-
 **Nombre del Proyecto:** CyberKit
 
 **Idea:** Una website con temática de ciberseguridad que posea las siguientes funcionalidades:
