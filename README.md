@@ -11,7 +11,7 @@
 **Idea:** A cybersecurity-themed website with the following functionalities:
 + **Secure password generator.** The user can also download a file (.txt / .json / .docx), with all the generated passwords.
 + **Password tester / verifier.** Informs the user how strong the password is, and how long it would take to crack in a brute force attack.
-+ **Text encryptor.** The user can choose between different encryption methods.
++ **Text encryptor and decryptor.** The user can choose between some encryption methods.
 
 **Tools:**
 + Python
