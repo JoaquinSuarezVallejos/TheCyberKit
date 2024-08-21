@@ -2,7 +2,7 @@
 
 **Subject:** Algorithms and Data Structures I
 
-**Teacher:** Guillermo Maquieira
+**Professor:** Guillermo Maquieira
 
 **Group No. 8 - Members:** Julián Curi and Joaquín Suárez Vallejos
 
