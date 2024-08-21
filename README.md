@@ -1,6 +1,6 @@
-<h1 style="font-size: 36px; text-decoration: underline; font-weight: bold;">CyberKit</h1>
+<h1 style="font-size: 36px; text-decoration: underline; font-weight: 600;">CyberKit</h1>
 
-<b>Subject:</b> Algorithms and Data Structures I
+**Subject:** Algorithms and Data Structures I
 
 **Teacher:** Guillermo Maquieira
 
