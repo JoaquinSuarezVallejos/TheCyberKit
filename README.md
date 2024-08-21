@@ -1,12 +1,12 @@
+<h1 style="font-size: 36px; text-decoration: underline; font-weight: bold;">CyberKit</h1>
 
-
-**Subject:** Algorithms and Data Structures I
+<b>Subject:</b> Algorithms and Data Structures I
 
 **Teacher:** Guillermo Maquieira
 
 **Group No. 8 - Members:** Julián Curi and Joaquín Suárez Vallejos
 
-**Project Name:** CyberKit
+**Project Official Name:** CyberKit
 
 **Idea:** A cybersecurity-themed website with the following functionalities:
 + **Secure password generator.** The user can also download a file (.txt / .json / .docx), with all the generated passwords.
