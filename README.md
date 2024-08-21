@@ -1,6 +1,4 @@
-# CyberKit
-
-<ins>**CyberKit Project**</ins>
+<h1 style="font-size: 36px; text-decoration: underline; font-weight: bold;">CyberKit Project</h1>
 
 **Subject:** Algorithms and Data Structures I
 
