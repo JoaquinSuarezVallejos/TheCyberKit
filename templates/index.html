@@ -1,15 +1,58 @@
+<!-- npx tailwindcss -i ./static/css/styles.css -o ./static/css/tailwind.css --watch -->
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="css/pico.min.css">
-    <title>Hello world!</title>
-  </head>
-  <body>
-    <main class="container">
-      <h1>Hello world!</h1>
-    </main>
-  </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/tailwind.css') }}"
+    />
+    <title>CyberKit</title>
+  </head>
+  <body class="bg-gray-900 text-white">
+    <nav class="container mx-auto flex justify-between items-center py-4">
+      <a href="#" class="text-2xl font-bold">CyberKit</a>
+      <button
+        id="theme-toggle"
+        class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
+      >
+        <i class="bi bi-moon-fill" id="theme-icon"></i>
+      </button>
+    </nav>
+
+    <main class="container mx-auto px-4 py-16">
+      <header class="text-center mb-12">
+        <h1 class="text-4xl font-bold mb-4">
+          Your Suite of Cybersecurity Tools
+        </h1>
+        <p class="text-lg">Protect your digital life with CyberKit.</p>
+      </header>
+
+      <section id="features" class="flex flex-col space-y-8"> <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-2">Password Generator</h3>
+          <p class="text-gray-400">
+            Create strong, unique passwords effortlessly.
+          </p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-2">Password Checker</h3>
+          <p class="text-gray-400">
+            Assess the strength of your passwords and identify vulnerabilities.
+          </p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-2">Text Encryption</h3>
+          <p class="text-gray-400">
+            Securely encrypt your sensitive information.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // ... (JavaScript for theme toggle - same as before)
+    </script>
+  </body>
 </html>
