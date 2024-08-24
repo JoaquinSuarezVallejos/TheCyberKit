@@ -1,47 +1,49 @@
-<!-- Command to start the Tailwind CSS build process and watch for changes: npx tailwindcss -i ./static/css/styles.css -o ./static/css/tailwind.css --watch -->
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pico-main/css/pico.min.css') }}">
     <title>TheCyberKit</title>
   </head>
 
-  <body class="bg-gray-900 text-white">
-    <main class="container mx-auto px-8 py-14">
-      <header class="text-center mb-12">
-        <h1 class="text-7xl font-bold mb-12">
-          <span id="dynamic-text">TheCyberKit</span> 
+  <body>
+    <main class="container">
+      <header>
+        <h1 class="cyberkit_title">
+          <span id="cyberkit_title_text">TheCyberKit</span> 
         </h1>
-        <h2 class="text-3xl font-medium mb-5">
+        <h2 class="cyberkit_slogan">
           Your Suite of Cybersecurity Tools
         </h2>
       </header>
-      <section id="features" class="flex flex-col space-y-8">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-2">Password Generator</h3>
-          <p class="text-gray-400">
+  
+      <div class="cards">
+        <article class="card">
+          <h3>Password Generator</h3>
+          <p>
             Create strong, unique passwords effortlessly.
           </p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-2">Password Checker</h3>
-          <p class="text-gray-400">
-            Assess the strength of your passwords and identify vulnerabilities.
+          <button>Generate</button>
+        </article>
+        <article class="card">
+          <h3>Password Tester</h3>
+          <p>
+            Think you have a strong password? Find out below.
           </p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-2">Text Encryption</h3>
-          <p class="text-gray-400">
-            Securely encrypt your sensitive information.
+          <input class="password_tester_input" type="text" name="text" placeholder="Enter your password..." aria-label="Text">
+        </article>
+        <article class="card">
+          <h3>Encryption / Decryption</h3>
+          <p>
+            Securely encrypt and decrypt any text.
           </p>
-        </div>
-      </section>
+          <input class="text" type="text" name="text" placeholder="Enter your text..." aria-label="Text">
+        </article>
+      </div>
     </main>
-
+  
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
 

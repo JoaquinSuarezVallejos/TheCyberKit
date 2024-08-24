@@ -1,17 +1,17 @@
-// JS File
+// Vanilla JavaScript File
 
-const dynamicText = document.getElementById('dynamic-text');
-const originalText = dynamicText.textContent;
+const cyberkit_title_text = document.getElementById('cyberkit_title_text');
+const originalText = cyberkit_title_text.textContent;
 const modifiedText = "Th3Cyb3rK1t";
 
 setInterval(() => {
-  if (dynamicText.textContent === originalText) {
-    dynamicText.textContent = modifiedText;
-    dynamicText.classList.add('glitch'); // Add glitch class
+  if (cyberkit_title_text.textContent === originalText) {
+    cyberkit_title_text.textContent = modifiedText;
+    cyberkit_title_text.classList.add('glitch'); // Add glitch class
     setTimeout(() => {
-      dynamicText.classList.remove('glitch'); // Remove glitch class after a short delay
+      cyberkit_title_text.classList.remove('glitch'); // Remove glitch class after a short delay
     }, 1000); // Adjust delay as needed
   } else {
-    dynamicText.textContent = originalText;
+    cyberkit_title_text.textContent = originalText;
   }
 }, 5000);
