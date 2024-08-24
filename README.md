@@ -1,4 +1,4 @@
-<h1 style="font-size: 36px; text-decoration: underline; font-weight: 600;">CyberKit</h1>
+<h1 style="font-size: 36px; text-decoration: underline; font-weight: 600;">TheCyberKit</h1>
 
 **University Course:** Algorithms and Data Structures I
 
@@ -6,7 +6,7 @@
 
 **Group No. 8 - Members:** Julián Curi and Joaquín Suárez Vallejos
 
-**Project Official Name:** CyberKit
+**Project Official Name:** TheCyberKit
 
 **Idea:** A cybersecurity-themed website with the following functionalities:
 + **Secure password generator.** The user can also download a file (.txt / .json / .docx), with all the generated passwords.
