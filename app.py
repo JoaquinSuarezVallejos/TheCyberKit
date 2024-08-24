@@ -1,4 +1,4 @@
-# To serve project: 1. flask_env\Scripts\activate | 2. python app.py
+# Commands to serve Flask project: 1. flask_env\Scripts\activate | 2. python app.py
 
 from flask import Flask, render_template
 

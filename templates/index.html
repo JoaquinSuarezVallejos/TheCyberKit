@@ -1,55 +1,48 @@
-<!-- npx tailwindcss -i ./static/css/styles.css -o ./static/css/tailwind.css --watch -->
+<!-- Command to start the Tailwind CSS build process and watch for changes: npx tailwindcss -i ./static/css/styles.css -o ./static/css/tailwind.css --watch -->
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.css') }}" />
-    <title>CyberKit</title>
-  </head>
-  <body class="bg-gray-900 text-white">
-    <nav class="container mx-auto flex justify-between items-center py-4">
-      <a href="#" class="text-2xl font-bold">CyberKit</a>
-      <button
-        id="theme-toggle"
-        class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
-      >
-        <i class="bi bi-moon-fill" id="theme-icon"></i>
-      </button>
-    </nav>
+    <title>TheCyberKit</title>
+  </head>
 
-    <main class="container mx-auto px-4 py-16">
-      <header class="text-center mb-12">
-        <h1 class="text-4xl font-bold mb-4">
-          Your Suite of Cybersecurity Tools
-        </h1>
-        <p class="text-lg">Protect your digital life with CyberKit.</p>
-      </header>
+  <body class="bg-gray-900 text-white">
+    <main class="container mx-auto px-8 py-14">
+      <header class="text-center mb-12">
+        <h1 class="text-7xl font-bold mb-12">
+          <span id="dynamic-text">TheCyberKit</span> 
+        </h1>
+        <h2 class="text-3xl font-medium mb-5">
+          Your Suite of Cybersecurity Tools
+        </h2>
+      </header>
+      <section id="features" class="flex flex-col space-y-8">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-2">Password Generator</h3>
+          <p class="text-gray-400">
+            Create strong, unique passwords effortlessly.
+          </p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-2">Password Checker</h3>
+          <p class="text-gray-400">
+            Assess the strength of your passwords and identify vulnerabilities.
+          </p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-2">Text Encryption</h3>
+          <p class="text-gray-400">
+            Securely encrypt your sensitive information.
+          </p>
+        </div>
+      </section>
+    </main>
 
-      <section id="features" class="flex flex-col space-y-8"> <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-2">Password Generator</h3>
-          <p class="text-gray-400">
-            Create strong, unique passwords effortlessly.
-          </p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-2">Password Checker</h3>
-          <p class="text-gray-400">
-            Assess the strength of your passwords and identify vulnerabilities.
-          </p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-2">Text Encryption</h3>
-          <p class="text-gray-400">
-            Securely encrypt your sensitive information.
-          </p>
-        </div>
-      </section>
-    </main>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
 
-    <script>
-      // ... (JavaScript for theme toggle - same as before)
-    </script>
-  </body>
 </html>
