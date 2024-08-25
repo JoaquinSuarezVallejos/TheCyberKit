@@ -13,15 +13,43 @@ body {
 
 /* HEADER */
 /* -------------------------------------------------------------------------- */
-.cyberkit_title{
-  font-size: 64px;
-  font-weight: 750;
-  color: #f2f2f2;
-  text-align: center;
-  margin-bottom: 22px;
+.cyberkit_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Space between the logo and the title */
+  margin-bottom: 5px;
+}
+.cyberkit_logo {
+  width: 54px;
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 17px;
 }
 #cyberkit_title_text{
-  color: #017FC0;  /* Azure 500 */
+  color: #017FC0;  /* Pico CSS Color: Azure 500 */
+  font-size: 72px;
+  font-weight: 750;
+  letter-spacing: 2px;
+}
+#cyberkit_title_text { 
+  transition: all 0.25s ease-in-out; /* Smooth transition for all properties */
+}
+#cyberkit_title_text.modified {
+  transform: scale(1.05) translateY(-3px); /* Slightly enlarge and move up the modified text */
+  text-shadow: 0 0 5px #017FC0; /* Add a subtle glow effect */
+  letter-spacing: 10px;
+}
+.glow {
+  animation: subtleGlowEffect 1s ease-in-out;
+  color: #017FC0; /* Glow color */
+}
+@keyframes subtleGlowEffect {
+  0% {
+    text-shadow: 0 0 1px #017FC0, 0 0 2px #017FC0;
+  }
+  100% {
+    text-shadow: 0 0 2px #017FC0, 0 0 3px #017FC0;
+  }
 }
 .cyberkit_slogan{
   font-size: 32px;
@@ -40,8 +68,30 @@ body {
   margin-bottom: 50px;
   border-radius: 12px; 
   box-shadow: 0px 5px 0px #f2f2f2;
+  width: 80%; /* Reduced width of each card */
+  
 }
-.password_tester_input{
+.cards{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.text_input_box{
   border-radius: 8px;
 }
 /* -------------------------------------------------------------------------- */
+
+/* MEDIA QUERIES FOR RESPONSIVE DESIGN */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 650px) {
+  .cyberkit_logo {
+    width: 40px; /* Default size for larger screens */
+    height: auto; /* Maintain aspect ratio */
+  }
+  #cyberkit_title_text {
+    font-size: 54px; /* Reduced font size for smaller screens */
+  }
+  .cyberkit_slogan {
+    font-size: 28px; /* Reduced slogan font size */
+  }
+}

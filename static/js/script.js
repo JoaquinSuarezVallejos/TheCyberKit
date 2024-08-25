@@ -1,17 +1,46 @@
 // Vanilla JavaScript File
 
-const cyberkit_title_text = document.getElementById('cyberkit_title_text');
-const originalText = cyberkit_title_text.textContent;
-const modifiedText = "Th3Cyb3rK1t";
+const cyberkitTitleText = document.getElementById('cyberkit_title_text');
+const originalText = cyberkitTitleText.textContent;
 
-setInterval(() => {
-  if (cyberkit_title_text.textContent === originalText) {
-    cyberkit_title_text.textContent = modifiedText;
-    cyberkit_title_text.classList.add('glitch'); // Add glitch class
-    setTimeout(() => {
-      cyberkit_title_text.classList.remove('glitch'); // Remove glitch class after a short delay
-    }, 1000); // Adjust delay as needed
-  } else {
-    cyberkit_title_text.textContent = originalText;
+function transitionToModifiedText() {
+  // First 'e' to '3'
+  setTimeout(() => {
+    cyberkitTitleText.textContent = originalText.replace('e', '3');
+    addGlowEffect();
+  }, 0); // No delay for the first change
+
+  // Second 'e' to '3'
+  setTimeout(() => {
+    cyberkitTitleText.textContent = cyberkitTitleText.textContent.replace('e', '3');
+    addGlowEffect();
+  }, 1000); // 1-second delay
+
+  // 'i' to '1'
+  setTimeout(() => {
+    cyberkitTitleText.textContent = cyberkitTitleText.textContent.replace('i', '1');
+    cyberkitTitleText.classList.add('modified');
+  }, 2000); // 2-second delay
+
+  // Change back to original after a delay
+  setTimeout(() => {
+    cyberkitTitleText.classList.remove('modified');
+    cyberkitTitleText.textContent = originalText;
+  }, 4000); // 4-second delay (2s for modified + 2s delay)
+}
+
+function addGlowEffect() {
+  const modifiedText = cyberkitTitleText.textContent;
+  cyberkitTitleText.innerHTML = ''; // Clear the current text content
+
+  for (let char of modifiedText) {
+    const span = document.createElement('span');
+    span.textContent = char;
+    if (char === '3') {
+      span.classList.add('glow');
+    }
+    cyberkitTitleText.appendChild(span);
   }
-}, 5000);
+}
+
+setInterval(transitionToModifiedText, 10000); // Total cycle time: 8s (original) + 2s (transition) = 10s

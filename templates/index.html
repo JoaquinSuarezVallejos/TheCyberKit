@@ -5,21 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pico-main/css/pico.min.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon2.png') }}" type="image/png">
     <title>TheCyberKit</title>
   </head>
 
   <body>
     <main class="container">
       <header>
-        <h1 class="cyberkit_title">
-          <span id="cyberkit_title_text">TheCyberKit</span> 
-        </h1>
+        <div class="cyberkit_title">
+          <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="TheCyberKit Logo" class="cyberkit_logo">
+          <h1>
+            <span id="cyberkit_title_text" data-text="TheCyberKit">TheCyberKit</span>
+          </h1>
+        </div>
         <h2 class="cyberkit_slogan">
           Your Suite of Cybersecurity Tools
         </h2>
       </header>
   
-      <div class="cards">
+      <section class="cards">
         <article class="card">
           <h3>Password Generator</h3>
           <p>
@@ -32,16 +36,16 @@
           <p>
             Think you have a strong password? Find out below.
           </p>
-          <input class="password_tester_input" type="text" name="text" placeholder="Enter your password..." aria-label="Text">
+          <input class="text_input_box" type="text" name="text" placeholder="Enter your password..." aria-label="Text">
         </article>
         <article class="card">
           <h3>Encryption / Decryption</h3>
           <p>
             Securely encrypt and decrypt any text.
           </p>
-          <input class="text" type="text" name="text" placeholder="Enter your text..." aria-label="Text">
+          <input class="text_input_box" type="text" name="text" placeholder="Enter your text..." aria-label="Text">
         </article>
-      </div>
+      </section>
     </main>
   
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
