@@ -1,45 +1,66 @@
 /* CSS FILE */
 /* Case types used: flatcase and kebab-case */
 
+/* Pico CSS Documentation: https://picocss.com/docs */
+/* Pico CSS Color Palettes: https://picocss.com/docs/colors */ 
+
 /* TODO: change all classes case types to kebab-case */
+/* TODO: Keep experimenting with Pico CSS colors */
 
 /* GLOBAL */
 /* -------------------------------------------------------------------------- */
-body {
-  background-color: #13171f; 
+html {
+  scroll-behavior: smooth; /* Smooth scrolling effect */
+  font-family: 'Montserrat', sans-serif;
+
+  /* background-color: #13171f;  */
+  /* Pico CSS OLD Background Color */
+
   color: #f2f2f2;
-  font-family: 'Montserrat', sans-serif;
-}
-main {
-  padding-bottom: 20px;
-  font-family: 'Montserrat', sans-serif;  
-}
-article h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 28px;  
-}
-article h4 {
-  font-family: 'Montserrat', sans-serif;
-}
-footer{
-  text-align: center;
-}
-footer p{
-  margin-bottom: 0px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  background-color: #061E2F; /* Pico CSS Color: Azure 900 (The Count's Black) */
 }
 /* -------------------------------------------------------------------------- */
 
 /* HEADER */
 /* -------------------------------------------------------------------------- */
+.header{
+  padding: 0px;
+}
+nav{
+  display: flex;
+  justify-content: center; /* Center the ul horizontally within the nav */
+  width: 100%; /* Ensure nav takes full width */
+  background-color: #017FC0;
+  padding: 10px 0;
+  margin-bottom: 55px;
+  text-align: center;
+}
+ul{
+  list-style-type: none; /* Remove bullet points */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Center the list items horizontally */
+  width: 100%;
+  gap: 35px; /* Space between list items */
+}
+li a{
+  color: #f2f2f2;
+  font-size: 22px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+}
+li a:hover{
+  color: #061E2F; /* Pico CSS Color: Azure 900 (The Count's Black) */
+  transform: scale(1.04)
+}
 .cyberkit_title {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px; /* Space between the logo and the title */
   margin-bottom: 8px;
-  padding-top: 40px;
 }
 .cyberkit_logo {
   width: 58px;
@@ -49,12 +70,10 @@ footer p{
 }
 #cyberkit_title_text{
   font-family: 'Montserrat', sans-serif;
-  color: #017FC0;  /* Pico CSS Color: Azure 500 */
+  color: #017FC0;  /* Pico CSS Color: Azure 500 (Honolulu Blue)*/
   font-size: 80px;
   font-weight: 700;
   letter-spacing: 2px;
-}
-#cyberkit_title_text { 
   transition: all 0.25s ease-in-out; /* Smooth transition for all properties */
 }
 #cyberkit_title_text.modified {
@@ -80,15 +99,19 @@ footer p{
   font-weight: 500;
   color: #f2f2f2;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 .cyberkit_slogan span{
   font-weight: 700;
 }
 /* -------------------------------------------------------------------------- */
 
-/* CARDS */
+/* MAIN */
 /* -------------------------------------------------------------------------- */
+.main {
+  padding: 20px 0;
+  font-family: 'Montserrat', sans-serif;  
+}
 .cards{
   display: flex;
   flex-direction: column;
@@ -96,6 +119,7 @@ footer p{
 }
 .card {
   background-color: #282828;
+  background-color: #373C44; /* Pico CSS Color: Zinc 750 (Antarctic Deep) */
   padding: 24px;
   margin-bottom: 50px;
   border-radius: 12px; 
@@ -104,6 +128,10 @@ footer p{
 }
 .last-card{
   margin-bottom: 0;
+}
+.card-title-text{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;  
 }
 .generate-password-btn{
   display: flex;
@@ -116,6 +144,7 @@ footer p{
   border-radius: 8px;
 }
 .encryption-title-text{
+  font-family: 'Montserrat', sans-serif;
   margin-left: 4px;
   font-size: 24px;
   text-decoration: underline;
@@ -135,6 +164,7 @@ footer p{
   font-weight: 500;
 }
 .decryption-title-text{
+  font-family: 'Montserrat', sans-serif;
   margin-left: 4px;
   margin-top: 60px;
   font-size: 24px;
@@ -153,6 +183,22 @@ footer p{
   margin-left: 2px;
   height: 50px;
   font-weight: 500;
+}
+/* -------------------------------------------------------------------------- */
+
+/* FOOTER */
+/* -------------------------------------------------------------------------- */
+.footer{
+  background-color: #23262C; /* Pico CSS Color: Zinc 850 (Black Beauty) */
+  text-align: center;
+  padding: 25px 0; /* Top and bottom padding */
+  margin-top: 20px;
+}
+.footer p{
+  color: #f2f2f2;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 0px;
 }
 /* -------------------------------------------------------------------------- */
 

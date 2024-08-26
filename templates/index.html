@@ -22,7 +22,15 @@
   </head>
 
   <body>
-    <header>
+    <header class="header">
+      <nav>
+        <ul>
+            <li><a href="#password-generator">Password Generator</a></li>
+            <li><a href="#password-tester">Password Tester</a></li>
+            <li><a href="#text-encryptor-decryptor">Encryptor/Decryptor</a></li>
+        </ul>
+      </nav>
+
       <div class="cyberkit_title">
         <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="TheCyberKit Logo" class="cyberkit_logo">
         <h1><span id="cyberkit_title_text" data-text="TheCyberKit">TheCyberKit</span></h1>
@@ -30,24 +38,27 @@
       <h2 class="cyberkit_slogan">Cybersecurity Made <span>Simple</span></h2>
     </header>
 
-    <main>
+    <main class="main">
       <!-- TODO: Add an introductory text -->
-      <section class="cards">
 
-        <article class="card">
-          <h3>Password Generator</h3>
+      <section class="cards">
+        <!-- Password Generator Section -->
+        <article class="card" id="password-generator">
+          <h3 class="card-title-text">Password Generator</h3>
           <p>Create strong, unique passwords effortlessly.</p>
           <button class="generate-password-btn">Generate</button>
         </article>
 
-        <article class="card">
-          <h3>Password Tester</h3>
+        <!-- Password Tester Section -->
+        <article class="card" id="password-tester">
+          <h3 class="card-title-text">Password Tester</h3>
           <p>Think you have a strong password? Find out below.</p>
           <input class="password-tester-input-box" type="text" name="text" placeholder="Enter your password..." aria-label="Enter your password...">
         </article>
 
-        <article class="card last-card">
-          <h3>Text Encryptor / Decryptor</h3>
+        <!-- Text Encryptor / Decryptor Section -->
+        <article class="card last-card" id="text-encryptor-decryptor">
+          <h3 class="card-title-text">Text Encryptor / Decryptor</h3>
           <p>Securely encrypt and decrypt any text.</p>
           <h4 class="encryption-title-text">Encryption</h4>
           <textarea class="encryption-textarea"
@@ -67,7 +78,7 @@
       </section>
     </main>
 
-    <footer>
+    <footer class="footer">
       <p>&copy; 2024 TheCyberKit. All rights reserved.</p>
       <!-- TODO: Improve the footer -->
     </footer>
