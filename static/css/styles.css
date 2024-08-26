@@ -9,12 +9,24 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 .container {
-  padding: 40px 20px 40px 20px;
+  padding-top: 45px;
+  padding-bottom: 20px;
   font-family: 'Montserrat', sans-serif;  
 }
 article h3 {
   font-family: 'Montserrat', sans-serif;
   font-size: 28px;  
+}
+article h4 {
+  font-family: 'Montserrat', sans-serif;
+}
+footer{
+  text-align: center;
+}
+footer p{
+  margin-bottom: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 /* -------------------------------------------------------------------------- */
 
@@ -75,6 +87,11 @@ article h3 {
 
 /* CARDS */
 /* -------------------------------------------------------------------------- */
+.cards{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .card {
   background-color: #282828;
   padding: 24px;
@@ -83,10 +100,8 @@ article h3 {
   box-shadow: 0px 5px 0px #f2f2f2;
   width: 70%;
 }
-.cards{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.last-card{
+  margin-bottom: 0;
 }
 .generate-password-btn{
   display: flex;
@@ -100,7 +115,7 @@ article h3 {
 }
 .encryption-title-text{
   margin-left: 4px;
-  font-size: 26px;
+  font-size: 24px;
   text-decoration: underline;
 }
 .encryption-textarea{
@@ -120,7 +135,7 @@ article h3 {
 .decryption-title-text{
   margin-left: 4px;
   margin-top: 60px;
-  font-size: 26px;
+  font-size: 24px;
   text-decoration: underline;
 }
 .decryption-textarea{
