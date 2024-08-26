@@ -1,46 +1,49 @@
-// Vanilla JavaScript File
+// JAVASCRIPT FILE
+/* Case types used: camelCase (for functions and variables), 
+SCREAMING_SNAKE_CASE (for constants) and kebab-case (for CSS classes) */
 
-const cyberkitTitleText = document.getElementById('cyberkit_title_text');
-const originalText = cyberkitTitleText.textContent;
+const CYBERKIT_TITLE_TEXT = document.getElementById('cyberkit_title_text');
+const ORIGINAL_TEXT = CYBERKIT_TITLE_TEXT.textContent;
 
 function transitionToModifiedText() {
   // First 'e' to '3'
   setTimeout(() => {
-    cyberkitTitleText.textContent = originalText.replace('e', '3');
+    CYBERKIT_TITLE_TEXT.textContent = ORIGINAL_TEXT.replace('e', '3');
     addGlowEffect();
   }, 0); // No delay for the first change
 
   // Second 'e' to '3'
   setTimeout(() => {
-    cyberkitTitleText.textContent = cyberkitTitleText.textContent.replace('e', '3');
+    CYBERKIT_TITLE_TEXT.textContent = CYBERKIT_TITLE_TEXT.textContent.replace('e', '3');
     addGlowEffect();
   }, 1000); // 1-second delay
 
   // 'i' to '1'
   setTimeout(() => {
-    cyberkitTitleText.textContent = cyberkitTitleText.textContent.replace('i', '1');
-    cyberkitTitleText.classList.add('modified');
+    CYBERKIT_TITLE_TEXT.textContent = CYBERKIT_TITLE_TEXT.textContent.replace('i', '1');
+    CYBERKIT_TITLE_TEXT.classList.add('modified');
   }, 2000); // 2-second delay
 
   // Change back to original after a delay
   setTimeout(() => {
-    cyberkitTitleText.classList.remove('modified');
-    cyberkitTitleText.textContent = originalText;
+    CYBERKIT_TITLE_TEXT.classList.remove('modified');
+    CYBERKIT_TITLE_TEXT.textContent = ORIGINAL_TEXT;
   }, 4000); // 4-second delay (2s for modified + 2s delay)
 }
 
 function addGlowEffect() {
-  const modifiedText = cyberkitTitleText.textContent;
-  cyberkitTitleText.innerHTML = ''; // Clear the current text content
+  const MODIFIED_TEXT = CYBERKIT_TITLE_TEXT.textContent;
+  CYBERKIT_TITLE_TEXT.innerHTML = ''; // Clear the current text content
 
-  for (let char of modifiedText) {
+  for (let char of MODIFIED_TEXT) {
     const span = document.createElement('span');
     span.textContent = char;
     if (char === '3') {
       span.classList.add('glow');
     }
-    cyberkitTitleText.appendChild(span);
+    CYBERKIT_TITLE_TEXT.appendChild(span);
   }
 }
 
-setInterval(transitionToModifiedText, 10000); // Total cycle time: 8s (original) + 2s (transition) = 10s
+// Total cycle time: 8s (showing original text) + 4s (transition + showing modified text) = 12s
+setInterval(transitionToModifiedText, 12000); 
