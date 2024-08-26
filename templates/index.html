@@ -1,6 +1,8 @@
 <!-- HTML FILE -->
 <!-- Case types used: flatcase and kebab-case -->
 
+<!-- TODO: change all classes case types to kebab-case -->
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -20,62 +22,53 @@
   </head>
 
   <body>
-    <main class="container">
-      <header>
-        <div class="cyberkit_title">
-          <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="TheCyberKit Logo" class="cyberkit_logo">
-          <h1>
-            <span id="cyberkit_title_text" data-text="TheCyberKit">TheCyberKit</span>
-          </h1>
-        </div>
-        <h2 class="cyberkit_slogan">
-          Cybersecurity Made <span>Simple</span>
-        </h2>
-      </header>
-  
+    <header>
+      <div class="cyberkit_title">
+        <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="TheCyberKit Logo" class="cyberkit_logo">
+        <h1><span id="cyberkit_title_text" data-text="TheCyberKit">TheCyberKit</span></h1>
+      </div>
+      <h2 class="cyberkit_slogan">Cybersecurity Made <span>Simple</span></h2>
+    </header>
+
+    <main>
+      <!-- TODO: Add an introductory text -->
       <section class="cards">
+
         <article class="card">
           <h3>Password Generator</h3>
-          <p>
-            Create strong, unique passwords effortlessly.
-          </p>
+          <p>Create strong, unique passwords effortlessly.</p>
           <button class="generate-password-btn">Generate</button>
         </article>
+
         <article class="card">
           <h3>Password Tester</h3>
-          <p>
-            Think you have a strong password? Find out below.
-          </p>
+          <p>Think you have a strong password? Find out below.</p>
           <input class="password-tester-input-box" type="text" name="text" placeholder="Enter your password..." aria-label="Enter your password...">
         </article>
+
         <article class="card last-card">
           <h3>Text Encryptor / Decryptor</h3>
-          <p>
-            Securely encrypt and decrypt any text.
-          </p>
+          <p>Securely encrypt and decrypt any text.</p>
           <h4 class="encryption-title-text">Encryption</h4>
           <textarea class="encryption-textarea"
             name="textarea_encryption"
             placeholder="Enter text to encrypt..."
-            aria-label="Enter text to encrypt..."
-          ></textarea>
+            aria-label="Enter text to encrypt..."></textarea>
           <button class="encryption-submit-btn">Submit</button>
 
           <h4 class="decryption-title-text">Decryption</h4>
           <textarea class="decryption-textarea"
           name="textarea_decryption"
           placeholder="Enter text to decrypt..."
-          aria-label="Enter text to decrypt..."
-        ></textarea>
-        <button class="decryption-submit-btn">Submit</button>
+          aria-label="Enter text to decrypt..."></textarea>
+          <button class="decryption-submit-btn">Submit</button>
         </article>
+
       </section>
     </main>
 
     <footer>
-      <p>
-        &copy; 2024 TheCyberKit. All rights reserved.
-      </p>
+      <p>&copy; 2024 TheCyberKit. All rights reserved.</p>
       <!-- TODO: Improve the footer -->
     </footer>
   

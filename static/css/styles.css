@@ -1,6 +1,8 @@
 /* CSS FILE */
 /* Case types used: flatcase and kebab-case */
 
+/* TODO: change all classes case types to kebab-case */
+
 /* GLOBAL */
 /* -------------------------------------------------------------------------- */
 body {
@@ -8,8 +10,7 @@ body {
   color: #f2f2f2;
   font-family: 'Montserrat', sans-serif;
 }
-.container {
-  padding-top: 45px;
+main {
   padding-bottom: 20px;
   font-family: 'Montserrat', sans-serif;  
 }
@@ -38,6 +39,7 @@ footer p{
   align-items: center;
   gap: 10px; /* Space between the logo and the title */
   margin-bottom: 8px;
+  padding-top: 40px;
 }
 .cyberkit_logo {
   width: 58px;
@@ -78,7 +80,7 @@ footer p{
   font-weight: 500;
   color: #f2f2f2;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 .cyberkit_slogan span{
   font-weight: 700;
