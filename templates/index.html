@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pico-main/css/pico.min.css') }}">
 
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon2.png') }}" type="image/png">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png" sizes="512x512">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,14 +30,21 @@
       </nav>
 
       <div class="cyberkit-title">
-        <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="TheCyberKit Logo" class="cyberkit-logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TheCyberKit Logo" class="cyberkit-logo">
         <h1><span id="cyberkit-title-text" data-text="TheCyberKit">TheCyberKit</span></h1>
       </div>
       <h2 class="cyberkit-slogan">Cybersecurity Made <span>Simple</span></h2>
     </header>
 
     <main class="main">
-      <!-- TODO: Add an introductory text -->
+      <h3 class="introductory-title">Empower Your Online Safety</h3>
+      <p class="introductory-description">
+        TheCyberKit provides you with the essential tools to protect your digital life. 
+        Generate secure passwords, check their strength, 
+        and encrypt your sensitive information — all in one place, for free.
+      </p>
+
+      <img src="{{ url_for('static', filename='images/banner.jpg') }}" alt="Cybersecurity Illustration" class="cybersecurity-banner">
 
       <section class="cards">
         <!-- Password Generator Section -->
