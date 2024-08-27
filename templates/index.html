@@ -1,8 +1,6 @@
 <!-- HTML FILE -->
 <!-- Case types used: flatcase and kebab-case -->
 
-<!-- TODO: change all classes case types to kebab-case -->
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -31,11 +29,11 @@
         </ul>
       </nav>
 
-      <div class="cyberkit_title">
-        <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="TheCyberKit Logo" class="cyberkit_logo">
-        <h1><span id="cyberkit_title_text" data-text="TheCyberKit">TheCyberKit</span></h1>
+      <div class="cyberkit-title">
+        <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="TheCyberKit Logo" class="cyberkit-logo">
+        <h1><span id="cyberkit-title-text" data-text="TheCyberKit">TheCyberKit</span></h1>
       </div>
-      <h2 class="cyberkit_slogan">Cybersecurity Made <span>Simple</span></h2>
+      <h2 class="cyberkit-slogan">Cybersecurity Made <span>Simple</span></h2>
     </header>
 
     <main class="main">
@@ -62,17 +60,17 @@
           <p>Securely encrypt and decrypt any text.</p>
           <h4 class="encryption-title-text">Encryption</h4>
           <textarea class="encryption-textarea"
-            name="textarea_encryption"
-            placeholder="Enter text to encrypt..."
-            aria-label="Enter text to encrypt..."></textarea>
-          <button class="encryption-submit-btn">Submit</button>
+            name="textarea-encryption"
+            placeholder="Enter your text..."
+            aria-label="Enter your text..."></textarea>
+          <button class="encryption-submit-btn">Encrypt</button>
 
           <h4 class="decryption-title-text">Decryption</h4>
           <textarea class="decryption-textarea"
-          name="textarea_decryption"
-          placeholder="Enter text to decrypt..."
-          aria-label="Enter text to decrypt..."></textarea>
-          <button class="decryption-submit-btn">Submit</button>
+          name="textarea-decryption"
+          placeholder="Enter your text..."
+          aria-label="Enter your text..."></textarea>
+          <button class="decryption-submit-btn">Decrypt</button>
         </article>
 
       </section>
@@ -80,7 +78,6 @@
 
     <footer class="footer">
       <p>&copy; 2024 TheCyberKit. All rights reserved.</p>
-      <!-- TODO: Improve the footer -->
     </footer>
   
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>  

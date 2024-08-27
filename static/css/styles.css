@@ -4,7 +4,6 @@
 /* Pico CSS Documentation: https://picocss.com/docs */
 /* Pico CSS Color Palettes: https://picocss.com/docs/colors */ 
 
-/* TODO: change all classes case types to kebab-case */
 /* TODO: Keep experimenting with Pico CSS colors */
 
 /* GLOBAL */
@@ -55,20 +54,20 @@ li a:hover{
   color: #061E2F; /* Pico CSS Color: Azure 900 (The Count's Black) */
   transform: scale(1.04)
 }
-.cyberkit_title {
+.cyberkit-title {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px; /* Space between the logo and the title */
   margin-bottom: 8px;
 }
-.cyberkit_logo {
+.cyberkit-logo {
   width: 58px;
   height: auto; /* Maintain aspect ratio */
   margin-bottom: 23px;
   margin-right: 2px;
 }
-#cyberkit_title_text{
+#cyberkit-title-text{
   font-family: 'Montserrat', sans-serif;
   color: #017FC0;  /* Pico CSS Color: Azure 500 (Honolulu Blue)*/
   font-size: 80px;
@@ -76,7 +75,7 @@ li a:hover{
   letter-spacing: 2px;
   transition: all 0.25s ease-in-out; /* Smooth transition for all properties */
 }
-#cyberkit_title_text.modified {
+#cyberkit-title-text.modified {
   transform: scale(1.05) translateY(-3px); /* Slightly enlarge and move up the modified text */
   text-shadow: 0 0 5px #017FC0; /* Add a subtle glow effect */
   letter-spacing: 10px;
@@ -93,7 +92,7 @@ li a:hover{
     text-shadow: 0 0 2px #017FC0, 0 0 3px #017FC0;
   }
 }
-.cyberkit_slogan{
+.cyberkit-slogan{
   font-family: 'Montserrat', sans-serif;
   font-size: 36px;
   font-weight: 500;
@@ -101,7 +100,7 @@ li a:hover{
   text-align: center;
   margin-bottom: 50px;
 }
-.cyberkit_slogan span{
+.cyberkit-slogan span{
   font-weight: 700;
 }
 /* -------------------------------------------------------------------------- */
@@ -118,7 +117,7 @@ li a:hover{
   align-items: center;
 }
 .card {
-  background-color: #282828;
+  /* background-color: #282828; */
   background-color: #373C44; /* Pico CSS Color: Zinc 750 (Antarctic Deep) */
   padding: 24px;
   margin-bottom: 50px;
@@ -142,6 +141,7 @@ li a:hover{
 }
 .password-tester-input-box{
   border-radius: 8px;
+  background-color: #23262C; /* Pico CSS Color: Zinc 850 (Black Beauty) */
 }
 .encryption-title-text{
   font-family: 'Montserrat', sans-serif;
@@ -150,6 +150,7 @@ li a:hover{
   text-decoration: underline;
 }
 .encryption-textarea{
+  background-color: #23262C; /* Pico CSS Color: Zinc 850 (Black Beauty) */
   border-radius: 8px;
   min-height: 150px;
   max-height: 300px;
@@ -171,6 +172,7 @@ li a:hover{
   text-decoration: underline;
 }
 .decryption-textarea{
+  background-color: #23262C; /* Pico CSS Color: Zinc 850 (Black Beauty) */
   border-radius: 8px;
   min-height: 150px;
   max-height: 300px;
@@ -205,14 +207,14 @@ li a:hover{
 /* MEDIA QUERIES FOR RESPONSIVE DESIGN */
 /* -------------------------------------------------------------------------- */
 @media (max-width: 650px) {
-  .cyberkit_logo {
+  .cyberkit-logo {
     width: 40px; /* Default size for larger screens */
     height: auto; /* Maintain aspect ratio */
   }
-  #cyberkit_title_text {
+  #cyberkit-title-text {
     font-size: 54px;
   }
-  .cyberkit_slogan {
+  .cyberkit-slogan {
     font-size: 28px;
   }
 }
