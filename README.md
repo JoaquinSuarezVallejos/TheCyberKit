@@ -6,7 +6,7 @@
 
 **Group No. 8 - Members:** Julián Curi and Joaquín Suárez Vallejos
 
-**Project Official Name:** TheCyberKit
+**Project's Official Name:** TheCyberKit
 
 **Idea:** A cybersecurity-themed website with the following functionalities:
 + **Secure password generator.** The user can also download a file (.txt / .json / .docx), with all the generated passwords.
