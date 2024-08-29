@@ -98,7 +98,7 @@ li a:hover{
   font-weight: 500;
   color: #f2f2f2;
   text-align: center;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
 }
 .cyberkit-slogan span{
   font-weight: 700;
@@ -110,6 +110,13 @@ li a:hover{
 .main {
   padding: 20px 0;
   font-family: 'Montserrat', sans-serif;  
+}
+.text-divider{
+  width: 40%;
+  height: 6px; 
+  background-color: #017FC0; 
+  border-radius: 12px;
+  margin: 20px auto 50px; 
 }
 .introductory-title{
   font-family: 'Montserrat', sans-serif;  
@@ -129,7 +136,7 @@ li a:hover{
   margin: 20px auto 0px;
 }
 .cybersecurity-banner{
-  width: 60%;
+  width: 50%;
   height: auto;
   margin: 40px auto 80px; 
   display: block;
