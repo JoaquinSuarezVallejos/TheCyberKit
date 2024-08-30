@@ -1,7 +1,7 @@
 # PYTHON FILE
 # Case types used: snake_case (for functions and variables) and SCREAMING_SNAKE_CASE (for constants)
 
-# Commands to serve Flask project: 1. flask_env\Scripts\activate | 2. python app.py (or python3 app.py)
+# Commands to serve Flask project on Windows: 1. flask_env\Scripts\activate | 2. python app.py (or python3 app.py)
 
 from flask import Flask, render_template
 
@@ -13,5 +13,7 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
+# TODO: Create the requirements.txt file. Ask Gemini if this command works: pip freeze > requirements.txt
 
 # TODO: Start developing here.

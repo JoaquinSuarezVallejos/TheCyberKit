@@ -186,7 +186,7 @@ li a:hover{
   min-height: 150px;
   max-height: 300px;
   resize: none;
-  field-sizing: content; /* TODO: Check if compatible with all browsers */
+  field-sizing: content; /* TODO: Check if compatible with all browsers (not compatible with Firefox) */
 }
 .encryption-submit-btn{
   display: flex;
