@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\joaqu\OneDrive\Desktop\Joaquín\GitHub Repos\CyberKit\flask_env
+set VIRTUAL_ENV=C:\Users\joaqu\OneDrive\Desktop\JSV\GitHub-Repos\TheCyberKit\flask_env
 
 if not defined PROMPT set PROMPT=$P$G
 
