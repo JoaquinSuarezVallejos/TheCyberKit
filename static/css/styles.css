@@ -1,22 +1,33 @@
 /* CSS FILE */
 /* Case types used: flatcase and kebab-case */
 
-/* Pico CSS Documentation: https://picocss.com/docs */
-/* Pico CSS Color Palettes: https://picocss.com/docs/colors */ 
+/* PICO CSS */
+/* Documentation: https://picocss.com/docs */
+/* Color Palettes: https://picocss.com/docs/colors */ 
 
-/* TODO: Keep experimenting with Pico CSS colors */
+/* Colors used: 
+  - #061E2F (Azure 900) - The Count's Black
+  - #0172AD (Azure 550) - Cloisonné
+  - #017FC0 (Azure 500) - Honolulu Blue
+  
+  - #23262C (Zinc 850) - Black Beauty
+  - #373C44 (Zinc 750) - Antarctic Deep
+  
+  - #E2E2E2 (Grey 100) - Titanium White
+  - #F1F1F1 (Grey 50) - Snowflake
+*/
+
+/* Fonts used: 
+  - Main: Montserrat
+  - Fallback: sans-serif
+*/
 
 /* GLOBAL */
 /* -------------------------------------------------------------------------- */
 html {
   scroll-behavior: smooth; /* Smooth scrolling effect */
   font-family: 'Montserrat', sans-serif;
-
-  /* background-color: #13171f;  */
-  /* Pico CSS OLD Background Color */
-
-  color: #f2f2f2;
-  background-color: #061E2F; /* Pico CSS Color: Azure 900 (The Count's Black) */
+  background-color: #061E2F; 
 }
 /* -------------------------------------------------------------------------- */
 
@@ -29,7 +40,7 @@ nav{
   display: flex;
   justify-content: center; /* Center the ul horizontally within the nav */
   width: 100%; /* Ensure nav takes full width */
-  background-color: #017FC0;
+  background-color: #0172AD; 
   padding: 10px 0;
   margin-bottom: 68px;
   text-align: center;
@@ -41,17 +52,17 @@ ul{
   display: flex;
   justify-content: center; /* Center the list items horizontally */
   width: 100%;
-  gap: 35px; /* Space between list items */
+  gap: 40px; /* Space between list items */
 }
 li a{
-  color: #f2f2f2;
+  color: #E2E2E2;
   font-size: 22px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
 }
 li a:hover{
-  color: #061E2F; /* Pico CSS Color: Azure 900 (The Count's Black) */
+  color: #061E2F;
   transform: scale(1.04)
 }
 .cyberkit-title {
@@ -69,7 +80,7 @@ li a:hover{
 }
 #cyberkit-title-text{
   font-family: 'Montserrat', sans-serif;
-  color: #017FC0;  /* Pico CSS Color: Azure 500 (Honolulu Blue)*/
+  color: #017FC0;
   font-size: 80px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -96,9 +107,8 @@ li a:hover{
   font-family: 'Montserrat', sans-serif;
   font-size: 36px;
   font-weight: 500;
-  color: #f2f2f2;
+  color: #F1F1F1; 
   text-align: center;
-  /* margin-bottom: 50px; */
 }
 .cyberkit-slogan span{
   font-weight: 700;
@@ -116,11 +126,11 @@ li a:hover{
   height: 6px; 
   background-color: #017FC0; 
   border-radius: 12px;
-  margin: 20px auto 50px; 
+  margin: 20px auto 60px; 
 }
 .introductory-title{
   font-family: 'Montserrat', sans-serif;  
-  /* color: #f2f2f2; */
+  color: #E2E2E2; 
   font-size: 26px;
   font-weight: 600;
   text-align: center;
@@ -128,7 +138,7 @@ li a:hover{
 }
 .introductory-description{
   font-family: 'Montserrat', sans-serif;  
-  /* color: #f2f2f2; */
+  color: #E2E2E2; 
   font-size: 22px;
   font-weight: 400;
   text-align: center;
@@ -136,11 +146,11 @@ li a:hover{
   margin: 20px auto 0px;
 }
 .cybersecurity-banner{
-  width: 50%;
+  width: 45%;
   height: auto;
   margin: 40px auto 80px; 
   display: block;
-  border-radius: 12px;
+  border-radius: 16px;
 }
 .cards{
   display: flex;
@@ -148,20 +158,25 @@ li a:hover{
   align-items: center;
 }
 .card {
-  /* background-color: #282828; */
-  background-color: #373C44; /* Pico CSS Color: Zinc 750 (Antarctic Deep) */
+  background-color: #373C44; 
   padding: 24px;
   margin-bottom: 50px;
   border-radius: 12px; 
-  box-shadow: 0px 5px 0px #f2f2f2;
+  box-shadow: 0px 5px 0px #F1F1F1;
   width: 70%;
 }
 .last-card{
   margin-bottom: 0;
 }
-.card-title-text{
+.card-title{
   font-family: 'Montserrat', sans-serif;
-  font-size: 28px;  
+  font-size: 28px; 
+  color: #F1F1F1;
+}
+.card-description{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px; 
+  color: #E2E2E2;
 }
 .generate-password-btn{
   display: flex;
@@ -172,16 +187,17 @@ li a:hover{
 }
 .password-tester-input-box{
   border-radius: 8px;
-  background-color: #23262C; /* Pico CSS Color: Zinc 850 (Black Beauty) */
+  background-color: #23262C;
 }
-.encryption-title-text{
+.encryption-title{
   font-family: 'Montserrat', sans-serif;
+  color: #E2E2E2; 
   margin-left: 4px;
   font-size: 24px;
   text-decoration: underline;
 }
 .encryption-textarea{
-  background-color: #23262C; /* Pico CSS Color: Zinc 850 (Black Beauty) */
+  background-color: #23262C;
   border-radius: 8px;
   min-height: 150px;
   max-height: 300px;
@@ -195,15 +211,16 @@ li a:hover{
   height: 50px;
   font-weight: 500;
 }
-.decryption-title-text{
+.decryption-title{
   font-family: 'Montserrat', sans-serif;
+  color: #E2E2E2;
   margin-left: 4px;
   margin-top: 60px;
   font-size: 24px;
   text-decoration: underline;
 }
 .decryption-textarea{
-  background-color: #23262C; /* Pico CSS Color: Zinc 850 (Black Beauty) */
+  background-color: #23262C;
   border-radius: 8px;
   min-height: 150px;
   max-height: 300px;
@@ -222,13 +239,13 @@ li a:hover{
 /* FOOTER */
 /* -------------------------------------------------------------------------- */
 .footer{
-  background-color: #23262C; /* Pico CSS Color: Zinc 850 (Black Beauty) */
+  background-color: #23262C;
   text-align: center;
   padding: 25px 0; /* Top and bottom padding */
   margin-top: 40px;
 }
 .footer p{
-  color: #f2f2f2;
+  color: #F1F1F1;
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 0px;
@@ -239,8 +256,8 @@ li a:hover{
 /* -------------------------------------------------------------------------- */
 @media (max-width: 650px) {
   .cyberkit-logo {
-    width: 40px; /* Default size for larger screens */
-    height: auto; /* Maintain aspect ratio */
+    width: 40px;
+    height: auto; 
   }
   #cyberkit-title-text {
     font-size: 54px;
