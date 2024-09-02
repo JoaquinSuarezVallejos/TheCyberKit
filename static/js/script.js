@@ -2,6 +2,7 @@
 /* Case types used: camelCase (for functions and variables), 
 SCREAMING_SNAKE_CASE (for constants) and kebab-case (for CSS classes) */
 
+// CyberKit Title Section
 const CYBERKIT_TITLE_TEXT = document.getElementById('cyberkit-title-text');
 const ORIGINAL_TEXT = CYBERKIT_TITLE_TEXT.textContent;
 
@@ -47,3 +48,26 @@ function addGlowEffect() {
 
 // Total cycle time: 8s (showing original text) + 4s (transition + showing modified text) = 12s
 setInterval(transitionToModifiedText, 12000); 
+
+
+// Password Tester Section
+const passwordTesterInput = document.querySelector('.password-tester-input-box');
+const scoreResult = document.getElementById('password-score-result');
+const timeToCrack = document.getElementById('password-crack-time');
+
+passwordTesterInput.addEventListener('input', () => {
+    const password = passwordTesterInput.value;
+
+    fetch('/evaluate_password', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ password: password })
+    })
+    .then(response => response.json())
+    .then(data => {
+      scoreResult.textContent = data.score;
+        timeToCrack.textContent = data.crack_time;
+    });
+});

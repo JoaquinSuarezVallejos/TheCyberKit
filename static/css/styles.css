@@ -178,16 +178,46 @@ li a:hover{
   font-size: 20px; 
   color: #E2E2E2;
 }
+.password-generator-readonly-box{
+  background-color: #23262C;
+  text-align: center;
+}
 .generate-password-btn{
   display: flex;
   align-items: center;
-  margin-left: 1px;
+  justify-content: center;
   height: 50px;
   font-weight: 500;
+}
+.generate-password-btn i{
+  margin-right: 8px;
+}
+.copy-to-clipboard-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  font-weight: 500;
+}
+.copy-to-clipboard-btn i{
+  margin-right: 8px;
 }
 .password-tester-input-box{
   border-radius: 8px;
   background-color: #23262C;
+}
+.card-label{
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+#password-score-result{
+  font-size: 20px;
+  font-weight: 500;
+}
+#password-crack-time{
+  font-size: 20px;
+  font-weight: 500;
 }
 .encryption-title{
   font-family: 'Montserrat', sans-serif;

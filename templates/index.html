@@ -4,12 +4,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pico-main/css/pico.min.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Font_Awesome/css/all.min.css') }}">
+    
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png" sizes="512x512">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +54,23 @@
         <article class="card" id="password-generator">
           <h3 class="card-title">Password Generator</h3>
           <p class="card-description">Create strong, unique passwords effortlessly.</p>
-          <button class="generate-password-btn">Generate</button>
+          <input class="password-generator-readonly-box"
+            type="text"
+            name="text"
+            value="JmifSxMZT5kDoV"
+            aria-label="Read-only input"
+            readonly
+          >
+          <div class="grid password-generator-btns">
+            <button class="generate-password-btn">
+              <i class="fas fa-redo"></i> 
+              Regenerate
+            </button>
+            <button class="copy-to-clipboard-btn contrast">
+              <i class="fas fa-clipboard"></i> 
+              Copy to Clipboard
+            </button>
+          </div>
         </article>
 
         <!-- Password Tester Section -->
@@ -61,6 +78,14 @@
           <h3 class="card-title">Password Tester</h3>
           <p class="card-description">Think you have a strong password? Find out below.</p>
           <input class="password-tester-input-box" type="text" name="text" placeholder="Enter your password..." aria-label="Enter your password...">
+          <div class="grid">  
+            <div class="flex"> 
+                <p class="card-label">Score: <span id="password-score-result">---</span></p> 
+            </div>
+            <div class="flex">
+                <p class="card-label">Estimated time to crack: <span id="password-crack-time">---</span></p> 
+            </div>
+          </div>
         </article>
 
         <!-- Text Encryptor / Decryptor Section -->

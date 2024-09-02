@@ -10,15 +10,54 @@
 
 # Commands to serve Flask project: 1. flask_env\Scripts\activate | 2. python app.py (or python3 app.py)
 
-from flask import Flask, render_template
+# ---------------------------------------------------------------------------------------------------------
 
+# Importing the necessary libraries
+from flask import Flask, render_template, jsonify, request
+import zxcvbn
+
+# Creating the Flask app
 app = Flask(__name__, static_folder='static', static_url_path='/static')
 
+# Rendering the index.html file
 @app.route('/')
 def index():
     return render_template('index.html')
 
+# ---------------------------------------------------------------------------------------------------------
+
+# Password Tester Section
+# Using the zxcvbn library: https://github.com/dwolfhub/zxcvbn-python
+
+@app.route('/evaluate_password', methods=['POST'])
+def evaluate_password():
+    password = request.json['password']
+
+    if not password: # Check for blank input
+        return jsonify({'score': '---', 'crack_time': '---'})
+
+    try:
+        result = zxcvbn.zxcvbn(password)
+
+        score = result['score']
+        crack_time = result['crack_times_display']['offline_slow_hashing_1e4_per_second']
+
+        score_mapping = {
+            0: '1 (very weak)',
+            1: '2 (weak)',
+            2: '3 (good)',
+            3: '4 (strong)',
+            4: '5 (excellent)'
+        }
+        score = score_mapping[score]
+
+        return jsonify({'score': score, 'crack_time': crack_time})
+
+    except IndexError:  # Still handle potential IndexErrors for other cases
+        return jsonify({'score': 'Error', 'crack_time': 'N/A'}) 
+    
+    # TODO: Return time estimates on how long it would take to guess the password in different situations (online and offline)
+    # TODO: Provide feedback on the password and ways to improve it
+
 if __name__ == '__main__':
     app.run(debug=True)
-    
-# TODO: Start developing here.
