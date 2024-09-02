@@ -26,66 +26,68 @@ if __name__ == '__main__':
 import random
 import string
 
-def generate_password(length, count_uppercase, count_lowercase, count_numbers, count_symbols):
-    if count_uppercase + count_lowercase + count_numbers + count_symbols != length:
-        raise ValueError("La suma de los caracteres de cada tipo debe ser igual a la longitud total de la contraseña.")
+def generate_password(length, use_uppercase, use_lowercase, use_numbers, use_symbols, no_repeats):
+    # Ensuring at least one character set is selected
+    if not any([use_uppercase, use_lowercase, use_numbers, use_symbols]):
+        return None  # Return None if no character set is selected
     
-    # Armado del conjunto de caracteres
-    char_pool = {
-        'uppercase': string.ascii_uppercase,
-        'lowercase': string.ascii_lowercase,
-        'numbers': string.digits,
-        'symbols': string.punctuation
-    }
+    # Building the character pool
+    char_pool = ''
+    if use_uppercase:
+        char_pool += string.ascii_uppercase  
+    if use_lowercase:
+        char_pool += string.ascii_lowercase  
+    if use_numbers:
+        char_pool += string.digits           
+    if use_symbols:
+        char_pool += string.punctuation
 
-    # Generación de la contraseña
-    password = (
-        random.choices(char_pool['uppercase'], k=count_uppercase) +
-        random.choices(char_pool['lowercase'], k=count_lowercase) +
-        random.choices(char_pool['numbers'], k=count_numbers) +
-        random.choices(char_pool['symbols'], k=count_symbols)
-    )
+    # If no repeating characters are allowed and the length is greater than the unique characters available
+    if no_repeats and length > len(char_pool):
+        print("Not enough unique characters available to generate a password of this length without repeats.")
+        return None
+
+    # Password generation
+    if no_repeats:
+        # Generate password with unique characters
+        password = ''.join(random.sample(char_pool, length))
+    else:
+        # Generate password allowing repeats
+        password = ''.join(random.choice(char_pool) for i in range(length))
     
-    # Mezclar los caracteres para asegurar aleatoriedad
-    random.shuffle(password)
-    
-    return ''.join(password)
+    return password
 
 def main():
-    print("Generador de Contraseñas")
+    print("Password generator")
 
-    # Selección de la longitud de la contraseña
+    # Selecting the length of the password
     while True:
         try:
-            length = int(input("Ingrese la longitud total de la contraseña (entre 5 y 64): "))
+            length = int(input("Input the length of the password (between 5 and 64): "))
             if 5 <= length <= 64:
                 break
             else:
-                print("Por favor, ingrese un número entre 5 y 64.")
+                print("Please enter a number between 5 and 64.")
         except ValueError:
-            print("Entrada no válida. Por favor, ingrese un número.")
-    
-    # Selección de la cantidad de caracteres de cada tipo
+            print("Invalid input. Please enter a valid number.")
+
+    # Keep prompting until at least one character type is selected
     while True:
-        try:
-            count_lowercase = int(input("Ingrese la cantidad de letras minúsculas: "))
-            count_uppercase = int(input("Ingrese la cantidad de letras mayúsculas: "))
-            count_numbers = int(input("Ingrese la cantidad de números: "))
-            count_symbols = int(input("Ingrese la cantidad de símbolos: "))
-            
-            if (count_lowercase + count_uppercase + count_numbers + count_symbols == length):
-                break
-            else:
-                print(f"La suma de las cantidades debe ser igual a la longitud total de la contraseña ({length}).")
-        except ValueError:
-            print("Entrada no válida. Por favor, ingrese números enteros.")
-    
-    # Generar la contraseña
-    try:
-        password = generate_password(length, count_uppercase, count_lowercase, count_numbers, count_symbols)
-        print(f"Contraseña generada: {password}")
-    except ValueError as e:
-        print(e)
+        use_uppercase = input("Do you want to include uppercase characters? (y/n): ").lower() == 'y'
+        use_lowercase = input("Do you want to include lowercase characters? (y/n): ").lower() == 'y'
+        use_numbers = input("Do you want to include numbers? (y/n): ").lower() == 'y'
+        use_symbols = input("Do you want to include symbols? (y/n): ").lower() == 'y'
+
+        # Ask if the password should have no repeating characters
+        no_repeats = input("Do you want to generate a password with no repeating characters? (y/n): ").lower() == 'y'
+        
+        # Generate the password
+        password = generate_password(length, use_uppercase, use_lowercase, use_numbers, use_symbols, no_repeats)
+        
+        if password:
+            print(f"Generated password: {password}")
+            break
+        else:
+            print("You must select at least one option to create a password and ensure there are enough unique characters if no repeats are selected. Please try again.")
 
 main()
-
