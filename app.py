@@ -43,11 +43,11 @@ def evaluate_password():
         crack_time = result['crack_times_display']['offline_slow_hashing_1e4_per_second']
 
         score_mapping = {
-            0: '1 (very weak)',
+            0: '1 (too short)',
             1: '2 (weak)',
-            2: '3 (good)',
-            3: '4 (strong)',
-            4: '5 (excellent)'
+            2: '3 (okay)',
+            3: '4 (good)',
+            4: '5 (strong)'
         }
         score = score_mapping[score]
 

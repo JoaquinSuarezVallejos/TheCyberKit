@@ -71,3 +71,9 @@ passwordTesterInput.addEventListener('input', () => {
         timeToCrack.textContent = data.crack_time;
     });
 });
+
+passwordTesterInput.addEventListener('keydown', (event) => {
+  if (event.key === ' ') { // Check if the pressed key is a space
+      event.preventDefault(); // Prevent the default action (entering the space)
+  }
+});
