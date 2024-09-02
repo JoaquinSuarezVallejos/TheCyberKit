@@ -9,7 +9,7 @@
 # 5. Install dependencies from the requirements.txt file: pip install -r requirements.txt
 
 # Commands to serve Flask project: 1. flask_env\Scripts\activate | 2. python app.py (or python3 app.py)
-
+"""
 from flask import Flask, render_template
 
 app = Flask(__name__, static_folder='static', static_url_path='/static')
@@ -20,29 +20,36 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
+"""    
 # TODO: Start developing here.
 
+import random
 import string
 
-def generate_password(length, use_uppercase, use_lowercase, use_numbers, use_symbols):
-    if not any([use_uppercase, use_lowercase, use_numbers, use_symbols]):
-        raise ValueError("Debe seleccionar al menos una opción para generar la contraseña.")
+def generate_password(length, count_uppercase, count_lowercase, count_numbers, count_symbols):
+    if count_uppercase + count_lowercase + count_numbers + count_symbols != length:
+        raise ValueError("La suma de los caracteres de cada tipo debe ser igual a la longitud total de la contraseña.")
     
     # Armado del conjunto de caracteres
-    char_pool = ''
-    if use_uppercase:
-        char_pool += string.ascii_uppercase  
-    if use_lowercase:
-        char_pool += string.ascii_lowercase  
-    if use_numbers:
-        char_pool += string.digits           
-    if use_symbols:
-        char_pool += string.punctuation
+    char_pool = {
+        'uppercase': string.ascii_uppercase,
+        'lowercase': string.ascii_lowercase,
+        'numbers': string.digits,
+        'symbols': string.punctuation
+    }
 
     # Generación de la contraseña
-    password = ''.join(random.choice(char_pool) for _ in range(length))
-    return password
+    password = (
+        random.choices(char_pool['uppercase'], k=count_uppercase) +
+        random.choices(char_pool['lowercase'], k=count_lowercase) +
+        random.choices(char_pool['numbers'], k=count_numbers) +
+        random.choices(char_pool['symbols'], k=count_symbols)
+    )
+    
+    # Mezclar los caracteres para asegurar aleatoriedad
+    random.shuffle(password)
+    
+    return ''.join(password)
 
 def main():
     print("Generador de Contraseñas")
@@ -50,24 +57,35 @@ def main():
     # Selección de la longitud de la contraseña
     while True:
         try:
-            length = int(input("Ingrese la longitud de la contraseña (entre 5 y 64): "))
+            length = int(input("Ingrese la longitud total de la contraseña (entre 5 y 64): "))
             if 5 <= length <= 64:
                 break
             else:
                 print("Por favor, ingrese un número entre 5 y 64.")
         except ValueError:
             print("Entrada no válida. Por favor, ingrese un número.")
-
-    # Selección de los tipos de caracteres a incluir
-    use_uppercase = input("¿Incluir letras mayúsculas? (s/n): ").lower() == 's'
-    use_lowercase = input("¿Incluir letras minúsculas? (s/n): ").lower() == 's'
-    use_numbers = input("¿Incluir números? (s/n): ").lower() == 's'
-    use_symbols = input("¿Incluir símbolos? (s/n): ").lower() == 's'
-
+    
+    # Selección de la cantidad de caracteres de cada tipo
+    while True:
+        try:
+            count_lowercase = int(input("Ingrese la cantidad de letras minúsculas: "))
+            count_uppercase = int(input("Ingrese la cantidad de letras mayúsculas: "))
+            count_numbers = int(input("Ingrese la cantidad de números: "))
+            count_symbols = int(input("Ingrese la cantidad de símbolos: "))
+            
+            if (count_lowercase + count_uppercase + count_numbers + count_symbols == length):
+                break
+            else:
+                print(f"La suma de las cantidades debe ser igual a la longitud total de la contraseña ({length}).")
+        except ValueError:
+            print("Entrada no válida. Por favor, ingrese números enteros.")
+    
+    # Generar la contraseña
     try:
-        password = generate_password(length, use_uppercase, use_lowercase, use_numbers, use_symbols)
+        password = generate_password(length, count_uppercase, count_lowercase, count_numbers, count_symbols)
         print(f"Contraseña generada: {password}")
     except ValueError as e:
         print(e)
 
 main()
+
