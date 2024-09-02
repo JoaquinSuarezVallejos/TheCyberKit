@@ -115,7 +115,7 @@ li a:hover{
 }
 /* -------------------------------------------------------------------------- */
 
-/* MAIN */
+/* INTRODUCTION */
 /* -------------------------------------------------------------------------- */
 .main {
   padding: 20px 0;
@@ -152,6 +152,10 @@ li a:hover{
   display: block;
   border-radius: 16px;
 }
+/* -------------------------------------------------------------------------- */
+
+/* CARDS */
+/* -------------------------------------------------------------------------- */
 .cards{
   display: flex;
   flex-direction: column;
@@ -178,6 +182,10 @@ li a:hover{
   font-size: 20px; 
   color: #E2E2E2;
 }
+/* -------------------------------------------------------------------------- */
+
+/* PASSWORD GENERATOR */
+/* -------------------------------------------------------------------------- */
 .password-generator-readonly-box{
   background-color: #23262C;
   text-align: center;
@@ -202,11 +210,15 @@ li a:hover{
 .copy-to-clipboard-btn i{
   margin-right: 8px;
 }
+/* -------------------------------------------------------------------------- */
+
+/* PASSWORD TESTER */
+/* -------------------------------------------------------------------------- */
 .password-tester-input-box{
   border-radius: 8px;
   background-color: #23262C;
 }
-.card-label{
+.password-tester-label{
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 5px;
@@ -219,6 +231,17 @@ li a:hover{
   font-size: 20px;
   font-weight: 500;
 }
+
+/* Password Tester Score Styles */
+#password-score-result.score-0 { color: #D93526; } /* Too Short - Color Red 500 */
+#password-score-result.score-1 { color: #FFBF00; } /* Weak - Color Amber 200 */
+#password-score-result.score-2 { color: #D9C800; } /* Okay - Color Yellow 200 */
+#password-score-result.score-3 { color: #82AB00; } /* Good - Lime 350 */
+#password-score-result.score-4 { color: #1D59D0; } /* Strong - Blue 600 */
+/* -------------------------------------------------------------------------- */
+
+/* TEXT ENCRYPTOR/DECRYPTOR */
+/* -------------------------------------------------------------------------- */
 .encryption-title{
   font-family: 'Montserrat', sans-serif;
   color: #E2E2E2; 

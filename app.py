@@ -39,7 +39,7 @@ def evaluate_password():
     try:
         result = zxcvbn.zxcvbn(password)
 
-        score = result['score']
+        score_number = result['score']
         crack_time = result['crack_times_display']['offline_slow_hashing_1e4_per_second']
 
         score_mapping = {
@@ -49,9 +49,9 @@ def evaluate_password():
             3: '4 (good)',
             4: '5 (strong)'
         }
-        score = score_mapping[score]
+        strength_label = score_mapping[score_number] 
 
-        return jsonify({'score': score, 'crack_time': crack_time})
+        return jsonify({'score': strength_label, 'crack_time': crack_time})  # Send the full label
 
     except IndexError:  # Still handle potential IndexErrors for other cases
         return jsonify({'score': 'Error', 'crack_time': 'N/A'}) 

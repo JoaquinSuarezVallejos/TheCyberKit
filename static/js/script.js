@@ -67,13 +67,24 @@ passwordTesterInput.addEventListener('input', () => {
     })
     .then(response => response.json())
     .then(data => {
-      scoreResult.textContent = data.score;
-        timeToCrack.textContent = data.crack_time;
+      scoreResult.textContent = data.score; // Display the full label (e.g., "3 (okay)")
+      timeToCrack.textContent = data.crack_time;
+
+      // Remove any existing score classes
+      for (let i = 0; i <= 4; i++) {
+          scoreResult.classList.remove(`score-${i}`);
+      }
+
+      // Extract the numeric score from the response
+      const numericScore = parseInt(data.score.charAt(0)); 
+
+      // Add the appropriate score class
+      scoreResult.classList.add(`score-${numericScore}`); 
     });
 });
 
 passwordTesterInput.addEventListener('keydown', (event) => {
-  if (event.key === ' ') { // Check if the pressed key is a space
-      event.preventDefault(); // Prevent the default action (entering the space)
-  }
+    if (event.key === ' ') { 
+        event.preventDefault(); 
+    }
 });
