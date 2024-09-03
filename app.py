@@ -1,7 +1,7 @@
 # PYTHON FILE
 # Case types used: snake_case (for functions and variables) and SCREAMING_SNAKE_CASE (for constants)
 
-# Setup for Windows (use PowerShell or the VS Code terminal): 
+# Setup for Windows (use PowerShell or the VS Code terminal):
 # 1. Clone the repository from GitHub: git clone https://github.com/JoaquinSuarezVallejos/TheCyberKit.git
 # 2. Navigate to the project directory: cd "C:\Users...TheCyberKit" (your directory)
 # 3. Create the Flask virtual environment: python -m venv flask_env
@@ -29,7 +29,7 @@ def index():
 # Password Tester Section
 # Using the zxcvbn library: https://github.com/dwolfhub/zxcvbn-python
 
-@app.route('/evaluate_password', methods=['POST'])
+@app.route('/evaluate_password', methods=['POST']) # POST method to evaluate the password
 def evaluate_password():
     password = request.json['password']
 
@@ -43,7 +43,7 @@ def evaluate_password():
         crack_time = result['crack_times_display']['offline_slow_hashing_1e4_per_second']
 
         score_mapping = {
-            0: '1 (too short)',
+            0: '1 (very unsafe)',
             1: '2 (weak)',
             2: '3 (okay)',
             3: '4 (good)',
@@ -51,6 +51,7 @@ def evaluate_password():
         }
         strength_label = score_mapping[score_number] 
 
+        print(f"Sending response: score={strength_label}, crack_time={crack_time}")  # Log the response data
         return jsonify({'score': strength_label, 'crack_time': crack_time})  # Send the full label
 
     except IndexError:  # Still handle potential IndexErrors for other cases
@@ -61,3 +62,4 @@ def evaluate_password():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    

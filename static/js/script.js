@@ -56,35 +56,55 @@ const scoreResult = document.getElementById('password-score-result');
 const timeToCrack = document.getElementById('password-crack-time');
 
 passwordTesterInput.addEventListener('input', () => {
-    const password = passwordTesterInput.value;
+  const password = passwordTesterInput.value;
 
-    fetch('/evaluate_password', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ password: password })
-    })
-    .then(response => response.json())
-    .then(data => {
-      scoreResult.textContent = data.score; // Display the full label (e.g., "3 (okay)")
+  fetch('/evaluate_password', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ password: password })
+  })
+  .then(response => {
+      if (!response.ok) { // Check if the response is successful
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+  })
+  .then(data => {
+      console.log("Received data from backend:", data); 
+
+      scoreResult.textContent = data.score;
       timeToCrack.textContent = data.crack_time;
 
       // Remove any existing score classes
-      for (let i = 0; i <= 4; i++) {
-          scoreResult.classList.remove(`score-${i}`);
+      for (let i = 0; i <= 5; i++) { // Include 5 in the loop 
+        scoreResult.classList.remove(`score-${i}`);
+        timeToCrack.classList.remove(`score-${i}`);
       }
 
-      // Extract the numeric score from the response
-      const numericScore = parseInt(data.score.charAt(0)); 
+      // Extract numeric score, handling potential variations in the format
+      const numericScoreMatch = data.score.match(/\d+/); // Match any sequence of digits
+      const numericScore = numericScoreMatch ? parseInt(numericScoreMatch[0]) : -1;
 
-      // Add the appropriate score class
-      scoreResult.classList.add(`score-${numericScore}`); 
-    });
+      // Add the appropriate score class, only if the score is valid
+      if (numericScore >= 0 && numericScore <= 5) { // Include 5 in the range
+        scoreResult.classList.add(`score-${numericScore}`);
+        timeToCrack.classList.add(`score-${numericScore}`); 
+      } else {
+          console.error("Invalid score received from backend:", data.score); // Log an error if the score is unexpected
+      }
+  })
+  .catch(error => {
+      console.error('Error fetching password evaluation:', error);
+      // Optionally, display an error message to the user
+      scoreResult.textContent = 'Error evaluating password';
+      timeToCrack.textContent = '';
+  });
 });
 
 passwordTesterInput.addEventListener('keydown', (event) => {
-    if (event.key === ' ') { 
-        event.preventDefault(); 
-    }
+  if (event.key === ' ') { 
+      event.preventDefault(); 
+  }
 });

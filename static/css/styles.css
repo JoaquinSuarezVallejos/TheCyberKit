@@ -232,12 +232,18 @@ li a:hover{
   font-weight: 500;
 }
 
-/* Password Tester Score Styles */
-#password-score-result.score-0 { color: #D93526; } /* Too Short - Color Red 500 */
-#password-score-result.score-1 { color: #FFBF00; } /* Weak - Color Amber 200 */
-#password-score-result.score-2 { color: #D9C800; } /* Okay - Color Yellow 200 */
-#password-score-result.score-3 { color: #82AB00; } /* Good - Lime 350 */
-#password-score-result.score-4 { color: #1D59D0; } /* Strong - Blue 600 */
+/* Password Tester Score and Time to Crack */
+#password-score-result.score-1 { color: #F06048; } /* Very Unsafe - Color Red 400 */
+#password-score-result.score-2 { color: #FF9500; } /* Weak - Color Pumpkin 300 */
+#password-score-result.score-3 { color: #F2DF0D; } /* Okay - Color Yellow 100 */
+#password-score-result.score-4 { color: #82AB00; } /* Good - Lime 350 */
+#password-score-result.score-5 { color: #018CD4; } /* Strong - Azure 450 */
+
+#password-crack-time.score-1 { color: #F06048; } /* Very Unsafe - Color Red 400 */
+#password-crack-time.score-2 { color: #FF9500; } /* Weak - Color Pumpkin 300 */
+#password-crack-time.score-3 { color: #F2DF0D; } /* Okay - Color Yellow 100 */
+#password-crack-time.score-4 { color: #82AB00; } /* Good - Lime 350 */
+#password-crack-time.score-5 { color: #018CD4; } /* Strong - Azure 450 */
 /* -------------------------------------------------------------------------- */
 
 /* TEXT ENCRYPTOR/DECRYPTOR */
