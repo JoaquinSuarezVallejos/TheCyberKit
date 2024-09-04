@@ -30,6 +30,7 @@ def index():
 # Using the zxcvbn library: https://github.com/dwolfhub/zxcvbn-python
 
 @app.route('/evaluate_password', methods=['POST']) # POST method to evaluate the password
+
 def evaluate_password():
     password = request.json['password']
 
@@ -49,7 +50,7 @@ def evaluate_password():
             3: '4 (good)',
             4: '5 (strong)'
         }
-        strength_label = score_mapping[score_number] 
+        strength_label = score_mapping[score_number]
 
         print(f"Sending response: score={strength_label}, crack_time={crack_time}")  # Log the response data
         return jsonify({'score': strength_label, 'crack_time': crack_time})  # Send the full label
@@ -58,7 +59,6 @@ def evaluate_password():
         return jsonify({'score': 'Error', 'crack_time': 'N/A'}) 
     
     # TODO: Return time estimates on how long it would take to guess the password in different situations (online and offline)
-    # TODO: Provide feedback on the password and ways to improve it
 
 if __name__ == '__main__':
     app.run(debug=True)
