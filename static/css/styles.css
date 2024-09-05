@@ -221,7 +221,7 @@ li a:hover{
 .password-tester-label{
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 #password-score-result{
   font-size: 20px;
@@ -230,6 +230,17 @@ li a:hover{
 #password-crack-time{
   font-size: 20px;
   font-weight: 500;
+}
+.radio-btns{
+  display: flex;
+  gap: 20px;
+  margin-bottom: -7px;
+}
+.password-tester-radio-btn{
+  font-size: 15px;
+}
+.radio-btn-label{
+  font-size: 19px;
 }
 
 #password-score-result.score-1 { color: #F06048; } /* Very Unsafe - Color Red 400 */

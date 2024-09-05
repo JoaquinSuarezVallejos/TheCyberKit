@@ -80,10 +80,18 @@
           <input class="password-tester-input-box" type="text" name="text" placeholder="Evaluate any password..." aria-label="Evaluate any password...">
           <div class="grid">  
             <div class="flex"> 
-                <p class="password-tester-label">Score: <span id="password-score-result">---</span></p> 
+              <p class="password-tester-label">Score: <span id="password-score-result">---</span></p> 
             </div>
             <div class="flex">
-                <p class="password-tester-label">Estimated time to crack: <span id="password-crack-time">---</span></p> 
+              <p class="password-tester-label">Estimated time to crack: <span id="password-crack-time">---</span></p> 
+              <fieldset class="radio-btns"> 
+                <label class="radio-btn-label"> 
+                  <input class="password-tester-radio-btn" type="radio" id="online-radio-btn" name="online-offline" checked>Online
+                </label>
+                <label class="radio-btn-label"> 
+                  <input class="password-tester-radio-btn" type="radio" id="offline-radio-btn" name="online-offline">Offline
+                </label>
+              </fieldset>
             </div>
           </div>
         </article>
