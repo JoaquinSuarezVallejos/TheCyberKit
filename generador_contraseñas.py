@@ -8,7 +8,8 @@ import random
 import string
 
 
-def generate_password(length, use_uppercase, use_lowercase, use_numbers, use_symbols, no_repeats):
+def generate_password(length, use_uppercase, use_lowercase, use_numbers,
+                      use_symbols, no_repeats):
     # Ensuring at least one character set is selected
     if not any([use_uppercase, use_lowercase, use_numbers, use_symbols]):
         return None  # Return None if no character set is selected
@@ -59,7 +60,7 @@ def main():
     # Selecting the length of the password
     while True:
         try:
-            length = int(input("Input the length of the password (between 5 and 64): "))
+            length = int(input("Input the password length (between 5 & 64): "))
             if 5 <= length <= 64:
                 break
             else:
@@ -69,16 +70,17 @@ def main():
 
     # Keep prompting until at least one character type is selected
     while True:
-        use_uppercase = get_yes_no_input("Do you want to include uppercase characters? (Y/N): ")
-        use_lowercase = get_yes_no_input("Do you want to include lowercase characters? (Y/N): ")
-        use_numbers = get_yes_no_input("Do you want to include numbers? (Y/N): ")
-        use_symbols = get_yes_no_input("Do you want to include symbols? (Y/N): ")
+        use_uppercase = get_yes_no_input("Include uppercase chars? (Y/N): ")
+        use_lowercase = get_yes_no_input("Include lowercase chars? (Y/N): ")
+        use_numbers = get_yes_no_input("Include numbers? (Y/N): ")
+        use_symbols = get_yes_no_input("Include symbols? (Y/N): ")
 
         # Ask if the password should have no repeating characters
-        no_repeats = get_yes_no_input("Do you want to enable no repeating characters? (Y/N): ")
+        no_repeats = get_yes_no_input("Enable no repeating chars? (Y/N): ")
 
         # Generate the password
-        password = generate_password(length, use_uppercase, use_lowercase, use_numbers, use_symbols, no_repeats)
+        password = generate_password(length, use_uppercase, use_lowercase,
+                                     use_numbers, use_symbols, no_repeats)
 
         if password:
             print(f"Generated password: {password}")
@@ -86,6 +88,6 @@ def main():
         elif not any([use_uppercase, use_lowercase, use_numbers, use_symbols]):
             print("You must select at least one option. Please try again.")
         else:
-            print("There are not enough unique characters to reach the desired character length. Please try again")
+            print("Not enough unique chars for the desired length. Try again.")
 
 main()
