@@ -1,32 +1,32 @@
 # TODO password generator
 # add passphrase
-# fix y/n answers so as to not skip to the next question if the input is not y/n
-# fix the pep8
+# fix with pep8
 # TODO whole program
-# make both the web pag and console run the program
+# make both the web page and console run the program
 # have all functionalities in the same file
 import random
 import string
+
 
 def generate_password(length, use_uppercase, use_lowercase, use_numbers, use_symbols, no_repeats):
     # Ensuring at least one character set is selected
     if not any([use_uppercase, use_lowercase, use_numbers, use_symbols]):
         return None  # Return None if no character set is selected
-    
+
     # Building the character pool
     char_pool = ''
     if use_uppercase:
-        char_pool += string.ascii_uppercase  
+        char_pool += string.ascii_uppercase
     if use_lowercase:
-        char_pool += string.ascii_lowercase  
+        char_pool += string.ascii_lowercase
     if use_numbers:
-        char_pool += string.digits           
+        char_pool += string.digits
     if use_symbols:
         char_pool += string.punctuation
 
-    # If no repeating characters are allowed and the length is greater than the unique characters available
+    # If no repeating characters == Y and length > unique characters available
     if no_repeats and length > len(char_pool):
-        print("Not enough unique characters available to generate a password of this length without repeats.")
+        print("Not enough unique characters available to generate a password.")
         return None
 
     # Password generation
@@ -35,9 +35,23 @@ def generate_password(length, use_uppercase, use_lowercase, use_numbers, use_sym
         password = ''.join(random.sample(char_pool, length))
     else:
         # Generate password allowing repeats
-        password = ''.join(random.choice(char_pool) for _ in range(length))
-    
+        password = ''.join(random.choice(char_pool) for i in range(length))
+
     return password
+
+
+# Helper function to ensure input is 'Y', 'y', 'N', or 'n'
+def get_yes_no_input(prompt):
+    while True:
+        try:
+            response = input(prompt).strip().lower()
+            if response in ['y', 'n']:
+                return response == 'y'
+            else:
+                print("Invalid input. Please enter 'Y' or 'N'.")
+        except Exception as e:
+            print(f"An error occurred: {e}. Please try again.")
+
 
 def main():
     print("Password generator")
@@ -55,21 +69,23 @@ def main():
 
     # Keep prompting until at least one character type is selected
     while True:
-        use_uppercase = input("Do you want to include uppercase characters? (y/n): ").lower() == 'y'
-        use_lowercase = input("Do you want to include lowercase characters? (y/n): ").lower() == 'y'
-        use_numbers = input("Do you want to include numbers? (y/n): ").lower() == 'y'
-        use_symbols = input("Do you want to include symbols? (y/n): ").lower() == 'y'
+        use_uppercase = get_yes_no_input("Do you want to include uppercase characters? (Y/N): ")
+        use_lowercase = get_yes_no_input("Do you want to include lowercase characters? (Y/N): ")
+        use_numbers = get_yes_no_input("Do you want to include numbers? (Y/N): ")
+        use_symbols = get_yes_no_input("Do you want to include symbols? (Y/N): ")
 
         # Ask if the password should have no repeating characters
-        no_repeats = input("Do you want to generate a password with no repeating characters? (y/n): ").lower() == 'y'
-        
+        no_repeats = get_yes_no_input("Do you want to enable no repeating characters? (Y/N): ")
+
         # Generate the password
         password = generate_password(length, use_uppercase, use_lowercase, use_numbers, use_symbols, no_repeats)
-        
+
         if password:
             print(f"Generated password: {password}")
             break
+        elif not any([use_uppercase, use_lowercase, use_numbers, use_symbols]):
+            print("You must select at least one option. Please try again.")
         else:
-            print("You must select at least one option to create a password and ensure there are enough unique characters if no repeats are selected. Please try again.")
+            print("There are not enough unique characters to reach the desired character length. Please try again")
 
 main()
