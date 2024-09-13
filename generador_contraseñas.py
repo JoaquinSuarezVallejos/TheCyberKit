@@ -19,7 +19,7 @@ def generate_passphrase(
     word_list = list(get_english_words_set(["web2"]))
 
     # Generating the list of words
-    words = [random.choice(word_list) for _ in range(num_words)]
+    words = [random.choice(word_list) for i in range(num_words)]
 
     # Apply capitalization options
     if capitalize_all:
@@ -75,7 +75,7 @@ def generate_password(
     else:
         # Generate password allowing repeats
         password = "".join(
-            random.choice(char_pool) for _ in range(length)
+            random.choice(char_pool) for i in range(length)
         )
 
     return password
@@ -135,8 +135,6 @@ def handle_password_generation():
             if password:
                 print(f"Generated password: {password}")
                 break
-            else:
-                print("Not enough unique chars. Try again.")
         else:
             print(
                 "You must select at least one option. Please try again."
@@ -209,7 +207,7 @@ def main():
                 "Thank you for using the Password/Passphrase Generator. "
                 "Goodbye!"
             )
-            break
+            exit()
 
 
 def get_valid_option():
