@@ -1,7 +1,9 @@
+# Case types used: snake_case (for functions and variables) and SCREAMING_SNAKE_CASE (for constants)
+
+# Importing the necessary libraries and modules
 import random
 import string
 from english_words import get_english_words_set
-
 
 def generate_passphrase(
     num_words,
