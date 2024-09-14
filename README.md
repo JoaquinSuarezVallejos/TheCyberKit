@@ -20,6 +20,7 @@
 + CSS
 + Pico CSS (microframework for CSS)
 + JavaScript
++ Font Awesome toolkit (for icons)
 
 **Subject topics included:**
 + Arrays / Lists

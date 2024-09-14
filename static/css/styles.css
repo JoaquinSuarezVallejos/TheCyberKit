@@ -115,7 +115,7 @@ li a:hover{
 }
 /* -------------------------------------------------------------------------- */
 
-/* MAIN */
+/* INTRODUCTION */
 /* -------------------------------------------------------------------------- */
 .main {
   padding: 20px 0;
@@ -152,6 +152,10 @@ li a:hover{
   display: block;
   border-radius: 16px;
 }
+/* -------------------------------------------------------------------------- */
+
+/* CARDS */
+/* -------------------------------------------------------------------------- */
 .cards{
   display: flex;
   flex-direction: column;
@@ -178,6 +182,10 @@ li a:hover{
   font-size: 20px; 
   color: #E2E2E2;
 }
+/* -------------------------------------------------------------------------- */
+
+/* PASSWORD GENERATOR */
+/* -------------------------------------------------------------------------- */
 .password-generator-readonly-box{
   background-color: #23262C;
   text-align: center;
@@ -202,14 +210,18 @@ li a:hover{
 .copy-to-clipboard-btn i{
   margin-right: 8px;
 }
+/* -------------------------------------------------------------------------- */
+
+/* PASSWORD TESTER */
+/* -------------------------------------------------------------------------- */
 .password-tester-input-box{
   border-radius: 8px;
   background-color: #23262C;
 }
-.card-label{
+.password-tester-label{
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 #password-score-result{
   font-size: 20px;
@@ -219,6 +231,33 @@ li a:hover{
   font-size: 20px;
   font-weight: 500;
 }
+.radio-btns{
+  display: flex;
+  gap: 20px;
+  margin-bottom: -7px;
+}
+.password-tester-radio-btn{
+  font-size: 15px;
+}
+.radio-btn-label{
+  font-size: 19px;
+}
+
+#password-score-result.score-1 { color: #F06048; } /* Very Unsafe - Color Red 400 */
+#password-score-result.score-2 { color: #FF9500; } /* Weak - Color Pumpkin 300 */
+#password-score-result.score-3 { color: #F2DF0D; } /* Okay - Color Yellow 100 */
+#password-score-result.score-4 { color: #82AB00; } /* Good - Lime 350 */
+#password-score-result.score-5 { color: #018CD4; } /* Strong - Azure 450 */
+
+#password-crack-time.score-1 { color: #F06048; } /* Very Unsafe - Color Red 400 */
+#password-crack-time.score-2 { color: #FF9500; } /* Weak - Color Pumpkin 300 */
+#password-crack-time.score-3 { color: #F2DF0D; } /* Okay - Color Yellow 100 */
+#password-crack-time.score-4 { color: #82AB00; } /* Good - Lime 350 */
+#password-crack-time.score-5 { color: #018CD4; } /* Strong - Azure 450 */
+/* -------------------------------------------------------------------------- */
+
+/* TEXT ENCRYPTOR/DECRYPTOR */
+/* -------------------------------------------------------------------------- */
 .encryption-title{
   font-family: 'Montserrat', sans-serif;
   color: #E2E2E2; 
