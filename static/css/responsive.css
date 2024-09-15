@@ -1,0 +1,20 @@
+/* Case types used: flatcase and kebab-case */
+
+/* MEDIA QUERIES FOR RESPONSIVE DESIGN */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 650px) {
+    .cyberkit-logo {
+      width: 40px;
+      height: auto; 
+    }
+    #cyberkit-title-text {
+      font-size: 54px;
+    }
+    .cyberkit-slogan {
+      font-size: 28px;
+    }
+  }
+  
+  /* TODO: Make the full website responsive */
+  
+/* -------------------------------------------------------------------------- */

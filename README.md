@@ -20,13 +20,13 @@
 + CSS
 + Pico CSS (microframework for CSS)
 + JavaScript
++ Font Awesome toolkit (for icons)
 
 **Subject topics included:**
-+ Arrays / Lists
++ Lists
 + Strings
-+ Files
++ Dictionaries
 + Regular expressions (regex)
++ Files
 + Exceptions
-+ Git / GitHub
-+ Unit tests?
-+ Dictionaries?
++ Git & GitHub
