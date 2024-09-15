@@ -88,65 +88,89 @@
           <p class="card-description">
             Create strong, unique passwords effortlessly.
           </p>
-          <input
-            class="password-generator-readonly-box"
-            type="text"
-            name="text"
-            value="vhGYvqo5KqAWDN"
-            aria-label="Read-only input"
-            readonly
-          />
-          <div class="grid password-generator-btns">
-            <button class="generate-password-btn">
-              <i class="fas fa-redo"></i>
-              Regenerate
-            </button>
-            <button class="copy-to-clipboard-btn contrast">
-              <i class="fas fa-clipboard"></i>
-              Copy to Clipboard
-            </button>
-          </div>
-
-          <div class="grid type-options">
-            <div class="type-radio-btns">
-              <p>Type:</p>
-              <label>
-                <input class="password-radio-btn" type="radio" name="type" value="password" checked />
-                Password
-              </label>
-              <label>
-                <input class="passphrase-radio-btn" type="radio" name="type" value="passphrase" />
-                Passphrase
-              </label>
+          <div class="password-generator-components">
+            <div class="password-generator-score-and-crack-time">
+              <p class="password-generator-subtitle">
+                Score: <span id="password-score-result">---</span>
+              </p>
+              <p class="password-generator-subtitle">
+                Estimated time to crack:
+                <span id="password-crack-time">---</span>
+              </p>
             </div>
-          </div>
-
-          <div class="grid characters-option">
-            <div>
-              <p>Characters: 14</p>
-              <input type="range" min="5" max="64" value="14" />
+            <input
+              class="password-generator-readonly-box"
+              type="text"
+              name="text"
+              value="vhGYvqo5KqAWDN"
+              aria-label="Read-only input"
+              readonly
+            />
+            <div class="grid password-generator-btns">
+              <button class="generate-password-btn">
+                <i class="fas fa-redo"></i>
+                Regenerate
+              </button>
+              <button class="copy-to-clipboard-btn contrast">
+                <i class="fas fa-clipboard"></i>
+                Copy to Clipboard
+              </button>
             </div>
-          </div>
 
-          <div class="grid include-options">
-            <div>
-              <p>Include:</p>
-              <label class="checkbox">
-                <input type="checkbox" checked />
-                Uppercase
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" checked />
-                Lowercase
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" checked />
-                Numbers
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" />
-                Symbols
-              </label>
+            <div class="grid type-options">
+              <div class="type-radio-btns">
+                <p class="password-generator-subtitle">Type:</p>
+                <label>
+                  <input
+                    class="password-radio-btn"
+                    type="radio"
+                    name="type"
+                    value="password"
+                    checked
+                  />
+                  Password
+                </label>
+                <label>
+                  <input
+                    class="passphrase-radio-btn"
+                    type="radio"
+                    name="type"
+                    value="passphrase"
+                  />
+                  Passphrase
+                </label>
+              </div>
+            </div>
+
+            <div class="grid characters-option">
+              <div>
+                <p class="password-generator-subtitle">
+                  Characters: <span>14</span>
+                </p>
+                <input type="range" min="5" max="64" value="14" />
+              </div>
+            </div>
+
+            <div class="grid include-options">
+              <div>
+                <p class="password-generator-subtitle">Include:</p>
+                <label class="checkbox">
+                  <input type="checkbox" checked />
+                  Uppercase
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" checked />
+                  Lowercase
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" checked />
+                  Numbers
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" />
+                  Symbols
+                </label>
+              </div>
             </div>
           </div>
         </article>

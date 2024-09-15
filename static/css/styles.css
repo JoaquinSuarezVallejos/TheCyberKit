@@ -185,17 +185,26 @@ li a:hover{
 
 /* PASSWORD GENERATOR */
 /* -------------------------------------------------------------------------- */
+.card .password-generator-components{
+  width: 95%;
+  margin: 0px auto;
+}
+.password-generator-score-and-crack-time{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 35px;
+  margin-bottom: -2px;
+}
+.password-generator-score-and-crack-time p{
+  font-size: 20px;
+  font-weight: 700;
+}
 .card .password-generator-readonly-box{
   background-color: #23262C;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  margin: 25px auto;
-  width: 90%;
+  margin-bottom: 22px;
 }
 .password-generator-btns{
-  width: 90%;
   display: flex;
   margin: 0px auto;
   margin-bottom: 40px;
@@ -205,7 +214,7 @@ li a:hover{
   align-items: center;
   justify-content: center;
   height: 50px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .generate-password-btn i{
   margin-right: 8px;
@@ -215,18 +224,18 @@ li a:hover{
   align-items: center;
   justify-content: center;
   height: 50px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .copy-to-clipboard-btn i{
   margin-right: 8px;
 }
+.password-generator-subtitle{
+  font-size: 20px;
+  font-weight: 700;
+}
 .type-radio-btns{
   display: flex;
   gap: 20px;
-}
-.type-radio-btns p{
-  font-size: 20px;
-  font-weight: 700;
 }
 .type-radio-btns input{
   font-size: 16px;
@@ -238,11 +247,9 @@ li a:hover{
   margin-bottom: 0px;
   margin-top: 2.75px;
 }
-.characters-option{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+.characters-option span{
+  font-size: 20px;
+  font-weight: 500;
 }
 
 /* -------------------------------------------------------------------------- */
