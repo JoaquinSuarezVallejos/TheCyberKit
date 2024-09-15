@@ -203,6 +203,8 @@ li a:hover{
   background-color: #23262C;
   text-align: center;
   margin-bottom: 22px;
+  height: 100px;
+  font-size: 34px;
 }
 .password-generator-btns{
   display: flex;
@@ -229,29 +231,50 @@ li a:hover{
 .copy-to-clipboard-btn i{
   margin-right: 8px;
 }
-.password-generator-subtitle{
-  font-size: 20px;
+.password-generator-components .password-generator-subtitle1{
+  font-size: 22px;
+  font-weight: 700;
+}
+.password-generator-components .password-generator-subtitle2{
+  font-size: 24px;
   font-weight: 700;
 }
 .type-radio-btns{
   display: flex;
-  gap: 20px;
+  gap: 24px;
 }
 .type-radio-btns input{
-  font-size: 16px;
+  font-size: 18px;
   margin-right: 2px;
 }
 .type-radio-btns label{
-  font-size: 18px;
+  font-size: 20px;
   height: 25px;
   margin-bottom: 0px;
-  margin-top: 2.75px;
+  margin-top: 4.5px;
 }
 .characters-option span{
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
 }
-
+.include-checkboxes{
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+}
+.include-checkboxes input{
+  margin-right: 3px;
+  font-size: 18px;
+}
+.include-checkboxes input{
+  margin-right: 3px;
+  font-size: 18px;
+}
+.include-checkboxes label{
+  font-size: 20px;
+  margin-bottom: 0px;
+  margin-top: 4.75px;
+}
 /* -------------------------------------------------------------------------- */
 
 /* PASSWORD TESTER */

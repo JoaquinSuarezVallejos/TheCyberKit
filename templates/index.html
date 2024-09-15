@@ -90,12 +90,12 @@
           </p>
           <div class="password-generator-components">
             <div class="password-generator-score-and-crack-time">
-              <p class="password-generator-subtitle">
-                Score: <span id="password-score-result">---</span>
+              <p class="password-generator-subtitle1">
+                Score: <span id="password-generator-score-result">---</span>
               </p>
-              <p class="password-generator-subtitle">
+              <p class="password-generator-subtitle1">
                 Estimated time to crack:
-                <span id="password-crack-time">---</span>
+                <span id="password-generator-crack-time">---</span>
               </p>
             </div>
             <input
@@ -119,7 +119,7 @@
 
             <div class="grid type-options">
               <div class="type-radio-btns">
-                <p class="password-generator-subtitle">Type:</p>
+                <p class="password-generator-subtitle2">Type:</p>
                 <label>
                   <input
                     class="password-radio-btn"
@@ -144,7 +144,7 @@
 
             <div class="grid characters-option">
               <div>
-                <p class="password-generator-subtitle">
+                <p class="password-generator-subtitle2">
                   Characters: <span>14</span>
                 </p>
                 <input type="range" min="5" max="64" value="14" />
@@ -152,21 +152,21 @@
             </div>
 
             <div class="grid include-options">
-              <div>
-                <p class="password-generator-subtitle">Include:</p>
-                <label class="checkbox">
+              <div class="include-checkboxes">
+                <p class="password-generator-subtitle2">Include:</p>
+                <label class="password-generator-checkbox">
                   <input type="checkbox" checked />
                   Uppercase
                 </label>
-                <label class="checkbox">
+                <label class="password-generator-checkbox">
                   <input type="checkbox" checked />
                   Lowercase
                 </label>
-                <label class="checkbox">
+                <label class="password-generator-checkbox">
                   <input type="checkbox" checked />
                   Numbers
                 </label>
-                <label class="checkbox">
+                <label class="password-generator-checkbox">
                   <input type="checkbox" />
                   Symbols
                 </label>
