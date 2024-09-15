@@ -185,9 +185,20 @@ li a:hover{
 
 /* PASSWORD GENERATOR */
 /* -------------------------------------------------------------------------- */
-.password-generator-readonly-box{
+.card .password-generator-readonly-box{
   background-color: #23262C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  margin: 25px auto;
+  width: 90%;
+}
+.password-generator-btns{
+  width: 90%;
+  display: flex;
+  margin: 0px auto;
+  margin-bottom: 40px;
 }
 .generate-password-btn{
   display: flex;
@@ -209,6 +220,31 @@ li a:hover{
 .copy-to-clipboard-btn i{
   margin-right: 8px;
 }
+.type-radio-btns{
+  display: flex;
+  gap: 20px;
+}
+.type-radio-btns p{
+  font-size: 20px;
+  font-weight: 700;
+}
+.type-radio-btns input{
+  font-size: 16px;
+  margin-right: 2px;
+}
+.type-radio-btns label{
+  font-size: 18px;
+  height: 25px;
+  margin-bottom: 0px;
+  margin-top: 2.75px;
+}
+.characters-option{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 /* -------------------------------------------------------------------------- */
 
 /* PASSWORD TESTER */
@@ -230,7 +266,7 @@ li a:hover{
   font-size: 20px;
   font-weight: 500;
 }
-.radio-btns{
+.online-offline-radio-btns{
   display: flex;
   gap: 20px;
   margin-bottom: -7px;
@@ -318,23 +354,4 @@ li a:hover{
   font-weight: 500;
   margin-bottom: 0px;
 }
-/* -------------------------------------------------------------------------- */
-
-/* MEDIA QUERIES FOR RESPONSIVE DESIGN */
-/* -------------------------------------------------------------------------- */
-@media (max-width: 650px) {
-  .cyberkit-logo {
-    width: 40px;
-    height: auto; 
-  }
-  #cyberkit-title-text {
-    font-size: 54px;
-  }
-  .cyberkit-slogan {
-    font-size: 28px;
-  }
-}
-
-/* TODO: Make the full website responsive */
-
 /* -------------------------------------------------------------------------- */

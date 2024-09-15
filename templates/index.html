@@ -3,19 +3,40 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/pico-main/css/pico.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/Font_Awesome/css/all.min.css') }}">
-    
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png" sizes="512x512">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/responsive.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/pico-main/css/pico.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/Font_Awesome/css/all.min.css') }}"
+    />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/favicon.png') }}"
+      type="image/png"
+      sizes="512x512"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
     <title>TheCyberKit</title>
   </head>
 
@@ -23,15 +44,23 @@
     <header class="header">
       <nav>
         <ul>
-            <li><a href="#password-generator">Password Generator</a></li>
-            <li><a href="#password-tester">Password Tester</a></li>
-            <li><a href="#encryptor-decryptor">Encryptor/Decryptor</a></li>
+          <li><a href="#password-generator">Password Generator</a></li>
+          <li><a href="#password-tester">Password Tester</a></li>
+          <li><a href="#encryptor-decryptor">Encryptor/Decryptor</a></li>
         </ul>
       </nav>
 
       <div class="cyberkit-title">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TheCyberKit Logo" class="cyberkit-logo">
-        <h1><span id="cyberkit-title-text" data-text="TheCyberKit">TheCyberKit</span></h1>
+        <img
+          src="{{ url_for('static', filename='images/logo.png') }}"
+          alt="TheCyberKit Logo"
+          class="cyberkit-logo"
+        />
+        <h1>
+          <span id="cyberkit-title-text" data-text="TheCyberKit"
+            >TheCyberKit</span
+          >
+        </h1>
       </div>
       <h2 class="cyberkit-slogan">Cybersecurity Made <span>Simple</span></h2>
     </header>
@@ -41,54 +70,128 @@
         <div class="text-divider"></div>
         <h3 class="introductory-title">Empower Your Online Safety</h3>
         <p class="introductory-description">
-          TheCyberKit provides you with the essential tools to protect your digital life. 
-          Generate secure passwords, check their strength, 
-          and encrypt your sensitive information — all in one place, for free.
+          TheCyberKit provides you with the essential tools to protect your
+          digital life. Generate secure passwords, check their strength, and
+          encrypt your sensitive information — all in one place, for free.
         </p>
-        <img src="{{ url_for('static', filename='images/banner.jpg') }}" alt="Cybersecurity Illustration" class="cybersecurity-banner">
+        <img
+          src="{{ url_for('static', filename='images/banner.jpg') }}"
+          alt="Cybersecurity Illustration"
+          class="cybersecurity-banner"
+        />
       </section>
 
       <section class="cards">
         <!-- Password Generator Section -->
         <article class="card" id="password-generator">
           <h3 class="card-title">Password Generator</h3>
-          <p class="card-description">Create strong, unique passwords effortlessly.</p>
-          <input class="password-generator-readonly-box"
+          <p class="card-description">
+            Create strong, unique passwords effortlessly.
+          </p>
+          <input
+            class="password-generator-readonly-box"
             type="text"
             name="text"
-            value="JmifSxMZT5kDoV"
+            value="vhGYvqo5KqAWDN"
             aria-label="Read-only input"
             readonly
-          >
+          />
           <div class="grid password-generator-btns">
             <button class="generate-password-btn">
-              <i class="fas fa-redo"></i> 
+              <i class="fas fa-redo"></i>
               Regenerate
             </button>
             <button class="copy-to-clipboard-btn contrast">
-              <i class="fas fa-clipboard"></i> 
+              <i class="fas fa-clipboard"></i>
               Copy to Clipboard
             </button>
+          </div>
+
+          <div class="grid type-options">
+            <div class="type-radio-btns">
+              <p>Type:</p>
+              <label>
+                <input class="password-radio-btn" type="radio" name="type" value="password" checked />
+                Password
+              </label>
+              <label>
+                <input class="passphrase-radio-btn" type="radio" name="type" value="passphrase" />
+                Passphrase
+              </label>
+            </div>
+          </div>
+
+          <div class="grid characters-option">
+            <div>
+              <p>Characters: 14</p>
+              <input type="range" min="5" max="64" value="14" />
+            </div>
+          </div>
+
+          <div class="grid include-options">
+            <div>
+              <p>Include:</p>
+              <label class="checkbox">
+                <input type="checkbox" checked />
+                Uppercase
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" checked />
+                Lowercase
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" checked />
+                Numbers
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" />
+                Symbols
+              </label>
+            </div>
           </div>
         </article>
 
         <!-- Password Tester Section -->
         <article class="card" id="password-tester">
           <h3 class="card-title">Password Tester</h3>
-          <p class="card-description">Think you have a strong password? Find out below.</p>
-          <input class="password-tester-input-box" type="text" name="text" placeholder="Evaluate any password..." aria-label="Evaluate any password...">
-          <div class="grid">  
-            <div class="flex"> 
-              <p class="password-tester-label">Score: <span id="password-score-result">---</span></p> 
+          <p class="card-description">
+            Think you have a strong password? Find out below.
+          </p>
+          <input
+            class="password-tester-input-box"
+            type="text"
+            name="text"
+            placeholder="Evaluate any password..."
+            aria-label="Evaluate any password..."
+          />
+          <div class="grid">
+            <div class="flex">
+              <p class="password-tester-label">
+                Score: <span id="password-score-result">---</span>
+              </p>
             </div>
             <div class="flex">
-              <p class="password-tester-label">Estimated time to crack: <span id="password-crack-time">---</span></p> 
-              <fieldset class="radio-btns"> 
-                <label class="radio-btn-label"> 
-                  <input class="password-tester-radio-btn" type="radio" id="online-radio-btn" name="online-offline" checked>Online
+              <p class="password-tester-label">
+                Estimated time to crack:
+                <span id="password-crack-time">---</span>
+              </p>
+              <fieldset class="online-offline-radio-btns">
+                <label class="radio-btn-label">
+                  <input
+                    class="password-tester-radio-btn"
+                    type="radio"
+                    id="online-radio-btn"
+                    name="online-offline"
+                    checked
+                  />Online
                 </label>
-                <label class="radio-btn-label"> 
-                  <input class="password-tester-radio-btn" type="radio" id="offline-radio-btn" name="online-offline">Offline
+                <label class="radio-btn-label">
+                  <input
+                    class="password-tester-radio-btn"
+                    type="radio"
+                    id="offline-radio-btn"
+                    name="online-offline"
+                  />Offline
                 </label>
               </fieldset>
             </div>
@@ -100,17 +203,21 @@
           <h3 class="card-title">Text Encryptor/Decryptor</h3>
           <p class="card-description">Securely encrypt and decrypt any text.</p>
           <h4 class="encryption-title">Encryption</h4>
-          <textarea class="encryption-textarea"
+          <textarea
+            class="encryption-textarea"
             name="textarea-encryption"
             placeholder="Enter your text..."
-            aria-label="Enter your text..."></textarea>
+            aria-label="Enter your text..."
+          ></textarea>
           <button class="encryption-submit-btn">Encrypt</button>
 
           <h4 class="decryption-title">Decryption</h4>
-          <textarea class="decryption-textarea"
-          name="textarea-decryption"
-          placeholder="Enter your text..."
-          aria-label="Enter your text..."></textarea>
+          <textarea
+            class="decryption-textarea"
+            name="textarea-decryption"
+            placeholder="Enter your text..."
+            aria-label="Enter your text..."
+          ></textarea>
           <button class="decryption-submit-btn">Decrypt</button>
         </article>
       </section>
@@ -119,11 +226,10 @@
     <footer class="footer">
       <p>&copy; 2024 TheCyberKit. All rights reserved.</p>
     </footer>
-  
+
     <script src="{{ url_for('static', filename='js/cyberkitTitle.js') }}"></script>
     <script src="{{ url_for('static', filename='js/passwordGenerator.js') }}"></script>
     <script src="{{ url_for('static', filename='js/passwordTester.js') }}"></script>
     <script src="{{ url_for('static', filename='js/textEncryptorDecryptor.js') }}"></script>
-
   </body>
 </html>
