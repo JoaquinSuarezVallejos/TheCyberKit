@@ -6,6 +6,7 @@ import random
 import string
 from english_words import get_english_words_set
 
+
 def generate_passphrase(
     num_words,
     capitalize_first,
@@ -53,11 +54,10 @@ def generate_password(
         char_pool += string.punctuation
 
     # Password generation
-    password = "".join(
-        random.choice(char_pool) for i in range(length)
-    )
+    password = "".join(random.choice(char_pool) for i in range(length))
 
     return password
+
 
 def handle_password_generation_request(request_data):
     """
@@ -76,19 +76,19 @@ def handle_password_generation_request(request_data):
     """
 
     try:
-        length = int(request_data['length'])
-        use_uppercase = request_data['use_uppercase']
-        use_lowercase = request_data['use_lowercase']
-        use_numbers = request_data['use_numbers']
-        use_symbols = request_data['use_symbols']
+        length = int(request_data["length"])
+        use_uppercase = request_data["use_uppercase"]
+        use_lowercase = request_data["use_lowercase"]
+        use_numbers = request_data["use_numbers"]
+        use_symbols = request_data["use_symbols"]
 
         if not any([use_uppercase, use_lowercase, use_numbers, use_symbols]):
-            return None 
+            return None
 
         password = generate_password(
             length, use_uppercase, use_lowercase, use_numbers, use_symbols
         )
-        
+
         return password
 
     except (ValueError, KeyError) as e:
@@ -113,20 +113,36 @@ def handle_passphrase_generation_request(request_data):
     """
 
     try:
-        num_words = int(request_data['num_words'])
-        capitalize_first = request_data['capitalize_first']
-        capitalize_all = request_data['capitalize_all']
-        add_numbers = request_data['add_numbers']
-        word_separator = request_data['word_separator'] or " " # Default to space if not provided
+        # Extract parameters, ensuring 'word_separator' is a string
+        num_words = int(request_data["num_words"])
+        capitalize_first = request_data["capitalize_first"]
+        capitalize_all = request_data["capitalize_all"]
+        add_numbers = request_data["add_numbers"]
+        word_separator = request_data.get("word_separator", " ")
+
+        print(f"num_words type: {type(num_words)}")
+        print(f"capitalize_first type: {type(capitalize_first)}")
+        print(f"capitalize_all type: {type(capitalize_all)}")
+        print(f"add_numbers type: {type(add_numbers)}")
+        print(f"word_separator type: {type(word_separator)}") 
+
+        # Explicitly convert to string, default to space
+        word_separator = str(word_separator)
+        
+        # Validate num_words
+        if not (3 <= num_words <= 15):
+            return None
 
         passphrase = generate_passphrase(
-            num_words, capitalize_first, capitalize_all, word_separator, add_numbers
+            num_words,
+            capitalize_first,
+            capitalize_all,
+            word_separator,
+            add_numbers,
         )
 
-        return passphrase 
+        return passphrase
 
     except (ValueError, KeyError) as e:
         print(f"Error handling passphrase generation request: {e}")
         return None
-    
-# TODO: format the code with black

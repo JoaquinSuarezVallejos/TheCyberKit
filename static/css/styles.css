@@ -278,14 +278,10 @@ li a:hover{
   margin-right: 3px;
   font-size: 18px;
 }
-.include-checkboxes input{
-  margin-right: 3px;
-  font-size: 18px;
-}
 .include-checkboxes label{
   font-size: 20px;
   margin-bottom: 0px;
-  margin-top: 4.75px;
+  margin-top: 4px;
 }
 .scenario-checkboxes{
   display: flex;
@@ -312,6 +308,36 @@ li a:hover{
 .passphrase-word-length{
   font-size: 24px;
   font-weight: 500;
+}
+.passphrase-include-checkboxes{
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+}
+.passphrase-include-checkboxes input{
+  margin-right: 3px;
+  font-size: 18px;
+}
+.passphrase-include-checkboxes label{
+  font-size: 20px;
+  margin-bottom: 0px;
+  margin-top: 4px;
+}
+.word-separator-label{
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+#word-separator-input-box{
+  width: 55px;
+  height: 50px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 12px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 /* -------------------------------------------------------------------------- */
 

@@ -195,26 +195,35 @@
               </div>
             </div>
 
-            <div class="grid passphrase-options hidden">
-              <div class="passphrase-include-options">
+            <div class="grid passphrase-include-options hidden">
+              <div class="passphrase-include-checkboxes">
                 <p class="password-generator-subtitle2">Include:</p>
                 <label class="passphrase-generator-checkbox">
-                  <input type="checkbox" id="capitalize-checkbox">
+                  <input type="checkbox" id="capitalize-checkbox" />
                   Capitalize
                 </label>
                 <label class="passphrase-generator-checkbox">
-                  <input type="checkbox" id="all-caps-checkbox">
+                  <input type="checkbox" id="all-caps-checkbox" />
                   All caps
                 </label>
                 <label class="passphrase-generator-checkbox">
-                  <input type="checkbox" id="add-numbers-checkbox">
+                  <input type="checkbox" id="add-numbers-checkbox" />
                   Numbers
                 </label>
-                <div>
-                  <label class="password-generator-subtitle2" for="word-separator">Word separator:</label>
-                  <input type="text" id="word-separator" maxlength="1" value="-" placeholder="-" >
-                </div>
               </div>
+            </div>
+
+            <div class="grid passphrase-word-separator hidden">
+              <label class="word-separator-label"
+                >Word separator:
+                <input
+                  type="text"
+                  id="word-separator-input-box"
+                  maxlength="1"
+                  value="-"
+                  placeholder="-"
+                />
+              </label>
             </div>
 
             <div class="grid scenario-options">

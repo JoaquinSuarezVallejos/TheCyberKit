@@ -1,6 +1,5 @@
 // THECYBERKIT TITLE (JavaScript file)
-/* Case types used: camelCase (for functions and variables), 
-SCREAMING_SNAKE_CASE (for constants) and kebab-case (for CSS classes) */
+/* Case types used: camelCase (for functions and variables), and kebab-case (for CSS classes) */
 
 const CYBERKIT_TITLE_TEXT = document.getElementById('cyberkit-title-text');
 const ORIGINAL_TEXT = CYBERKIT_TITLE_TEXT.textContent;

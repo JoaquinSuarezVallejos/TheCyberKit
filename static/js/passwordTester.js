@@ -1,6 +1,5 @@
 // PASSWORD TESTER (JavaScript file)
-/* Case types used: camelCase (for functions and variables), 
-SCREAMING_SNAKE_CASE (for constants) and kebab-case (for CSS classes) */
+/* Case types used: camelCase (for functions and variables) and kebab-case (for CSS classes) */
 
 const passwordTesterInput = document.querySelector('.password-tester-input-box');
 const scoreResult = document.getElementById('password-score-result');
