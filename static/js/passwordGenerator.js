@@ -22,6 +22,36 @@ const importantCheckboxes = document.querySelectorAll(
   "#uppercase-checkbox, #lowercase-checkbox, #numbers-checkbox, #symbols-checkbox"
 );
 
+// Get references to the elements that need to be toggled (Password/Passphrase)
+const charactersOptions = document.querySelector('.characters-option');
+const wordsOptions = document.querySelector('.words-option');
+const includeOptions = document.querySelector('.include-options');
+const passphraseOptions = document.querySelector('.passphrase-options');
+
+/* UPDATE THE UI BASED ON THE SELECTED TYPE (PASSWORD/PASSPHRASE) */
+/* -------------------------------------------------------------------------- */
+function updateUIBasedOnType() {
+  if (document.querySelector('input[name="password-passphrase"][value="password"]').checked) {
+    charactersOptions.classList.remove('hidden');
+    wordsOptions.classList.add('hidden');
+    includeOptions.classList.remove('hidden');
+    passphraseOptions.classList.add('hidden');
+  } else {
+    charactersOptions.classList.add('hidden');
+    wordsOptions.classList.remove('hidden');
+    includeOptions.classList.add('hidden');
+    passphraseOptions.classList.remove('hidden');
+  }
+}
+
+// Add event listeners to the type radio buttons
+typeRadios.forEach(radio => {
+  radio.addEventListener('change', () => {
+    updateUIBasedOnType();
+  });
+});
+/* -------------------------------------------------------------------------- */
+
 /* ENABLE AND DISABLE "REGENERATE PASSWORD" BUTTON */
 /* -------------------------------------------------------------------------- */
 // Add a click event listener to each checkbox
@@ -45,9 +75,10 @@ importantCheckboxes.forEach((checkbox) => {
 
 /* PASSWORD GENERATOR FUNCTIONALITY */
 /* -------------------------------------------------------------------------- */
-// Event listener to generate a password on page load
+// Event listener to generate a password on page load and update the UI based on the type (password/passphrase)
 document.addEventListener("DOMContentLoaded", () => {
   generatePasswordOrPassphrase();
+  updateUIBasedOnType();
 });
 // Function to fetch a new password/passphrase from the backend
 function generatePasswordOrPassphrase() {

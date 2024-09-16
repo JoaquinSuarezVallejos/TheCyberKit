@@ -265,7 +265,7 @@ li a:hover{
   margin-bottom: 0px;
   margin-top: 4.5px;
 }
-.characters-option span{
+.characters-option .password-char-length{
   font-size: 24px;
   font-weight: 500;
 }
@@ -301,6 +301,17 @@ li a:hover{
   height: 25px;
   margin-bottom: 0px;
   margin-top: 4.5px;
+}
+/* -------------------------------------------------------------------------- */
+
+/* PASSPHRASE GENERATOR */
+/* -------------------------------------------------------------------------- */
+.password-generator-components .hidden {
+  display: none;
+}
+.passphrase-word-length{
+  font-size: 24px;
+  font-weight: 500;
 }
 /* -------------------------------------------------------------------------- */
 

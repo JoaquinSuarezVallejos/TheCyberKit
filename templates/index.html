@@ -148,14 +148,35 @@
                 <p class="password-generator-subtitle2">
                   Characters: <span class="password-char-length">14</span>
                 </p>
-                <input class="characters-slider" type="range" min="5" max="64" value="14" />
+                <input
+                  class="characters-slider"
+                  type="range"
+                  min="5"
+                  max="64"
+                  value="14"
+                />
+              </div>
+            </div>
+
+            <div class="grid words-option hidden">
+              <div>
+                <p class="password-generator-subtitle2">
+                  Words: <span class="passphrase-word-length">5</span>
+                </p>
+                <input
+                  type="range"
+                  min="3"
+                  max="15"
+                  value="5"
+                  class="words-slider"
+                />
               </div>
             </div>
 
             <div class="grid include-options">
               <div class="include-checkboxes">
                 <p class="password-generator-subtitle2">Include:</p>
-                <label class="password-generator-">
+                <label class="password-generator-checkbox">
                   <input type="checkbox" id="uppercase-checkbox" checked />
                   A - Z
                 </label>
@@ -171,6 +192,28 @@
                   <input type="checkbox" id="symbols-checkbox" />
                   Symbols
                 </label>
+              </div>
+            </div>
+
+            <div class="grid passphrase-options hidden">
+              <div class="passphrase-include-options">
+                <p class="password-generator-subtitle2">Include:</p>
+                <label class="passphrase-generator-checkbox">
+                  <input type="checkbox" id="capitalize-checkbox">
+                  Capitalize
+                </label>
+                <label class="passphrase-generator-checkbox">
+                  <input type="checkbox" id="all-caps-checkbox">
+                  All caps
+                </label>
+                <label class="passphrase-generator-checkbox">
+                  <input type="checkbox" id="add-numbers-checkbox">
+                  Numbers
+                </label>
+                <div>
+                  <label class="password-generator-subtitle2" for="word-separator">Word separator:</label>
+                  <input type="text" id="word-separator" maxlength="1" value="-" placeholder="-" >
+                </div>
               </div>
             </div>
 
