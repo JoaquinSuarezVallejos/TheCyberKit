@@ -17,24 +17,13 @@ const includeCheckboxes = document.querySelectorAll(
   '.password-generator-checkbox input[type="checkbox"]'
 );
 
-// Gather parameters from the UI
-const type = document.querySelector(
-  'input[name="password-passphrase"]:checked'
-).value;
-const length = charSlider.value;
-const includeUppercase = document.getElementById("uppercase-checkbox").checked;
-const includeLowercase = document.getElementById("lowercase-checkbox").checked;
-const includeNumbers = document.getElementById("numbers-checkbox").checked;
-const includeSymbols = document.getElementById("symbols-checkbox").checked;
-const noRepeats = document.getElementById("no-repeats-checkbox").checked;
-
-/* ENABLE AND DISABLE "REGENERATE PASSWORD" BUTTON */
-/* -------------------------------------------------------------------------- */
-// Get all the desired checkboxes by their IDs
+// Get all the important checkboxes by their IDs
 const importantCheckboxes = document.querySelectorAll(
   "#uppercase-checkbox, #lowercase-checkbox, #numbers-checkbox, #symbols-checkbox"
 );
 
+/* ENABLE AND DISABLE "REGENERATE PASSWORD" BUTTON */
+/* -------------------------------------------------------------------------- */
 // Add a click event listener to each checkbox
 importantCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("click", (event) => {
@@ -58,6 +47,19 @@ importantCheckboxes.forEach((checkbox) => {
 /* -------------------------------------------------------------------------- */
 // Function to fetch a new password/passphrase from the backend
 function generatePasswordOrPassphrase() {
+  // Gather parameters from the UI
+  const type = document.querySelector(
+    'input[name="password-passphrase"]:checked'
+  ).value;
+  const length = charSlider.value;
+  const includeUppercase =
+    document.getElementById("uppercase-checkbox").checked;
+  const includeLowercase =
+    document.getElementById("lowercase-checkbox").checked;
+  const includeNumbers = document.getElementById("numbers-checkbox").checked;
+  const includeSymbols = document.getElementById("symbols-checkbox").checked;
+  const noRepeats = document.getElementById("no-repeats-checkbox").checked;
+
   // Send a POST request to the Flask backend
   fetch("/generate_password_or_passphrase", {
     method: "POST",
@@ -113,17 +115,29 @@ copyToClipboardBtn.addEventListener("click", () => {
       const originalColor = copyToClipboardBtn.style.backgroundColor;
 
       // Change the button text and color
-      copyToClipboardBtn.childNodes[2].nodeValue = " Copied!"; 
-      copyToClipboardBtn.style.backgroundColor = "#DAD4C2"; // Pico CSS color used: 
+      copyToClipboardBtn.childNodes[2].nodeValue = " Copied!";
+      copyToClipboardBtn.style.backgroundColor = "#DAD4C2"; // Pico CSS color used: Sand 150 (Stonewashed)
+
+      // Prevent further clicks for 1 second
+      copyToClipboardBtn.addEventListener(
+        "click",
+        preventDefaultForOneSecond,
+        true
+      );
 
       // Change the text and color back after 1 second
       setTimeout(() => {
-        copyToClipboardBtn.childNodes[2].nodeValue = " " + originalText; 
-        copyToClipboardBtn.style.backgroundColor = originalColor; 
+        copyToClipboardBtn.childNodes[2].nodeValue = " " + originalText;
+        copyToClipboardBtn.style.backgroundColor = originalColor;
+        copyToClipboardBtn.removeEventListener('click', preventDefaultForOneSecond, true);
       }, 1000);
     })
     .catch((err) => {
       console.error("Could not copy text: ", err);
     });
 });
+function preventDefaultForOneSecond(event) {
+    event.preventDefault(); // Prevent the default click behavior
+    event.stopImmediatePropagation(); // Stop the event from bubbling up
+}
 /* -------------------------------------------------------------------------- */
