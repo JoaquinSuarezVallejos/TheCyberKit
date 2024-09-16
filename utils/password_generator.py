@@ -83,8 +83,6 @@ def generate_password(
 
     return password
 
-# ... (your existing `generate_passphrase` and `generate_password` functions remain the same) ...
-
 def handle_password_generation_request(request_data):
     """
     Handles password generation based on request data from the frontend.

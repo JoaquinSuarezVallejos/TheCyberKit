@@ -8,7 +8,7 @@
 # 4. Activate the virtual environment: flask_env\Scripts\activate
 # 5. Install dependencies from the requirements.txt file: pip install -r requirements.txt
 
-# Commands to serve Flask project: 1. flask_env\Scripts\activate | 2. python app.py (or python3 app.py)
+# Commands to serve Flask project: 1. flask_env\Scripts\activate | 2. python main_app.py (or python3 main_app.py)
 # Command to regenerate the requirements.txt file: pip freeze > requirements.txt
 
 # Importing the necessary libraries and modules

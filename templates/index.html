@@ -125,7 +125,7 @@
                   <input
                     class="password-radio-btn"
                     type="radio"
-                    name="type"
+                    name="password-passphrase"
                     value="password"
                     checked
                   />
@@ -135,7 +135,7 @@
                   <input
                     class="passphrase-radio-btn"
                     type="radio"
-                    name="type"
+                    name="password-passphrase"
                     value="passphrase"
                   />
                   Passphrase
@@ -146,9 +146,9 @@
             <div class="grid characters-option">
               <div>
                 <p class="password-generator-subtitle2">
-                  Characters: <span>14</span>
+                  Characters: <span class="password-char-length">14</span>
                 </p>
-                <input type="range" min="5" max="64" value="14" />
+                <input class="characters-slider" type="range" min="5" max="64" value="14" />
               </div>
             </div>
 
