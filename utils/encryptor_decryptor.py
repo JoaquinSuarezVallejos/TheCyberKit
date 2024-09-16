@@ -1,3 +1,6 @@
+# ENCRYPTOR / DECRYPTOR (Python file)
+# Case types used: snake_case (for functions and variables) and SCREAMING_SNAKE_CASE (for constants)
+
 from cryptography.fernet import Fernet
 from Crypto.Cipher import Blowfish
 from Crypto.Util.Padding import pad, unpad

@@ -1,3 +1,4 @@
+# PASSWORD TESTER (Python file)
 # Case types used: snake_case (for functions and variables) and SCREAMING_SNAKE_CASE (for constants)
 
 # Importing the necessary libraries and modules
@@ -35,3 +36,5 @@ def evaluate_password():
 
     except IndexError:  # Still handle potential IndexErrors for other cases
         return jsonify({'score': 'Error', 'crack_time_offline': 'N/A', 'crack_time_online_throttled': 'N/A'})
+
+# TODO: format the code with black

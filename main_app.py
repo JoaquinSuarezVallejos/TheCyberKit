@@ -1,3 +1,4 @@
+# MAIN APP (Python file)
 # Case types used: snake_case (for functions and variables) and SCREAMING_SNAKE_CASE (for constants)
 
 # Setup for Windows (use PowerShell or the VS Code terminal):
@@ -13,6 +14,7 @@
 # Importing the necessary libraries and modules
 from flask import Flask, render_template, jsonify, request
 from utils.password_tester import evaluate_password
+from utils.password_generator import handle_password_generation_request, handle_passphrase_generation_request
 
 app = Flask(__name__, static_folder='static', static_url_path='/static') # Creating the Flask app
 
@@ -28,7 +30,25 @@ def password_tester():
  
     except KeyError: 
         return jsonify({'error': 'Missing password data'}), 400 
+    
+@app.route('/generate_password_or_passphrase', methods=['POST'])
+def generate_password_or_passphrase():
+    request_data = request.get_json()
+    generation_type = request_data.get('type')
+
+    if generation_type == 'password':
+        generated_string = handle_password_generation_request(request_data)
+    elif generation_type == 'passphrase':
+        generated_string = handle_passphrase_generation_request(request_data)
+    else:
+        return jsonify({'error': 'Invalid generation type'}), 400
+
+    if generated_string:
+        return jsonify({'generated_string': generated_string})
+    else:
+        return jsonify({'error': 'Failed to generate password/passphrase'}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
+
+# TODO: format the code with black

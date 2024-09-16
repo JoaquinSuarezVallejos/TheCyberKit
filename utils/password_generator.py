@@ -1,3 +1,4 @@
+# PASSWORD GENERATOR (Python file)
 # Case types used: snake_case (for functions and variables) and SCREAMING_SNAKE_CASE (for constants)
 
 # Importing the necessary libraries and modules
@@ -82,150 +83,81 @@ def generate_password(
 
     return password
 
+# ... (your existing `generate_passphrase` and `generate_password` functions remain the same) ...
 
-# Helper function to ensure input is 'Y', 'y', 'N', or 'n'
-def get_yes_no_input(prompt):
-    while True:
-        try:
-            response = input(prompt).strip().lower()
-            if response in ["y", "n"]:
-                return response == "y"
-            else:
-                print("Invalid input. Please enter 'Y' or 'N'.")
-        except Exception as e:
-            print(f"An error occurred: {e}. Please try again.")
+def handle_password_generation_request(request_data):
+    """
+    Handles password generation based on request data from the frontend.
 
+    Args:
+        request_data (dict): A dictionary containing the following keys:
+            - 'length': The desired password length (int).
+            - 'use_uppercase': Whether to include uppercase letters (bool).
+            - 'use_lowercase': Whether to include lowercase letters (bool).
+            - 'use_numbers': Whether to include numbers (bool).
+            - 'use_symbols': Whether to include symbols (bool).
+            - 'no_repeats': Whether to avoid repeating characters (bool).
 
-def handle_password_generation():
-    # Handle password generation process
-    while True:
-        try:
-            length = int(
-                input("Input the password length (between 5 & 64): ")
-            )
-            if 5 <= length <= 64:
-                break
-            else:
-                print("Please enter a number between 5 and 64.")
-        except ValueError:
-            print("Invalid input. Please enter a valid number.")
+    Returns:
+        str or None: The generated password if successful, or None if there's an error.
+    """
 
-    while True:
-        use_uppercase = get_yes_no_input(
-            "Include uppercase chars? (Y/N): "
+    try:
+        length = int(request_data['length'])
+        use_uppercase = request_data['use_uppercase']
+        use_lowercase = request_data['use_lowercase']
+        use_numbers = request_data['use_numbers']
+        use_symbols = request_data['use_symbols']
+        no_repeats = request_data['no_repeats']
+
+        if not any([use_uppercase, use_lowercase, use_numbers, use_symbols]):
+            return None 
+
+        password = generate_password(
+            length, use_uppercase, use_lowercase, use_numbers, use_symbols, no_repeats
         )
-        use_lowercase = get_yes_no_input(
-            "Include lowercase chars? (Y/N): "
-        )
-        use_numbers = get_yes_no_input("Include numbers? (Y/N): ")
-        use_symbols = get_yes_no_input("Include symbols? (Y/N): ")
-        no_repeats = get_yes_no_input(
-            "Enable no repeating chars? (Y/N): "
-        )
+        
+        return password
 
-        if any(
-            [use_uppercase, use_lowercase, use_numbers, use_symbols]
-        ):
-            password = generate_password(
-                length,
-                use_uppercase,
-                use_lowercase,
-                use_numbers,
-                use_symbols,
-                no_repeats,
-            )
-            if password:
-                print(f"Generated password: {password}")
-                break
-        else:
-            print(
-                "You must select at least one option. Please try again."
-            )
+    except (ValueError, KeyError) as e:
+        print(f"Error handling password generation request: {e}")
+        return None
 
 
-def handle_passphrase_generation():
-    # Handle passphrase generation process
-    while True:
-        try:
-            num_words = int(
-                input(
-                    "Input the number of words (between 3 and 15): "
-                )
-            )
-            if 3 <= num_words <= 15:
-                break
-            else:
-                print("Please enter a number between 3 and 15.")
-        except ValueError:
-            print("Invalid input. Please enter a valid number.")
+def handle_passphrase_generation_request(request_data):
+    """
+    Handles passphrase generation based on request data from the frontend
 
-    capitalize_all = get_yes_no_input(
-        "Capitalize all letters? (Y/N): "
-    )
-    capitalize_first = not capitalize_all and get_yes_no_input(
-        "Capitalize the first letter of each word? (Y/N): "
-    )
+    Args:
+        request_data (dict): A dictionary containing the following keys:
+            - 'num_words': The number of words in the passphrase (int)
+            - 'capitalize_first': Whether to capitalize the first letter of each word (bool)
+            - 'capitalize_all': Whether to capitalize all letters (bool)
+            - 'word_separator': The separator character between words (str)
+            - 'add_numbers': Whether to add a number to the end of each word (bool)
 
-    while True:
-        word_separator = input(
-            "Enter a character to use as a separator (default is space): "
-        )
-        if word_separator or word_separator == " ":
-            word_separator = word_separator or " "
-            break
-        else:
-            print("Invalid input. Please enter a valid character.")
+    Returns:
+        str or None - The generated passphrase if successful, or None if there's an error
+    """
 
-    add_numbers = get_yes_no_input(
-        "Add a number to each word? (Y/N): "
-    )
+    try:
+        num_words = int(request_data['num_words'])
+        capitalize_first = request_data['capitalize_first']
+        capitalize_all = request_data['capitalize_all']
+        word_separator = request_data['word_separator'] or " " # Default to space if not provided
+        add_numbers = request_data['add_numbers']
 
-    passphrase = generate_passphrase(
-        num_words,
-        capitalize_first,
-        capitalize_all,
-        word_separator,
-        add_numbers,
-    )
-    if passphrase:
-        print(f"Generated passphrase: {passphrase}")
-    else:
-        print("Could not generate a passphrase. Please try again.")
+        if not (3 <= num_words <= 15):
+            return None 
 
-
-def main():
-    print("Password/Passphrase Generator")
-
-    while True:
-        option = get_valid_option()
-
-        if option == "p":
-            handle_password_generation()
-        elif option == "ph":
-            handle_passphrase_generation()
-
-        if not get_yes_no_input("Generate another? (Y/N): "):
-            print(
-                "Thank you for using the Password/Passphrase Generator. "
-                "Goodbye!"
-            )
-            exit()
-
-
-def get_valid_option():
-    # Ensure a valid option is provided
-    while True:
-        option = (
-            input("Generate password or passphrase? (P/PH): ")
-            .strip()
-            .lower()
-        )
-        if option in ["p", "ph"]:
-            return option
-        print(
-            "Invalid option. Please choose either 'P'" +
-            "(password) or 'PH' (passphrase)."
+        passphrase = generate_passphrase(
+            num_words, capitalize_first, capitalize_all, word_separator, add_numbers
         )
 
+        return passphrase 
 
-main()
+    except (ValueError, KeyError) as e:
+        print(f"Error handling passphrase generation request: {e}")
+        return None
+    
+# TODO: format the code with black

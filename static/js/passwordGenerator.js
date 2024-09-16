@@ -1,5 +1,10 @@
+// PASSWORD GENERATOR (JavaScript file)
+
 /* Case types used: camelCase (for functions and variables), 
 SCREAMING_SNAKE_CASE (for constants) and kebab-case (for CSS classes) */
+
+/* Enable and Disable generate-password-btn */
+/* -------------------------------------------------------------------------- */
 
 // Get all the desired checkboxes by their IDs
 const checkboxes = document.querySelectorAll(
@@ -24,3 +29,6 @@ checkboxes.forEach((checkbox) => {
     }
   });
 });
+
+/* -------------------------------------------------------------------------- */
+
