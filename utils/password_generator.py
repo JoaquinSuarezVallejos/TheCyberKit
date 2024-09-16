@@ -113,21 +113,26 @@ def handle_passphrase_generation_request(request_data):
     """
 
     try:
+        # Define word_separator at the beginning, even if assigning it a value later
+        word_separator = None 
+        
+        print("Received request data:", request_data)  # Print the entire request data for inspection
+        # print(f"word_separator (before conversion): {word_separator}, type: {type(word_separator)}")
+        
         # Extract parameters, ensuring 'word_separator' is a string
         num_words = int(request_data["num_words"])
         capitalize_first = request_data["capitalize_first"]
         capitalize_all = request_data["capitalize_all"]
         add_numbers = request_data["add_numbers"]
-        word_separator = request_data.get("word_separator", " ")
+        
+        # Get word_separator from request_data, or default to "-"
+        word_separator = str(request_data.get("word_separator") or "-")
 
         print(f"num_words type: {type(num_words)}")
         print(f"capitalize_first type: {type(capitalize_first)}")
         print(f"capitalize_all type: {type(capitalize_all)}")
         print(f"add_numbers type: {type(add_numbers)}")
         print(f"word_separator type: {type(word_separator)}") 
-
-        # Explicitly convert to string, default to space
-        word_separator = str(word_separator)
         
         # Validate num_words
         if not (3 <= num_words <= 15):
@@ -137,8 +142,8 @@ def handle_passphrase_generation_request(request_data):
             num_words,
             capitalize_first,
             capitalize_all,
-            word_separator,
             add_numbers,
+            word_separator
         )
 
         return passphrase

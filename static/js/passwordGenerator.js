@@ -2,9 +2,6 @@
 /* Case types used: camelCase (for functions and variables), and kebab-case (for CSS classes) */
 
 // Get references to password-related UI elements
-// const passwordOutput = document.querySelector(
-//   ".password-generator-readonly-box"
-// );
 const outputField = document.querySelector('.password-generator-readonly-box'); // Use a single variable for the output field
 const generatePasswordBtn = document.querySelector(".generate-password-btn");
 const copyToClipboardBtn = document.querySelector(".copy-to-clipboard-btn");
@@ -23,9 +20,6 @@ const importantCheckboxes = document.querySelectorAll(
 );
 
 // Get references to passphrase-related UI elements
-// const passphraseOutput = document.querySelector(
-//   ".password-generator-readonly-box"
-// );
 const wordsSlider = document.querySelector(".words-slider");
 const wordsCountDisplay = document.querySelector(".passphrase-word-length");
 const capitalizeCheckbox = document.getElementById("capitalize-checkbox");
@@ -187,14 +181,10 @@ function generatePassword() {
 }
 
 // Add event listeners for password-related UI elements
-// generatePasswordBtn.addEventListener("click", generatePassword);
 charSlider.addEventListener("input", () => {
   charCountDisplay.textContent = `${charSlider.value}`;
   generatePassword(); // Regenerate password when slider value changes
 });
-// typeRadios.forEach((radio) => {
-//   radio.addEventListener("change", generatePassword);
-// });
 includeCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", generatePassword);
 });
@@ -208,8 +198,8 @@ function generatePassphrase() {
   const numWords = wordsSlider.value;
   const capitalizeFirst = capitalizeCheckbox.checked;
   const capitalizeAll = allCapsCheckbox.checked;
-  const wordSeparator = String(wordSeparatorInput.value || '-'); // Default to "-" if empty
   const addNumbers = addNumbersCheckbox.checked;
+  const wordSeparator = String(wordSeparatorInput.value || '-'); // Default to "-" if empty
 
   // Send a POST request to the Flask backend
   fetch("/generate_password_or_passphrase", {
@@ -222,8 +212,8 @@ function generatePassphrase() {
       num_words: numWords,
       capitalize_first: capitalizeFirst,
       capitalize_all: capitalizeAll,
-      word_separator: wordSeparator,
       add_numbers: addNumbers,
+      word_separator: wordSeparator,
     }),
   })
     .then((response) => response.json())
@@ -232,7 +222,6 @@ function generatePassphrase() {
         console.error("Error generating passphrase:", data.error);
         // Display an error message to the user
       } else {
-        // passphraseOutput.value = data.generated_string; 
         outputField.value = data.generated_string; // Update the single output field
       }
     })
@@ -242,20 +231,6 @@ function generatePassphrase() {
     });
 }
 
-// Add event listeners for passphrase-related UI elements
-
-// generatePasswordBtn.addEventListener("click", () => {
-//   if (
-//     document.querySelector(
-//       'input[name="password-passphrase"][value="password"]'
-//     ).checked
-//   ) {
-//     generatePassword();
-//   } else {
-//     generatePassphrase();
-//   }
-// });
-
 wordsSlider.addEventListener("input", () => {
   wordsCountDisplay.textContent = `${wordsSlider.value}`;
   generatePassphrase();
@@ -264,7 +239,6 @@ wordsSlider.addEventListener("input", () => {
 capitalizeCheckbox.addEventListener("change", generatePassphrase);
 allCapsCheckbox.addEventListener("change", generatePassphrase);
 addNumbersCheckbox.addEventListener("change", generatePassphrase);
-// wordSeparatorInput.addEventListener("input", generatePassphrase);
 
 wordSeparatorInput.addEventListener("input", () => {
   console.log("Current word separator:", wordSeparatorInput.value); // Debug print
@@ -319,5 +293,4 @@ function preventDefaultForOneSecond(event) {
 /* -------------------------------------------------------------------------- */
 
 // TODO: Implement the password tester functionality
-// TODO: Implement the passphrase generator functionality
 // TODO: Make an "expanding animation" for the password-generator-readonly-box when a new password is generated
