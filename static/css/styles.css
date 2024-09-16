@@ -207,6 +207,15 @@ li a:hover{
   height: 100px;
   font-size: 34px;
 }
+.card .readonly-box-smaller-font1{ /* Only when password char length is greater than 38*/
+  font-size: 28px;
+}
+.card .readonly-box-smaller-font2{ /* greater than 45*/
+  font-size: 24px;
+}
+.card .readonly-box-smaller-font3{ /* greater than 54*/
+  font-size: 20px;
+}
 .password-generator-btns{
   display: flex;
   margin: 0px auto;
@@ -277,6 +286,21 @@ li a:hover{
   font-size: 20px;
   margin-bottom: 0px;
   margin-top: 4.75px;
+}
+.scenario-checkboxes{
+  display: flex;
+  gap: 24px;
+  margin-top: 18px;
+}
+.scenario-checkboxes input{
+  font-size: 18px;
+  margin-right: 2px;
+}
+.scenario-checkboxes label{
+  font-size: 20px;
+  height: 25px;
+  margin-bottom: 0px;
+  margin-top: 4.5px;
 }
 /* -------------------------------------------------------------------------- */
 

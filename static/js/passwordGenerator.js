@@ -45,6 +45,10 @@ importantCheckboxes.forEach((checkbox) => {
 
 /* PASSWORD GENERATOR FUNCTIONALITY */
 /* -------------------------------------------------------------------------- */
+// Event listener to generate a password on page load
+document.addEventListener("DOMContentLoaded", () => {
+  generatePasswordOrPassphrase();
+});
 // Function to fetch a new password/passphrase from the backend
 function generatePasswordOrPassphrase() {
   // Gather parameters from the UI
@@ -58,7 +62,6 @@ function generatePasswordOrPassphrase() {
     document.getElementById("lowercase-checkbox").checked;
   const includeNumbers = document.getElementById("numbers-checkbox").checked;
   const includeSymbols = document.getElementById("symbols-checkbox").checked;
-  const noRepeats = document.getElementById("no-repeats-checkbox").checked;
 
   // Send a POST request to the Flask backend
   fetch("/generate_password_or_passphrase", {
@@ -73,7 +76,6 @@ function generatePasswordOrPassphrase() {
       use_lowercase: includeLowercase,
       use_numbers: includeNumbers,
       use_symbols: includeSymbols,
-      no_repeats: noRepeats,
     }),
   })
     .then((response) => response.json())
@@ -82,6 +84,30 @@ function generatePasswordOrPassphrase() {
         console.error("Error generating password/passphrase:", data.error); // Display an error message
       } else {
         passwordOutput.value = data.generated_string;
+      }
+      // Check password length and apply the class if needed
+      if (
+        data.generated_string.length > 38 &&
+        data.generated_string.length <= 45
+      ) {
+        removeSmallerFontClasses();
+        passwordOutput.classList.add("readonly-box-smaller-font1");
+      } else if (
+        data.generated_string.length > 45 &&
+        data.generated_string.length <= 54
+      ) {
+        removeSmallerFontClasses();
+        passwordOutput.classList.add("readonly-box-smaller-font2");
+      } else if (data.generated_string.length > 54) {
+        removeSmallerFontClasses();
+        passwordOutput.classList.add("readonly-box-smaller-font3");
+      } else {
+        removeSmallerFontClasses();
+      }
+      function removeSmallerFontClasses() {
+        passwordOutput.classList.remove("readonly-box-smaller-font1");
+        passwordOutput.classList.remove("readonly-box-smaller-font2");
+        passwordOutput.classList.remove("readonly-box-smaller-font3");
       }
     })
     .catch((error) => {
@@ -92,7 +118,8 @@ function generatePasswordOrPassphrase() {
 // Add event listeners
 generatePasswordBtn.addEventListener("click", generatePasswordOrPassphrase);
 charSlider.addEventListener("input", () => {
-  charCountDisplay.textContent = `Characters: ${charSlider.value}`;
+  charCountDisplay.textContent = `${charSlider.value}`;
+  generatePasswordOrPassphrase(); // Regenerate password when slider value changes
 });
 typeRadios.forEach((radio) => {
   radio.addEventListener("change", generatePasswordOrPassphrase);
@@ -129,7 +156,11 @@ copyToClipboardBtn.addEventListener("click", () => {
       setTimeout(() => {
         copyToClipboardBtn.childNodes[2].nodeValue = " " + originalText;
         copyToClipboardBtn.style.backgroundColor = originalColor;
-        copyToClipboardBtn.removeEventListener('click', preventDefaultForOneSecond, true);
+        copyToClipboardBtn.removeEventListener(
+          "click",
+          preventDefaultForOneSecond,
+          true
+        );
       }, 1000);
     })
     .catch((err) => {
@@ -137,7 +168,11 @@ copyToClipboardBtn.addEventListener("click", () => {
     });
 });
 function preventDefaultForOneSecond(event) {
-    event.preventDefault(); // Prevent the default click behavior
-    event.stopImmediatePropagation(); // Stop the event from bubbling up
+  event.preventDefault(); // Prevent the default click behavior
+  event.stopImmediatePropagation(); // Stop the event from bubbling up
 }
 /* -------------------------------------------------------------------------- */
+
+// TODO: Implement the password tester functionality
+// TODO: Implement the passphrase generator functionality
+// TODO: Make an "expanding animation" for the password-generator-readonly-box when a new password is generated

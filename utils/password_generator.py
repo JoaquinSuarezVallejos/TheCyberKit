@@ -10,14 +10,9 @@ def generate_passphrase(
     num_words,
     capitalize_first,
     capitalize_all,
-    word_separator,
     add_numbers,
+    word_separator,
 ):
-    # Ensuring valid word count
-    if not (3 <= num_words <= 15):
-        print("The number of words must be between 3 and 15.")
-        return None
-
     # Fetch the English words set from the available source
     word_list = list(get_english_words_set(["web2"]))
 
@@ -45,14 +40,7 @@ def generate_password(
     use_lowercase,
     use_numbers,
     use_symbols,
-    no_repeats,
 ):
-    # Ensuring at least one character set is selected
-    if not any(
-        [use_uppercase, use_lowercase, use_numbers, use_symbols]
-    ):
-        return None  # Return None if no character set is selected
-
     # Building the character pool
     char_pool = ""
     if use_uppercase:
@@ -64,22 +52,10 @@ def generate_password(
     if use_symbols:
         char_pool += string.punctuation
 
-    # If no repeating characters == Y and length > unique characters available
-    if no_repeats and length > len(char_pool):
-        print(
-            "Not enough unique characters available to generate a password."
-        )
-        return None
-
     # Password generation
-    if no_repeats:
-        # Generate password with unique characters
-        password = "".join(random.sample(char_pool, length))
-    else:
-        # Generate password allowing repeats
-        password = "".join(
-            random.choice(char_pool) for i in range(length)
-        )
+    password = "".join(
+        random.choice(char_pool) for i in range(length)
+    )
 
     return password
 
@@ -94,7 +70,6 @@ def handle_password_generation_request(request_data):
             - 'use_lowercase': Whether to include lowercase letters (bool).
             - 'use_numbers': Whether to include numbers (bool).
             - 'use_symbols': Whether to include symbols (bool).
-            - 'no_repeats': Whether to avoid repeating characters (bool).
 
     Returns:
         str or None: The generated password if successful, or None if there's an error.
@@ -106,13 +81,12 @@ def handle_password_generation_request(request_data):
         use_lowercase = request_data['use_lowercase']
         use_numbers = request_data['use_numbers']
         use_symbols = request_data['use_symbols']
-        no_repeats = request_data['no_repeats']
 
         if not any([use_uppercase, use_lowercase, use_numbers, use_symbols]):
             return None 
 
         password = generate_password(
-            length, use_uppercase, use_lowercase, use_numbers, use_symbols, no_repeats
+            length, use_uppercase, use_lowercase, use_numbers, use_symbols
         )
         
         return password
@@ -142,11 +116,8 @@ def handle_passphrase_generation_request(request_data):
         num_words = int(request_data['num_words'])
         capitalize_first = request_data['capitalize_first']
         capitalize_all = request_data['capitalize_all']
-        word_separator = request_data['word_separator'] or " " # Default to space if not provided
         add_numbers = request_data['add_numbers']
-
-        if not (3 <= num_words <= 15):
-            return None 
+        word_separator = request_data['word_separator'] or " " # Default to space if not provided
 
         passphrase = generate_passphrase(
             num_words, capitalize_first, capitalize_all, word_separator, add_numbers

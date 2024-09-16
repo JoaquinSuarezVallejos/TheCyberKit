@@ -103,7 +103,7 @@
               class="password-generator-readonly-box"
               type="text"
               name="text"
-              value="vhGYvqo5KqAWDN"
+              value=""
               aria-label="Read-only input"
               readonly
             />
@@ -155,7 +155,7 @@
             <div class="grid include-options">
               <div class="include-checkboxes">
                 <p class="password-generator-subtitle2">Include:</p>
-                <label class="password-generator-checkbox">
+                <label class="password-generator-">
                   <input type="checkbox" id="uppercase-checkbox" checked />
                   A - Z
                 </label>
@@ -171,9 +171,30 @@
                   <input type="checkbox" id="symbols-checkbox" />
                   Symbols
                 </label>
-                <label class="password-generator-checkbox">
-                  <input type="checkbox" id="no-repeats-checkbox" />
-                  No repeating chars
+              </div>
+            </div>
+
+            <div class="grid scenario-options">
+              <div class="scenario-checkboxes">
+                <p class="password-generator-subtitle2">Scenario:</p>
+                <label>
+                  <input
+                    class="scenario-online-radio-btn"
+                    type="radio"
+                    name="scenario-online-offline"
+                    value="scenario-online"
+                    checked
+                  />
+                  Online
+                </label>
+                <label>
+                  <input
+                    class="scenario-offline-radio-btn"
+                    type="radio"
+                    name="scenario-online-offline"
+                    value="scenario-offline"
+                  />
+                  Offline
                 </label>
               </div>
             </div>
