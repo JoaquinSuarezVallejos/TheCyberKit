@@ -1,9 +1,9 @@
 /* Case types used: camelCase (for functions and variables), 
 SCREAMING_SNAKE_CASE (for constants) and kebab-case (for CSS classes) */
 
-// Get all the checkboxes
+// Get all the desired checkboxes by their IDs
 const checkboxes = document.querySelectorAll(
-  '.password-generator-checkbox input[type="checkbox"]'
+  '#uppercase-checkbox, #lowercase-checkbox, #numbers-checkbox, #symbols-checkbox'
 );
 const generatePasswordBtn = document.querySelector(".generate-password-btn");
 

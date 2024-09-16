@@ -242,6 +242,8 @@ li a:hover{
 .type-radio-btns{
   display: flex;
   gap: 24px;
+  margin-top: 6px;
+  margin-bottom: 18px;
 }
 .type-radio-btns input{
   font-size: 18px;
