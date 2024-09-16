@@ -207,14 +207,17 @@ li a:hover{
   height: 100px;
   font-size: 34px;
 }
-.card .readonly-box-smaller-font1{ /* Only when password char length is greater than 38*/
+.card .readonly-box-smaller-font1{
   font-size: 28px;
 }
-.card .readonly-box-smaller-font2{ /* greater than 45*/
+.card .readonly-box-smaller-font2{
   font-size: 24px;
 }
-.card .readonly-box-smaller-font3{ /* greater than 54*/
+.card .readonly-box-smaller-font3{
   font-size: 20px;
+}
+.card .readonly-box-smaller-font4{
+  font-size: 16px;
 }
 .password-generator-btns{
   display: flex;

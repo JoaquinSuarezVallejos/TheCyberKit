@@ -2,7 +2,7 @@
 /* Case types used: camelCase (for functions and variables), and kebab-case (for CSS classes) */
 
 // Get references to password-related UI elements
-const outputField = document.querySelector('.password-generator-readonly-box'); // Use a single variable for the output field
+const outputField = document.querySelector(".password-generator-readonly-box"); // Use a single variable for the output field
 const generatePasswordBtn = document.querySelector(".generate-password-btn");
 const copyToClipboardBtn = document.querySelector(".copy-to-clipboard-btn");
 const typeRadios = document.querySelectorAll(
@@ -66,8 +66,10 @@ typeRadios.forEach((radio) => {
     updateUIBasedOnType();
     if (radio.value === "password") {
       generatePassword();
+      removeSmallerFontClasses();
     } else {
       generatePassphrase();
+      removeSmallerFontClasses();
     }
   });
 });
@@ -199,7 +201,7 @@ function generatePassphrase() {
   const capitalizeFirst = capitalizeCheckbox.checked;
   const capitalizeAll = allCapsCheckbox.checked;
   const addNumbers = addNumbersCheckbox.checked;
-  const wordSeparator = String(wordSeparatorInput.value || '-'); // Default to "-" if empty
+  const wordSeparator = String(wordSeparatorInput.value || "-"); // Default to "-" if empty
 
   // Send a POST request to the Flask backend
   fetch("/generate_password_or_passphrase", {
@@ -223,6 +225,39 @@ function generatePassphrase() {
         // Display an error message to the user
       } else {
         outputField.value = data.generated_string; // Update the single output field
+      }
+      // Check password length and apply the class if needed
+      if (
+        data.generated_string.length > 40 &&
+        data.generated_string.length <= 60
+      ) {
+        removeSmallerFontClasses();
+        outputField.classList.add("readonly-box-smaller-font1");
+      } else if (
+        data.generated_string.length > 60 &&
+        data.generated_string.length <= 80
+      ) {
+        removeSmallerFontClasses();
+        outputField.classList.add("readonly-box-smaller-font2");
+      } else if (
+        data.generated_string.length > 80 &&
+        data.generated_string.length <= 100
+      ) {
+        removeSmallerFontClasses();
+        outputField.classList.add("readonly-box-smaller-font3");
+      } else if (
+        data.generated_string.length > 100
+      ) {
+        removeSmallerFontClasses();
+        outputField.classList.add("readonly-box-smaller-font4");
+      } else {
+        removeSmallerFontClasses();
+      }
+      function removeSmallerFontClasses() {
+        outputField.classList.remove("readonly-box-smaller-font1");
+        outputField.classList.remove("readonly-box-smaller-font2");
+        outputField.classList.remove("readonly-box-smaller-font3");
+        outputField.classList.remove("readonly-box-smaller-font4");
       }
     })
     .catch((error) => {
