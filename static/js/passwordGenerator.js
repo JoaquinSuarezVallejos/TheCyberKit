@@ -176,6 +176,7 @@ function generatePassword() {
         outputField.classList.remove("readonly-box-smaller-font2");
         outputField.classList.remove("readonly-box-smaller-font3");
         outputField.classList.remove("readonly-box-smaller-font4");
+        outputField.classList.remove("readonly-box-smaller-font5");
       }
     })
     .catch((error) => {
@@ -233,24 +234,24 @@ function generatePassphrase() {
         data.generated_string.length <= 60
       ) {
         removeSmallerFontClasses();
-        outputField.classList.add("readonly-box-smaller-font1");
+        outputField.classList.add("readonly-box-smaller-font2");
       } else if (
         data.generated_string.length > 60 &&
         data.generated_string.length <= 80
       ) {
         removeSmallerFontClasses();
-        outputField.classList.add("readonly-box-smaller-font2");
+        outputField.classList.add("readonly-box-smaller-font3");
       } else if (
         data.generated_string.length > 80 &&
         data.generated_string.length <= 100
       ) {
         removeSmallerFontClasses();
-        outputField.classList.add("readonly-box-smaller-font3");
+        outputField.classList.add("readonly-box-smaller-font4");
       } else if (
         data.generated_string.length > 100
       ) {
         removeSmallerFontClasses();
-        outputField.classList.add("readonly-box-smaller-font4");
+        outputField.classList.add("readonly-box-smaller-font5");
       } else {
         removeSmallerFontClasses();
       }
@@ -259,6 +260,7 @@ function generatePassphrase() {
         outputField.classList.remove("readonly-box-smaller-font2");
         outputField.classList.remove("readonly-box-smaller-font3");
         outputField.classList.remove("readonly-box-smaller-font4");
+        outputField.classList.remove("readonly-box-smaller-font5");
       }
     })
     .catch((error) => {
@@ -330,3 +332,4 @@ function preventDefaultForOneSecond(event) {
 
 // TODO: Implement the password tester functionality
 // TODO: Make an "expanding animation" for the password-generator-readonly-box when a new password is generated
+// TODO: Make the password-generator-readonly-box multi-line for long passwords/passphrases
