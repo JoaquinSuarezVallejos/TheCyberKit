@@ -175,6 +175,7 @@ function generatePassword() {
         outputField.classList.remove("readonly-box-smaller-font1");
         outputField.classList.remove("readonly-box-smaller-font2");
         outputField.classList.remove("readonly-box-smaller-font3");
+        outputField.classList.remove("readonly-box-smaller-font4");
       }
     })
     .catch((error) => {
