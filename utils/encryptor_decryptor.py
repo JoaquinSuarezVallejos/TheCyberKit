@@ -7,7 +7,6 @@ from Crypto.Util.Padding import pad, unpad
 from Crypto.Random import get_random_bytes
 from Crypto.Cipher import AES
 import base64
-import binascii
 
 
 # Generate Fernet key
