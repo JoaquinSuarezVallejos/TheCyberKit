@@ -1,5 +1,6 @@
 # PASSWORD GENERATOR (Python file)
-# Case types used: snake_case (for functions and variables) and SCREAMING_SNAKE_CASE (for constants)
+# Case types used: snake_case (for functions and variables)
+# and SCREAMING_SNAKE_CASE (for constants)
 
 # Importing the necessary libraries and modules
 import random
@@ -72,7 +73,7 @@ def handle_password_generation_request(request_data):
             - 'use_symbols': Whether to include symbols (bool).
 
     Returns:
-        str or None: The generated password if successful, or None if there's an error.
+        The generated password if successful, or None if there's an error.
     """
 
     try:
@@ -102,29 +103,40 @@ def handle_passphrase_generation_request(request_data):
 
     Args:
         request_data (dict): A dictionary containing the following keys:
-            - 'num_words': The number of words in the passphrase (int)
-            - 'capitalize_first': Whether to capitalize the first letter of each word (bool)
-            - 'capitalize_all': Whether to capitalize all letters (bool)
-            - 'word_separator': The separator character between words (str)
-            - 'add_numbers': Whether to add a number to the end of each word (bool)
+            - 'num_words':
+            The number of words in the passphrase (int)
+
+            - 'capitalize_first':
+            Whether to capitalize the first letter of each word (bool)
+
+            - 'capitalize_all':
+            Whether to capitalize all letters (bool)
+
+            - 'word_separator':
+            The separator character (str) to use between words
+
+            - 'add_numbers':
+            Whether to add a number to the end of each word (bool)
 
     Returns:
-        str or None - The generated passphrase if successful, or None if there's an error
+        The generated passphrase if successful, or None if there's an error
     """
 
     try:
-        # Define word_separator at the beginning, even if assigning it a value later
-        word_separator = None 
-        
-        print("Received request data:", request_data)  # Print the entire request data for inspection
-        # print(f"word_separator (before conversion): {word_separator}, type: {type(word_separator)}")
-        
+        # Define word_separator as None
+        # to handle missing key in request_data
+        word_separator = None
+
+        print(
+            "Received request data:", request_data
+        )  # Print the entire request data for inspection
+
         # Extract parameters, ensuring 'word_separator' is a string
         num_words = int(request_data["num_words"])
         capitalize_first = request_data["capitalize_first"]
         capitalize_all = request_data["capitalize_all"]
         add_numbers = request_data["add_numbers"]
-        
+
         # Get word_separator from request_data, or default to "-"
         word_separator = str(request_data.get("word_separator") or "-")
 
@@ -132,18 +144,15 @@ def handle_passphrase_generation_request(request_data):
         print(f"capitalize_first type: {type(capitalize_first)}")
         print(f"capitalize_all type: {type(capitalize_all)}")
         print(f"add_numbers type: {type(add_numbers)}")
-        print(f"word_separator type: {type(word_separator)}") 
-        
+        print(f"word_separator type: {type(word_separator)}")
+
         # Validate num_words
         if not (3 <= num_words <= 15):
             return None
 
         passphrase = generate_passphrase(
-            num_words,
-            capitalize_first,
-            capitalize_all,
-            add_numbers,
-            word_separator
+            num_words, capitalize_first, capitalize_all,
+            add_numbers, word_separator
         )
 
         return passphrase

@@ -1,5 +1,6 @@
 # PASSWORD TESTER (Python file)
-# Case types used: snake_case (for functions and variables) and SCREAMING_SNAKE_CASE (for constants)
+# Case types used: snake_case (for functions and variables)
+# and SCREAMING_SNAKE_CASE (for constants)
 
 # Importing the necessary libraries and modules
 # Using the zxcvbn library: https://github.com/dwolfhub/zxcvbn-python
@@ -23,12 +24,16 @@ def evaluate_password():
         result = zxcvbn.zxcvbn(password)
 
         score_number = result["score"]
+
         crack_time_offline = result["crack_times_display"][
             "offline_slow_hashing_1e4_per_second"
-        ]  # Time to crack the password offline, slow hashing, 10000 guesses per second
+        ]  # Time to crack the password offline,
+        # slow hashing, 10000 guesses per second
+
         crack_time_online_throttled = result["crack_times_display"][
             "online_throttling_100_per_hour"
-        ]  # Time to crack the password online, throttled, 100 guesses per hour
+        ]  # Time to crack the password online,
+        # throttled, 100 guesses per hour
 
         score_mapping = {
             0: "1 (very unsafe)",

@@ -1,5 +1,6 @@
 # ENCRYPTOR / DECRYPTOR (Python file)
-# Case types used: snake_case (for functions and variables) and SCREAMING_SNAKE_CASE (for constants)
+# Case types used: snake_case (for functions and variables)
+# and SCREAMING_SNAKE_CASE (for constants)
 
 from cryptography.fernet import Fernet
 from Crypto.Cipher import Blowfish
@@ -50,7 +51,7 @@ def decrypt_blowfish(encrypted_password, key):
         key, Blowfish.MODE_CBC, iv=encrypted_password[: Blowfish.block_size]
     )
     decrypted_padded = cipher.decrypt(
-        encrypted_password[Blowfish.block_size :]
+        encrypted_password[Blowfish.block_size:]
     )
     return unpad(decrypted_padded, Blowfish.block_size).decode()
 
@@ -73,9 +74,9 @@ def encrypt_aes(password):
 def decrypt_aes(encrypted_password, key):
     encrypted_password = base64.b64decode(encrypted_password)
     cipher = AES.new(
-        key, AES.MODE_CBC, iv=encrypted_password[: AES.block_size]
+        key, AES.MODE_CBC, iv=encrypted_password[:AES.block_size]
     )
-    decrypted_padded = cipher.decrypt(encrypted_password[AES.block_size :])
+    decrypted_padded = cipher.decrypt(encrypted_password[AES.block_size:])
     return unpad(decrypted_padded, AES.block_size).decode()
 
 
@@ -140,7 +141,7 @@ if __name__ == "__main__":
             encrypted_text = input("Enter the encrypted password (base64): ")
 
             print(
-                "Attempting to decrypt the password using all available methods..."
+                "Attempting to decrypt the password..."
             )
 
             decrypted = decrypt_password_auto(
@@ -156,7 +157,7 @@ if __name__ == "__main__":
                 print(f"Decrypted password: {decrypted}")
             else:
                 print(
-                    "Decryption failed. Please verify the encrypted text is valid."
+                    "Decryption failed. Please verify the text is valid."
                 )
 
         elif option == "3":
