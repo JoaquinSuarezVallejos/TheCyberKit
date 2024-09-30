@@ -2,6 +2,8 @@
 # Case types used: snake_case (for functions and variables)
 # and SCREAMING_SNAKE_CASE (for constants)
 
+# TODO: When the user clicks the "history button", make a pop-up that shows them the history of generated passwords and passphrases
+
 # Importing the necessary libraries and modules
 import random
 import string
