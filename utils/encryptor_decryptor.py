@@ -1,169 +1,122 @@
-# ENCRYPTOR / DECRYPTOR (Python file)
-# Case types used: snake_case (for functions and variables)
-# and SCREAMING_SNAKE_CASE (for constants)
-
-from cryptography.fernet import Fernet
-from Crypto.Cipher import Blowfish
+from Crypto.Cipher import Blowfish, AES
 from Crypto.Util.Padding import pad, unpad
-from Crypto.Random import get_random_bytes
-from Crypto.Cipher import AES
 import base64
+from cryptography.fernet import Fernet
+import os
 
-
-# Generate Fernet key
-def generate_fernet_key():
-    return Fernet.generate_key()
-
+# Generate keys for encryption methods
+def generate_keys():
+    fernet_key = Fernet.generate_key()
+    blowfish_key = os.urandom(16)  # Blowfish requires a key of 4 to 56 bytes
+    aes_key = os.urandom(16)  # AES key size can be 16, 24, or 32 bytes
+    return fernet_key, blowfish_key, aes_key
 
 # Encrypt with Fernet
-def encrypt_fernet(password):
-    key = generate_fernet_key()
-    cipher = Fernet(key)
-    encrypted_password = cipher.encrypt(password.encode())
-    return base64.urlsafe_b64encode(encrypted_password).decode(), key
-
+def encrypt_fernet(password, key):
+    fernet = Fernet(key)
+    encrypted = fernet.encrypt(password.encode())
+    return encrypted
 
 # Decrypt with Fernet
 def decrypt_fernet(encrypted_password, key):
-    cipher = Fernet(key)
-    encrypted_password = base64.urlsafe_b64decode(encrypted_password)
-    return cipher.decrypt(encrypted_password).decode()
-
-
-# Generate Blowfish key
-def generate_blowfish_key():
-    return get_random_bytes(16)
-
+    fernet = Fernet(key)
+    decrypted = fernet.decrypt(encrypted_password).decode()
+    return decrypted
 
 # Encrypt with Blowfish
-def encrypt_blowfish(password):
-    key = generate_blowfish_key()
+def encrypt_blowfish(password, key):
     cipher = Blowfish.new(key, Blowfish.MODE_CBC)
     padded_password = pad(password.encode(), Blowfish.block_size)
-    encrypted_password = cipher.encrypt(padded_password)
-    return base64.b64encode(cipher.iv + encrypted_password).decode(), key
-
+    iv = cipher.iv
+    encrypted = cipher.encrypt(padded_password)
+    return base64.b64encode(iv + encrypted).decode()
 
 # Decrypt with Blowfish
 def decrypt_blowfish(encrypted_password, key):
-    encrypted_password = base64.b64decode(encrypted_password)
-    cipher = Blowfish.new(
-        key, Blowfish.MODE_CBC, iv=encrypted_password[: Blowfish.block_size]
-    )
-    decrypted_padded = cipher.decrypt(
-        encrypted_password[Blowfish.block_size:]
-    )
-    return unpad(decrypted_padded, Blowfish.block_size).decode()
-
-
-# Generate AES key
-def generate_aes_key():
-    return get_random_bytes(16)
-
+    encrypted_password = base64.b64decode(encrypted_password.encode())
+    iv = encrypted_password[:Blowfish.block_size]
+    cipher = Blowfish.new(key, Blowfish.MODE_CBC, iv)
+    decrypted_padded = cipher.decrypt(encrypted_password[Blowfish.block_size:])
+    decrypted = unpad(decrypted_padded, Blowfish.block_size).decode()
+    return decrypted
 
 # Encrypt with AES
-def encrypt_aes(password):
-    key = generate_aes_key()
+def encrypt_aes(password, key):
     cipher = AES.new(key, AES.MODE_CBC)
     padded_password = pad(password.encode(), AES.block_size)
-    encrypted_password = cipher.encrypt(padded_password)
-    return base64.b64encode(cipher.iv + encrypted_password).decode(), key
-
+    iv = cipher.iv
+    encrypted = cipher.encrypt(padded_password)
+    return base64.b64encode(iv + encrypted).decode()
 
 # Decrypt with AES
 def decrypt_aes(encrypted_password, key):
-    encrypted_password = base64.b64decode(encrypted_password)
-    cipher = AES.new(
-        key, AES.MODE_CBC, iv=encrypted_password[:AES.block_size]
-    )
+    encrypted_password = base64.b64decode(encrypted_password.encode())
+    iv = encrypted_password[:AES.block_size]
+    cipher = AES.new(key, AES.MODE_CBC, iv)
     decrypted_padded = cipher.decrypt(encrypted_password[AES.block_size:])
-    return unpad(decrypted_padded, AES.block_size).decode()
+    decrypted = unpad(decrypted_padded, AES.block_size).decode()
+    return decrypted
 
+# Main logic
+def main():
+    fernet_key, blowfish_key, aes_key = generate_keys()
+    store = {
+        "fernet": {"key": fernet_key},
+        "blowfish": {"key": blowfish_key},
+        "aes": {"key": aes_key}
+    }
+    
+    while True:
+        print("1. Encrypt\n2. Decrypt\n3. Exit")
+        option = input("Select an option: ")
 
-def decrypt_password_auto(encrypted_password, keys):
-    for method, (data, key) in keys.items():
-        if data is None or key is None:
-            continue
-        try:
-            if method == "Fernet":
-                return decrypt_fernet(encrypted_password, key)
-            elif method == "Blowfish":
-                return decrypt_blowfish(encrypted_password, key)
-            elif method == "AES":
-                return decrypt_aes(encrypted_password, key)
-        except ValueError as e:
-            print(f"Decryption failed with {method}: {e}")
-        except Exception as e:
-            print(f"Unexpected error with {method}: {e}")
-    return None
+        if option == '1':
+            password = input("Enter the password to encrypt: ")
+            method = input("Choose method: 1. Fernet 2. Blowfish 3. AES: ")
+            if method == '1':
+                encrypted_password = encrypt_fernet(password, store["fernet"]["key"])
+            elif method == '2':
+                encrypted_password = encrypt_blowfish(password, store["blowfish"]["key"])
+            elif method == '3':
+                encrypted_password = encrypt_aes(password, store["aes"]["key"])
+            else:
+                print("Invalid method.")
+                continue
+            print(f"Encrypted password: {encrypted_password}")
+        
+        elif option == '2':
+            encrypted_password = input("Enter the encrypted password: ")
+            decrypted_password = None
 
+            try:
+                # Attempt to decrypt with Fernet
+                decrypted_password = decrypt_fernet(encrypted_password, store["fernet"]["key"])
+                print(f"Decrypted password (Fernet): {decrypted_password}")
+            except Exception as e:
+                print(f"Decryption failed (Fernet)")
+            
+            if not decrypted_password:  # Only try next methods if Fernet fails
+                try:
+                    # Attempt to decrypt with Blowfish
+                    decrypted_password = decrypt_blowfish(encrypted_password, store["blowfish"]["key"])
+                    print(f"Decrypted password (Blowfish): {decrypted_password}")
+                except Exception as e:
+                    print(f"Decryption failed (Blowfish)")
+
+            if not decrypted_password:  # Only try next methods if Blowfish fails
+                try:
+                    # Attempt to decrypt with AES
+                    decrypted_password = decrypt_aes(encrypted_password, store["aes"]["key"])
+                    print(f"Decrypted password (AES): {decrypted_password}")
+                except Exception as e:
+                    print(f"Decryption failed (AES)")
+
+        elif option == '3':
+            break
+        else:
+            print("Invalid option.")
 
 if __name__ == "__main__":
-    encrypted_password_store = {}
+    main()
 
-    while True:
-        print("\nOptions:")
-        print("1. Encrypt a password")
-        print("2. Decrypt a password")
-        print("3. Exit")
-
-        option = input("Select an option (1/2/3): ").strip()
-
-        if option == "1":
-            # Encrypt a password
-            password = input("Enter the password to encrypt: ")
-
-            print("\nChoose an encryption method:")
-            print("1. Fernet (AES-based encryption)")
-            print("2. Blowfish")
-            print("3. AES")
-
-            method_option = input("Select a method (1/2/3): ").strip()
-
-            if method_option == "1":
-                encrypted_data, key = encrypt_fernet(password)
-                encrypted_password_store["Fernet"] = (encrypted_data, key)
-                print("Encrypted password (Fernet): " + encrypted_data)
-            elif method_option == "2":
-                encrypted_data, key = encrypt_blowfish(password)
-                encrypted_password_store["Blowfish"] = (encrypted_data, key)
-                print("Encrypted password (Blowfish): " + encrypted_data)
-            elif method_option == "3":
-                encrypted_data, key = encrypt_aes(password)
-                encrypted_password_store["AES"] = (encrypted_data, key)
-                print("Encrypted password (AES): " + encrypted_data)
-            else:
-                print("Invalid option selected. Please choose 1, 2, or 3.")
-                continue
-
-        elif option == "2":
-            # Decrypt a password
-            encrypted_text = input("Enter the encrypted password (base64): ")
-
-            print(
-                "Attempting to decrypt the password..."
-            )
-
-            decrypted = decrypt_password_auto(
-                encrypted_text,
-                {
-                    "Fernet": encrypted_password_store.get("Fernet"),
-                    "Blowfish": encrypted_password_store.get("Blowfish"),
-                    "AES": encrypted_password_store.get("AES"),
-                },
-            )
-
-            if decrypted:
-                print(f"Decrypted password: {decrypted}")
-            else:
-                print(
-                    "Decryption failed. Please verify the text is valid."
-                )
-
-        elif option == "3":
-            # Exit the program
-            print("Exiting the program.")
-            break
-
-        else:
-            print("Invalid option. Please select 1, 2, or 3.")
+#TODO add PEP8
