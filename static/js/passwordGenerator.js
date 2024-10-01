@@ -38,6 +38,14 @@ const passphraseWordSeparator = document.querySelector(
   ".passphrase-word-separator"
 );
 
+// Function to remove the smaller font classes from the output field
+function removeSmallerFontClasses() {
+  outputField.classList.remove("readonly-box-smaller-font1");
+  outputField.classList.remove("readonly-box-smaller-font2");
+  outputField.classList.remove("readonly-box-smaller-font3");
+  outputField.classList.remove("readonly-box-smaller-font4");
+}
+
 /* UPDATE THE UI BASED ON THE SELECTED TYPE (PASSWORD/PASSPHRASE) */
 /* -------------------------------------------------------------------------- */
 function updateUIBasedOnType() {
@@ -147,7 +155,9 @@ function generatePassword() {
     .then((response) => response.json())
     .then((data) => {
       if (data.error) {
-        console.error("Error generating password/passphrase:", data.error); // Display an error message
+        console.error("Error generating password: ", data.error);
+        // Display an error message
+        outputField.value = "Error generating password, please try again...";
       } else {
         // passwordOutput.value = data.generated_string;
         outputField.value = data.generated_string; // Update the single output field
@@ -171,16 +181,10 @@ function generatePassword() {
       } else {
         removeSmallerFontClasses();
       }
-      function removeSmallerFontClasses() {
-        outputField.classList.remove("readonly-box-smaller-font1");
-        outputField.classList.remove("readonly-box-smaller-font2");
-        outputField.classList.remove("readonly-box-smaller-font3");
-        outputField.classList.remove("readonly-box-smaller-font4");
-        outputField.classList.remove("readonly-box-smaller-font5");
-      }
     })
     .catch((error) => {
-      console.error("Error fetching password/passphrase:", error); // Display an error message
+      console.error("Error fetching password: ", error); // Display an error message
+      outputField.value = "Error generating password, please try again...";
     });
 }
 
@@ -223,49 +227,70 @@ function generatePassphrase() {
     .then((response) => response.json())
     .then((data) => {
       if (data.error) {
-        console.error("Error generating passphrase:", data.error);
+        console.error("Error generating passphrase: ", data.error);
         // Display an error message to the user
+        outputField.value = "Error generating passphrase, please try again...";
       } else {
         outputField.value = data.generated_string; // Update the single output field
-      }
-      // Check password length and apply the class if needed
-      if (
-        data.generated_string.length > 40 &&
-        data.generated_string.length <= 60
-      ) {
-        removeSmallerFontClasses();
-        outputField.classList.add("readonly-box-smaller-font2");
-      } else if (
-        data.generated_string.length > 60 &&
-        data.generated_string.length <= 80
-      ) {
-        removeSmallerFontClasses();
-        outputField.classList.add("readonly-box-smaller-font3");
-      } else if (
-        data.generated_string.length > 80 &&
-        data.generated_string.length <= 100
-      ) {
-        removeSmallerFontClasses();
-        outputField.classList.add("readonly-box-smaller-font4");
-      } else if (
-        data.generated_string.length > 100
-      ) {
-        removeSmallerFontClasses();
-        outputField.classList.add("readonly-box-smaller-font5");
-      } else {
-        removeSmallerFontClasses();
-      }
-      function removeSmallerFontClasses() {
-        outputField.classList.remove("readonly-box-smaller-font1");
-        outputField.classList.remove("readonly-box-smaller-font2");
-        outputField.classList.remove("readonly-box-smaller-font3");
-        outputField.classList.remove("readonly-box-smaller-font4");
-        outputField.classList.remove("readonly-box-smaller-font5");
+
+        // Check if data.generated_string is valid and not empty
+        if (data.generated_string && data.generated_string.trim() !== "") {
+          // Handle passphrase length and line breaks
+          if (data.generated_string.length > 70) {
+            const splitIndex = data.generated_string.lastIndexOf(" ", 70);
+            const firstLine = data.generated_string.substring(0, splitIndex);
+            const secondLine = data.generated_string.substring(splitIndex + 1);
+
+            // Create new text nodes for each line and a <br> element
+            const firstLineNode = document.createTextNode(firstLine);
+            const brNode = document.createElement('br');
+            const secondLineNode = document.createTextNode(secondLine);
+
+            // Clear existing content and append the new nodes
+            outputField.innerHTML = ''; // Clear existing content
+            outputField.appendChild(firstLineNode);
+            outputField.appendChild(brNode);
+            outputField.appendChild(secondLineNode);
+            
+          } else {
+            outputField.value = data.generated_string;
+          }
+
+          // Adjust font size and add line break based on length
+          if (
+            data.generated_string.length > 30 &&
+            data.generated_string.length <= 40
+          ) {
+            removeSmallerFontClasses();
+            outputField.classList.add("readonly-box-smaller-font1");
+          } else if (
+            data.generated_string.length > 40 &&
+            data.generated_string.length <= 50
+          ) {
+            removeSmallerFontClasses();
+            outputField.classList.add("readonly-box-smaller-font2");
+          } else if (
+            data.generated_string.length > 50 &&
+            data.generated_string.length <= 60
+          ) {
+            removeSmallerFontClasses();
+            outputField.classList.add("readonly-box-smaller-font3");
+          } else if (
+            data.generated_string.length > 70
+          ) {
+            removeSmallerFontClasses();
+            outputField.classList.add("readonly-box-smaller-font4");
+          }
+        } else {
+          outputField.value =
+            "An unexpected error occurred, please try again...";
+        }
       }
     })
     .catch((error) => {
-      console.error("Error fetching passphrase:", error);
+      console.error("Error fetching passphrase: ", error);
       // Display an error message to the user
+      outputField.value = "Error generating passphrase, please try again...";
     });
 }
 
