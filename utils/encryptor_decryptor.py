@@ -71,7 +71,11 @@ def main():
         option = input("Select an option: ")
 
         if option == '1':
-            password = input("Enter the password to encrypt: ")
+            password = ""
+            while not password:
+                password = input("Enter the password to encrypt: ").strip()
+                if not password:
+                    print("Password cannot be empty. Please try again.")
             method = input("Choose method: 1. Fernet 2. Blowfish 3. AES: ")
             if method == '1':
                 encrypted_password = encrypt_fernet(password, store["fernet"]["key"])
