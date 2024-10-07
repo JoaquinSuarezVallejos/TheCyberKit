@@ -15,12 +15,12 @@ def generate_keys():
 def encrypt_fernet(password, key):
     fernet = Fernet(key)
     encrypted = fernet.encrypt(password.encode())
-    return encrypted
+    return encrypted.decode()  # Decode bytes to string
 
 # Decrypt with Fernet
 def decrypt_fernet(encrypted_password, key):
     fernet = Fernet(key)
-    decrypted = fernet.decrypt(encrypted_password).decode()
+    decrypted = fernet.decrypt(encrypted_password.encode()).decode()  # Convert string back to bytes and then decode
     return decrypted
 
 # Encrypt with Blowfish
@@ -88,28 +88,32 @@ def main():
             encrypted_password = input("Enter the encrypted password: ")
             decrypted_password = None
 
+            # Attempt to decrypt with Fernet
             try:
-                # Attempt to decrypt with Fernet
                 decrypted_password = decrypt_fernet(encrypted_password, store["fernet"]["key"])
                 print(f"Decrypted password (Fernet): {decrypted_password}")
-            except Exception as e:
-                print(f"Decryption failed (Fernet)")
+            except Exception:
+                pass
             
-            if not decrypted_password:  # Only try next methods if Fernet fails
+            if not decrypted_password:
+                # Attempt to decrypt with Blowfish
                 try:
-                    # Attempt to decrypt with Blowfish
                     decrypted_password = decrypt_blowfish(encrypted_password, store["blowfish"]["key"])
                     print(f"Decrypted password (Blowfish): {decrypted_password}")
-                except Exception as e:
-                    print(f"Decryption failed (Blowfish)")
+                except Exception:
+                    pass
 
-            if not decrypted_password:  # Only try next methods if Blowfish fails
+            if not decrypted_password:
+                # Attempt to decrypt with AES
                 try:
-                    # Attempt to decrypt with AES
                     decrypted_password = decrypt_aes(encrypted_password, store["aes"]["key"])
                     print(f"Decrypted password (AES): {decrypted_password}")
-                except Exception as e:
-                    print(f"Decryption failed (AES)")
+                except Exception:
+                    pass
+
+            # If all methods fail, notify the user
+            if not decrypted_password:
+                print("Decryption failed for all methods. Please check if the input was correct.")
 
         elif option == '3':
             break
