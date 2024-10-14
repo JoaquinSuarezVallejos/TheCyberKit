@@ -415,7 +415,7 @@ li a:hover{
   resize: none;
   field-sizing: content;
 }
-.encryption-submit-btn{
+.encrypt-decrypt-submit-btn{
   display: flex;
   align-items: center;
   margin-left: 2px;
