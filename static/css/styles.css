@@ -397,13 +397,23 @@ li a:hover{
   font-size: 24px;
   text-decoration: underline;
 }
+.encryption-decryption-radio-btns{
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.encryption-decryption-radio-btn-label{
+  font-weight: 600;
+  font-size: 22px;
+}
 .encryption-textarea{
   background-color: #23262C;
   border-radius: 8px;
   min-height: 150px;
   max-height: 300px;
   resize: none;
-  field-sizing: content; /* TODO: Check if compatible with all browsers (not compatible with Firefox) */
+  field-sizing: content;
 }
 .encryption-submit-btn{
   display: flex;
@@ -412,28 +422,26 @@ li a:hover{
   height: 50px;
   font-weight: 500;
 }
-.decryption-title{
+.encryption-input-title{
+  font-family: 'Montserrat', sans-serif;
+  color: #E2E2E2;
+  margin-left: 4px;
+  font-size: 21px;
+}
+.encryption-output-title{
   font-family: 'Montserrat', sans-serif;
   color: #E2E2E2;
   margin-left: 4px;
   margin-top: 60px;
-  font-size: 24px;
-  text-decoration: underline;
+  font-size: 21px;
 }
-.decryption-textarea{
+.encryption-output-textarea{
   background-color: #23262C;
   border-radius: 8px;
   min-height: 150px;
   max-height: 300px;
   resize: none;
-  field-sizing: content; 
-}
-.decryption-submit-btn{
-  display: flex;
-  align-items: center;
-  margin-left: 2px;
-  height: 50px;
-  font-weight: 500;
+  field-sizing: content;
 }
 /* -------------------------------------------------------------------------- */
 

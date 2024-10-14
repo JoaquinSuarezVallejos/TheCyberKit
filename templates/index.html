@@ -304,23 +304,43 @@
         <article class="card last-card" id="encryptor-decryptor">
           <h3 class="card-title">Text Encryptor/Decryptor</h3>
           <p class="card-description">Securely encrypt and decrypt any text.</p>
-          <h4 class="encryption-title">Encryption</h4>
+          <fieldset class="encryption-decryption-radio-btns">
+            <label class="encryption-decryption-radio-btn-label">
+              <input
+                class="encryptor-decryptor-radio-btn"
+                type="radio"
+                id="encryption-radio-btn"
+                name="encryption-decryption"
+                checked
+              />Encryption
+            </label>
+            <label class="encryption-decryption-radio-btn-label">
+              <input
+                class="encryptor-decryptor-radio-btn"
+                type="radio"
+                id="decryption-radio-btn"
+                name="encryption-decryption"
+              />Decryption
+            </label>
+          </fieldset>
+
+          <h4 class="encryption-input-title">Enter text to encrypt:</h4>
           <textarea
             class="encryption-textarea"
             name="textarea-encryption"
-            placeholder="Enter your text..."
-            aria-label="Enter your text..."
+            placeholder="[......]"
+            aria-label="Encryption text input"
           ></textarea>
           <button class="encryption-submit-btn">Encrypt</button>
 
-          <h4 class="decryption-title">Decryption</h4>
+          <h4 class="encryption-output-title">Encrypted text output:</h4>
           <textarea
-            class="decryption-textarea"
-            name="textarea-decryption"
-            placeholder="Enter your text..."
-            aria-label="Enter your text..."
+            class="encryption-output-textarea"
+            name="textarea-encryption-output"
+            placeholder="[......]"
+            aria-label="Encrypted text output"
+            readonly
           ></textarea>
-          <button class="decryption-submit-btn">Decrypt</button>
         </article>
       </section>
     </main>
