@@ -202,18 +202,14 @@ li a:hover{
 }
 .card .password-generator-readonly-box{
   background-color: #23262C;
-  width: 100%; 
-  min-height: 120px;
+  width: 100%;
   height: auto;
+  field-sizing: content;
+  resize: none;
   text-align: center;
   margin-bottom: 22px;
-  padding: 10px 40px;
-  line-height: 1.5; /* Line height for readability */
-
-  /* Key properties for text wrapping */
-  white-space: normal; /* Allow wrapping of text */
-  word-break: break-word; /* Break long words */
-  overflow-wrap: break-word; /* Ensure text doesn't overflow */
+  padding: 20px 40px;
+  font-size: 28px;
 }
 .password-generator-btns{
   display: flex;

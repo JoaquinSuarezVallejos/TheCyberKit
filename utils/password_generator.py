@@ -159,7 +159,7 @@ def handle_passphrase_generation_request(request_data):
         print(f"word_separator type: {type(word_separator)}")
 
         # Validate num_words
-        if not (3 <= num_words <= 15):
+        if not (3 <= num_words <= 12):
             return None
 
         passphrase = generate_passphrase(

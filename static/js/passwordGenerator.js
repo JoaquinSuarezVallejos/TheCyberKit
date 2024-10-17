@@ -108,7 +108,7 @@ importantCheckboxes.forEach((checkbox) => {
 
 /* GENERATE PASSWORD */
 /* -------------------------------------------------------------------------- */
-// Event listener to generate a password on page load and update the UI based on the type (password/passphrase)
+// On page load
 document.addEventListener("DOMContentLoaded", () => {
   generatePassword();
   updateUIBasedOnType();
@@ -150,7 +150,6 @@ function generatePassword() {
         outputField.value = "Error generating password, please try again...";
       } else {
         outputField.value = data.generated_string; // Update the single output field
-        resizeOutputFieldText()
       }
     })
     .catch((error) => {
@@ -203,7 +202,7 @@ function generatePassphrase() {
         outputField.value = "Error generating passphrase, please try again...";
       } else {
         outputField.value = data.generated_string; // Update the single output field
-        resizeOutputFieldText()
+        // autoResizeTextarea(outputField); 
       }
     })
     .catch((error) => {
@@ -276,25 +275,3 @@ function preventDefaultForOneSecond(event) {
 
 // TODO: Implement the password tester functionality
 // TODO: Make an "expanding animation" for the password-generator-readonly-box when a new password is generated
-// TODO: Make the password-generator-readonly-box multi-line for long passwords/passphrases
-
-// Resize the text in the output field to fit the box
-function resizeOutputFieldText() {
-  const outputFieldBoxWidth = outputField.clientWidth;
-  const outputFieldBoxHeight = outputField.clientHeight;
-  let fontSize = 32; // Starting font size
-  outputField.style.fontSize = fontSize + 'px';
-
-  // Decrease font size until the text fits within the box's width and height
-  while ((outputField.scrollWidth > outputFieldBoxWidth || outputField.scrollHeight > outputFieldBoxHeight) && fontSize > 16) {
-      fontSize--;
-      outputField.style.fontSize = fontSize + 'px';
-  }
-}
-
-// Use ResizeObserver to watch for size changes of the container
-const resizeObserver = new ResizeObserver(resizeOutputFieldText);
-resizeObserver.observe(document.getElementById('generated-password-passphrase-box'));
-
-// Resize text when the page loads
-window.onload = resizeOutputFieldText;
