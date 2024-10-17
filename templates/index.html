@@ -101,10 +101,11 @@
             </div>
             <input
               class="password-generator-readonly-box"
+              id="generated-password-passphrase-box"
               type="text"
               name="text"
               value=""
-              aria-label="Read-only input"
+              aria-label="Generated password/passphrase read-only box"
               readonly
             />
             <div class="grid password-generator-btns">
@@ -324,23 +325,21 @@
             </label>
           </fieldset>
 
-          <h4 class="encryption-input-title">Enter text to encrypt:</h4>
+          <h4 class="encryption-decryption-input-label">Enter text to encrypt:</h4>
           <textarea
-            class="encryption-textarea"
-            name="textarea-encryption"
+            class="encryption-decryption-textarea"
+            name="encryption-decryption-textarea-input"
             placeholder="[......]"
-            aria-label="Encryption text input"
-            id="encryption-text-input"
+            aria-label="Encryption/Decryption text input"
           ></textarea>
           <button class="encrypt-decrypt-submit-btn">Encrypt</button>
 
-          <h4 class="encryption-output-title">Encrypted text output:</h4>
+          <h4 class="encryption-decryption-output-label">Encrypted text output:</h4>
           <textarea
-            class="encryption-output-textarea"
-            name="textarea-encryption-output"
+            class="encryption-decryption-textarea"
+            name="encryption-decryption-textarea-output"
             placeholder="[......]"
-            aria-label="Encrypted text output"
-            id=""
+            aria-label="Encrypted/Decrypted text output"
             readonly
           ></textarea>
         </article>

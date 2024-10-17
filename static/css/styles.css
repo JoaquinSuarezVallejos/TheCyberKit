@@ -202,22 +202,18 @@ li a:hover{
 }
 .card .password-generator-readonly-box{
   background-color: #23262C;
+  width: 100%; 
+  min-height: 120px;
+  height: auto;
   text-align: center;
   margin-bottom: 22px;
-  height: 100px;
-  font-size: 34px;
-}
-.card .readonly-box-smaller-font1{
-  font-size: 28px;
-}
-.card .readonly-box-smaller-font2{
-  font-size: 24px;
-}
-.card .readonly-box-smaller-font3{
-  font-size: 20px;
-}
-.card .readonly-box-smaller-font4{
-  font-size: 16px;
+  padding: 10px 40px;
+  line-height: 1.5; /* Line height for readability */
+
+  /* Key properties for text wrapping */
+  white-space: normal; /* Allow wrapping of text */
+  word-break: break-word; /* Break long words */
+  overflow-wrap: break-word; /* Ensure text doesn't overflow */
 }
 .password-generator-btns{
   display: flex;
@@ -407,7 +403,7 @@ li a:hover{
   font-weight: 600;
   font-size: 22px;
 }
-.encryption-textarea{
+.encryption-decryption-textarea{
   background-color: #23262C;
   border-radius: 8px;
   min-height: 150px;
@@ -422,26 +418,18 @@ li a:hover{
   height: 50px;
   font-weight: 500;
 }
-.encryption-input-title{
+.encryption-decryption-input-label{
   font-family: 'Montserrat', sans-serif;
   color: #E2E2E2;
   margin-left: 4px;
   font-size: 21px;
 }
-.encryption-output-title{
+.encryption-decryption-output-label{
   font-family: 'Montserrat', sans-serif;
   color: #E2E2E2;
   margin-left: 4px;
   margin-top: 60px;
   font-size: 21px;
-}
-.encryption-output-textarea{
-  background-color: #23262C;
-  border-radius: 8px;
-  min-height: 150px;
-  max-height: 300px;
-  resize: none;
-  field-sizing: content;
 }
 /* -------------------------------------------------------------------------- */
 

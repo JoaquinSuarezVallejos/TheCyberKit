@@ -2,7 +2,7 @@
 /* Case types used: camelCase (for functions and variables), and kebab-case (for CSS classes) */
 
 // Get references to password-related UI elements
-const outputField = document.querySelector(".password-generator-readonly-box"); // Use a single variable for the output field
+const outputField = document.querySelector(".password-generator-readonly-box"); // Single variable for the output field
 const generatePasswordBtn = document.querySelector(".generate-password-btn");
 const copyToClipboardBtn = document.querySelector(".copy-to-clipboard-btn");
 const typeRadios = document.querySelectorAll(
@@ -38,14 +38,6 @@ const passphraseWordSeparator = document.querySelector(
   ".passphrase-word-separator"
 );
 
-// Function to remove the smaller font classes from the output field
-function removeSmallerFontClasses() {
-  outputField.classList.remove("readonly-box-smaller-font1");
-  outputField.classList.remove("readonly-box-smaller-font2");
-  outputField.classList.remove("readonly-box-smaller-font3");
-  outputField.classList.remove("readonly-box-smaller-font4");
-}
-
 /* UPDATE THE UI BASED ON THE SELECTED TYPE (PASSWORD/PASSPHRASE) */
 /* -------------------------------------------------------------------------- */
 function updateUIBasedOnType() {
@@ -74,10 +66,8 @@ typeRadios.forEach((radio) => {
     updateUIBasedOnType();
     if (radio.value === "password") {
       generatePassword();
-      removeSmallerFontClasses();
     } else {
       generatePassphrase();
-      removeSmallerFontClasses();
     }
   });
 });
@@ -159,27 +149,8 @@ function generatePassword() {
         // Display an error message
         outputField.value = "Error generating password, please try again...";
       } else {
-        // passwordOutput.value = data.generated_string;
         outputField.value = data.generated_string; // Update the single output field
-      }
-      // Check password length and apply the class if needed
-      if (
-        data.generated_string.length > 38 &&
-        data.generated_string.length <= 45
-      ) {
-        removeSmallerFontClasses();
-        outputField.classList.add("readonly-box-smaller-font1");
-      } else if (
-        data.generated_string.length > 45 &&
-        data.generated_string.length <= 54
-      ) {
-        removeSmallerFontClasses();
-        outputField.classList.add("readonly-box-smaller-font2");
-      } else if (data.generated_string.length > 54) {
-        removeSmallerFontClasses();
-        outputField.classList.add("readonly-box-smaller-font3");
-      } else {
-        removeSmallerFontClasses();
+        resizeOutputFieldText()
       }
     })
     .catch((error) => {
@@ -232,59 +203,7 @@ function generatePassphrase() {
         outputField.value = "Error generating passphrase, please try again...";
       } else {
         outputField.value = data.generated_string; // Update the single output field
-
-        // Check if data.generated_string is valid and not empty
-        if (data.generated_string && data.generated_string.trim() !== "") {
-          // Handle passphrase length and line breaks
-          if (data.generated_string.length > 70) {
-            const splitIndex = data.generated_string.lastIndexOf(" ", 70);
-            const firstLine = data.generated_string.substring(0, splitIndex);
-            const secondLine = data.generated_string.substring(splitIndex + 1);
-
-            // Create new text nodes for each line and a <br> element
-            const firstLineNode = document.createTextNode(firstLine);
-            const brNode = document.createElement('br');
-            const secondLineNode = document.createTextNode(secondLine);
-
-            // Clear existing content and append the new nodes
-            outputField.innerHTML = ''; // Clear existing content
-            outputField.appendChild(firstLineNode);
-            outputField.appendChild(brNode);
-            outputField.appendChild(secondLineNode);
-            
-          } else {
-            outputField.value = data.generated_string;
-          }
-
-          // Adjust font size and add line break based on length
-          if (
-            data.generated_string.length > 30 &&
-            data.generated_string.length <= 40
-          ) {
-            removeSmallerFontClasses();
-            outputField.classList.add("readonly-box-smaller-font1");
-          } else if (
-            data.generated_string.length > 40 &&
-            data.generated_string.length <= 50
-          ) {
-            removeSmallerFontClasses();
-            outputField.classList.add("readonly-box-smaller-font2");
-          } else if (
-            data.generated_string.length > 50 &&
-            data.generated_string.length <= 60
-          ) {
-            removeSmallerFontClasses();
-            outputField.classList.add("readonly-box-smaller-font3");
-          } else if (
-            data.generated_string.length > 70
-          ) {
-            removeSmallerFontClasses();
-            outputField.classList.add("readonly-box-smaller-font4");
-          }
-        } else {
-          outputField.value =
-            "An unexpected error occurred, please try again...";
-        }
+        resizeOutputFieldText()
       }
     })
     .catch((error) => {
@@ -358,3 +277,24 @@ function preventDefaultForOneSecond(event) {
 // TODO: Implement the password tester functionality
 // TODO: Make an "expanding animation" for the password-generator-readonly-box when a new password is generated
 // TODO: Make the password-generator-readonly-box multi-line for long passwords/passphrases
+
+// Resize the text in the output field to fit the box
+function resizeOutputFieldText() {
+  const outputFieldBoxWidth = outputField.clientWidth;
+  const outputFieldBoxHeight = outputField.clientHeight;
+  let fontSize = 32; // Starting font size
+  outputField.style.fontSize = fontSize + 'px';
+
+  // Decrease font size until the text fits within the box's width and height
+  while ((outputField.scrollWidth > outputFieldBoxWidth || outputField.scrollHeight > outputFieldBoxHeight) && fontSize > 16) {
+      fontSize--;
+      outputField.style.fontSize = fontSize + 'px';
+  }
+}
+
+// Use ResizeObserver to watch for size changes of the container
+const resizeObserver = new ResizeObserver(resizeOutputFieldText);
+resizeObserver.observe(document.getElementById('generated-password-passphrase-box'));
+
+// Resize text when the page loads
+window.onload = resizeOutputFieldText;
