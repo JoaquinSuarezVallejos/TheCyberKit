@@ -273,5 +273,4 @@ function preventDefaultForOneSecond(event) {
 }
 /* -------------------------------------------------------------------------- */
 
-// TODO: Implement the password tester functionality
 // TODO: Make an "expanding animation" for the password-generator-readonly-box when a new password is generated
