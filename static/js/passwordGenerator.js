@@ -147,7 +147,7 @@ function generatePassword() {
       if (data.error) {
         console.error("Error generating password: ", data.error);
         // Display an error message
-        outputField.value = "---";
+        outputField.innerHTML = "---";
       } else {
         // outputField.value = data.generated_string;
 
@@ -162,7 +162,7 @@ function generatePassword() {
     })
     .catch((error) => {
       console.error("Error fetching password: ", error); // Display an error message
-      outputField.value = "---";
+      outputField.innerHTML = "---";
     });
 }
 
@@ -207,15 +207,23 @@ function generatePassphrase() {
       if (data.error) {
         console.error("Error generating passphrase: ", data.error);
         // Display an error message to the user
-        outputField.value = "---";
+        outputField.innerHTML = "---";
       } else {
-        outputField.value = data.generated_string; // Update the single output field
+        // outputField.innerHTML = data.generated_string;
+
+        // Apply colors to the passphrase
+        const formattedPassphrase = updatePassphraseColors(
+          data.generated_string,
+          wordSeparator,
+          addNumbers
+        );
+        outputField.innerHTML = formattedPassphrase; // Update using innerHTML
       }
     })
     .catch((error) => {
       console.error("Error fetching passphrase: ", error);
       // Display an error message to the user
-      outputField.value = "---";
+      outputField.innerHTML = "---";
     });
 }
 
@@ -237,7 +245,7 @@ wordSeparatorInput.addEventListener("input", () => {
 /* COPY TO CLIPBOARD */
 /* -------------------------------------------------------------------------- */
 copyToClipboardBtn.addEventListener("click", () => {
-  const passwordToCopy = outputField.value;
+  const passwordToCopy = outputField.textContent;
 
   navigator.clipboard
     .writeText(passwordToCopy) // Copy the password to the clipboard
@@ -280,8 +288,6 @@ function preventDefaultForOneSecond(event) {
 }
 /* -------------------------------------------------------------------------- */
 
-// TODO: Make the passphrase generator work again! (innerHTML vs value issue)
-
 /* PASSWORD COLORING */
 /* -------------------------------------------------------------------------- */
 function updatePasswordColors(password, includeNumbers, includeSymbols) {
@@ -294,13 +300,37 @@ function updatePasswordColors(password, includeNumbers, includeSymbols) {
       formattedPassword += `<span class="blue-numbers">${char}</span>`;
     } else if (/[^a-zA-Z0-9]/.test(char) && includeSymbols) {
       // Check if it's a symbol and "includeSymbols" is true
-      formattedPassword += `<span class="red-symbols">${char}</span>`;
+      formattedPassword += `<span class="orange-symbols">${char}</span>`;
     } else {
       // Leave it unchanged for letters
       formattedPassword += char;
     }
   }
   return formattedPassword;
+}
+/* -------------------------------------------------------------------------- */
+
+/* PASSPHRASE COLORING */
+/* -------------------------------------------------------------------------- */
+function updatePassphraseColors(passphrase, separator, includeNumbers) {
+  let formattedPassphrase = "";
+  const words = passphrase.split(separator); // Split by the word separator
+
+  words.forEach((word, index) => {
+    // Check if the word contains numbers and apply color if needed
+    const coloredWord = word.replace(/\d+/g, (number) => {
+      return `<span class="blue-numbers">${number}</span>`;
+    });
+
+    // Append the word and the separator
+    formattedPassphrase += coloredWord;
+
+    if (index < words.length - 1) {
+      formattedPassphrase += `<span class="orange-symbols">${separator}</span>`;
+    }
+  });
+
+  return formattedPassphrase;
 }
 /* -------------------------------------------------------------------------- */
 
