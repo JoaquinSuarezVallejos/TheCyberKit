@@ -46,21 +46,30 @@ def generate_password(
     use_numbers,
     use_symbols,
 ):
-    # Building the character pool
-    char_pool = ""
+    # Building the character pools
+    char_types = []
     if use_uppercase:
-        char_pool += string.ascii_uppercase
+        char_types.append(string.ascii_uppercase)
     if use_lowercase:
-        char_pool += string.ascii_lowercase
+        char_types.append(string.ascii_lowercase)
     if use_numbers:
-        char_pool += string.digits
+        char_types.append(string.digits)
     if use_symbols:
-        char_pool += string.punctuation
+        char_types.append(string.punctuation)
 
-    # Password generation
-    password = "".join(random.choice(char_pool) for i in range(length))
+    # Ensure there is at least one character from each selected type
+    password = [random.choice(char_type) for char_type in char_types]
 
-    return password
+    # Generate the remaining characters randomly from the selected types
+    while len(password) < length:
+        # Randomly choose one of the selected character types, then pick a random character from that type
+        char_type = random.choice(char_types)
+        password.append(random.choice(char_type))
+
+    # Shuffle to avoid having the characters from selected types appear in a predictable order
+    random.shuffle(password)
+
+    return ''.join(password)  # Return password as a string
 
 
 def handle_password_generation_request(request_data):
