@@ -149,7 +149,15 @@ function generatePassword() {
         // Display an error message
         outputField.value = "---";
       } else {
-        outputField.value = data.generated_string; // Update the single output field
+        // outputField.value = data.generated_string;
+
+        // Apply color formatting to the password
+        const formattedPassword = updatePasswordColors(
+          data.generated_string,
+          includeNumbers,
+          includeSymbols
+        );
+        outputField.innerHTML = formattedPassword; // Update using innerHTML
       }
     })
     .catch((error) => {
@@ -269,6 +277,30 @@ copyToClipboardBtn.addEventListener("click", () => {
 function preventDefaultForOneSecond(event) {
   event.preventDefault(); // Prevent the default click behavior
   event.stopImmediatePropagation(); // Stop the event from bubbling up
+}
+/* -------------------------------------------------------------------------- */
+
+// TODO: Make the passphrase generator work again! (innerHTML vs value issue)
+
+/* PASSWORD COLORING */
+/* -------------------------------------------------------------------------- */
+function updatePasswordColors(password, includeNumbers, includeSymbols) {
+  let formattedPassword = "";
+
+  // Loop through each character in the password
+  for (let char of password) {
+    if (/\d/.test(char) && includeNumbers) {
+      // Check if it's a number and "includeNumbers" is true
+      formattedPassword += `<span class="blue-numbers">${char}</span>`;
+    } else if (/[^a-zA-Z0-9]/.test(char) && includeSymbols) {
+      // Check if it's a symbol and "includeSymbols" is true
+      formattedPassword += `<span class="red-symbols">${char}</span>`;
+    } else {
+      // Leave it unchanged for letters
+      formattedPassword += char;
+    }
+  }
+  return formattedPassword;
 }
 /* -------------------------------------------------------------------------- */
 

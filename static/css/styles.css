@@ -293,6 +293,12 @@ li a:hover{
   margin-bottom: 0px;
   margin-top: 4.5px;
 }
+.blue-numbers{
+  color: #0172AD; /* Color Azure 550 */
+}
+.red-symbols{
+  color: #F06048; /* Color Red 400 */
+}
 /* -------------------------------------------------------------------------- */
 
 /* PASSPHRASE GENERATOR */
