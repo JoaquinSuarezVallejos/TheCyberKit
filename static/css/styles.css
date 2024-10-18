@@ -325,14 +325,15 @@ li a:hover{
   margin-bottom: 15px;
 }
 #word-separator-input-box{
-  width: 55px;
-  height: 50px;
+  width: 50px;
+  height: 40px;
   text-align: center;
   font-size: 16px;
   font-weight: 600;
   margin-left: 12px;
   margin-top: 0px;
   margin-bottom: 0px;
+  padding: 0px;
 }
 /* -------------------------------------------------------------------------- */
 

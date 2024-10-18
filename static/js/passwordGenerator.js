@@ -85,7 +85,7 @@ generatePasswordBtn.addEventListener("click", () => {
 });
 /* -------------------------------------------------------------------------- */
 
-/* ENABLE AND DISABLE "REGENERATE PASSWORD" BUTTON IF NO CHECKBOXES ARE CHECKED */
+/* ENABLE/DISABLE "REGENERATE PASSWORD" BUTTON */
 /* -------------------------------------------------------------------------- */
 // Add a click event listener to each checkbox
 importantCheckboxes.forEach((checkbox) => {
@@ -147,14 +147,14 @@ function generatePassword() {
       if (data.error) {
         console.error("Error generating password: ", data.error);
         // Display an error message
-        outputField.value = "Error generating password, please try again...";
+        outputField.value = "---";
       } else {
         outputField.value = data.generated_string; // Update the single output field
       }
     })
     .catch((error) => {
       console.error("Error fetching password: ", error); // Display an error message
-      outputField.value = "Error generating password, please try again...";
+      outputField.value = "---";
     });
 }
 
@@ -199,16 +199,15 @@ function generatePassphrase() {
       if (data.error) {
         console.error("Error generating passphrase: ", data.error);
         // Display an error message to the user
-        outputField.value = "Error generating passphrase, please try again...";
+        outputField.value = "---";
       } else {
         outputField.value = data.generated_string; // Update the single output field
-        // autoResizeTextarea(outputField); 
       }
     })
     .catch((error) => {
       console.error("Error fetching passphrase: ", error);
       // Display an error message to the user
-      outputField.value = "Error generating passphrase, please try again...";
+      outputField.value = "---";
     });
 }
 

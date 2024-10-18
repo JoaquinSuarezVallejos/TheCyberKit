@@ -2,10 +2,6 @@
 # Case types used: snake_case (for functions and variables)
 # and SCREAMING_SNAKE_CASE (for constants)
 
-# TODO: Put colors to the password/passphrase characters when the user clicks "include" options or the word separator
-
-# TODO: Expand the word separator input box's width (characters to test: %, @, w, m, W, M, Q, O).
-
 # TODO: Implement the password tester functionality
 
 
