@@ -310,6 +310,9 @@ function updatePasswordColors(password, includeNumbers, includeSymbols) {
 }
 /* -------------------------------------------------------------------------- */
 
+
+// TODO: Fix word-separator colors when the input is a letter (a, b, c, etc)
+
 /* PASSPHRASE COLORING */
 /* -------------------------------------------------------------------------- */
 function updatePassphraseColors(passphrase, separator, includeNumbers) {
