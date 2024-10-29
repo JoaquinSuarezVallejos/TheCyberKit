@@ -5,6 +5,9 @@ from cryptography.fernet import Fernet
 import os
 import hashlib
 
+# The text encryptor/decryptor uses symmetric encryption methods (the same key is used for both encryption and decryption)
+# Algorithms used: Fernet, Blowfish and AES.
+
 # Function to hash the user-provided key for appropriate length
 def format_key(key, method):
     if method == 'Fernet':
