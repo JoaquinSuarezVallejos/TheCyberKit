@@ -212,12 +212,8 @@ function generatePassphrase() {
         // outputField.innerHTML = data.generated_string;
 
         // Apply colors to the passphrase
-        const formattedPassphrase = updatePassphraseColors(
-          data.generated_string,
-          wordSeparator,
-          addNumbers
-        );
-        outputField.innerHTML = formattedPassphrase; // Update using innerHTML
+        const formattedPassphrase = updatePassphraseColors(data.generated_string, wordSeparator);
+        outputField.innerHTML = formattedPassphrase;        
       }
     })
     .catch((error) => {
@@ -310,26 +306,45 @@ function updatePasswordColors(password, includeNumbers, includeSymbols) {
 }
 /* -------------------------------------------------------------------------- */
 
-
-// TODO: Fix word-separator colors when the input is a letter (a, b, c, etc)
-
 /* PASSPHRASE COLORING */
 /* -------------------------------------------------------------------------- */
-function updatePassphraseColors(passphrase, separator, includeNumbers) {
+function updatePassphraseColors(passphrase, separator) {
   let formattedPassphrase = "";
-  const words = passphrase.split(separator); // Split by the word separator
+  
+  // Split the passphrase into words based on the separator
+  const words = passphrase.split(separator);
 
   words.forEach((word, index) => {
-    // Check if the word contains numbers and apply color if needed
-    const coloredWord = word.replace(/\d+/g, (number) => {
-      return `<span class="blue-numbers">${number}</span>`;
-    });
+    let formattedWord = "";
 
-    // Append the word and the separator
-    formattedPassphrase += coloredWord;
+    // Loop through each character in the word
+    for (let char of word) {
+      if (/\d/.test(char)) {
+        // Color numbers in blue
+        formattedWord += `<span class="blue-numbers">${char}</span>`;
+      } else if (/[^a-zA-Z0-9]/.test(char)) {
+        // Color symbols in orange
+        formattedWord += `<span class="orange-symbols">${char}</span>`;
+      } else {
+        // Leave letters unchanged
+        formattedWord += char;
+      }
+    }
 
+    // Append the formatted word
+    formattedPassphrase += formattedWord;
+
+    // Add the separator with the appropriate styling
     if (index < words.length - 1) {
-      formattedPassphrase += `<span class="orange-symbols">${separator}</span>`;
+      if (/^[a-zA-Z]$/.test(separator)) {
+        // If separator is a letter, style it in grey
+        formattedPassphrase += `<span class="grey-letters">${separator}</span>`;
+      } else if (/\d/.test(separator)) {
+        formattedPassphrase += `<span class="blue-numbers">${separator}</span>`;
+      } else {
+        // If separator is not a letter, style it in orange
+        formattedPassphrase += `<span class="orange-symbols">${separator}</span>`;
+      }
     }
   });
 
