@@ -360,5 +360,3 @@ function updatePassphraseColors(passphrase, separator) {
   return formattedPassphrase;
 }
 /* -------------------------------------------------------------------------- */
-
-// TODO: Make an "expanding animation" for the password-generator-readonly-box when a new password is generated
