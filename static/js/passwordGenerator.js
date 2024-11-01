@@ -149,8 +149,6 @@ function generatePassword() {
         // Display an error message
         outputField.innerHTML = "---";
       } else {
-        // outputField.value = data.generated_string;
-
         // Apply color formatting to the password
         const formattedPassword = updatePasswordColors(
           data.generated_string,
@@ -158,6 +156,11 @@ function generatePassword() {
           includeSymbols
         );
         outputField.innerHTML = formattedPassword; // Update using innerHTML
+
+        // Trigger the expand animation
+        outputField.classList.remove("expand");
+        void outputField.offsetWidth; // Trigger reflow to restart the animation
+        outputField.classList.add("expand");
       }
     })
     .catch((error) => {
@@ -209,11 +212,17 @@ function generatePassphrase() {
         // Display an error message to the user
         outputField.innerHTML = "---";
       } else {
-        // outputField.innerHTML = data.generated_string;
-
         // Apply colors to the passphrase
-        const formattedPassphrase = updatePassphraseColors(data.generated_string, wordSeparator);
-        outputField.innerHTML = formattedPassphrase;        
+        const formattedPassphrase = updatePassphraseColors(
+          data.generated_string,
+          wordSeparator
+        );
+        outputField.innerHTML = formattedPassphrase;
+
+        // Trigger the expand animation
+        outputField.classList.remove("expand");
+        void outputField.offsetWidth; // Trigger reflow to restart the animation
+        outputField.classList.add("expand");
       }
     })
     .catch((error) => {
@@ -310,7 +319,7 @@ function updatePasswordColors(password, includeNumbers, includeSymbols) {
 /* -------------------------------------------------------------------------- */
 function updatePassphraseColors(passphrase, separator) {
   let formattedPassphrase = "";
-  
+
   // Split the passphrase into words based on the separator
   const words = passphrase.split(separator);
 

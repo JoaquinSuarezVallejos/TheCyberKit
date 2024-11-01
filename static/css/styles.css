@@ -213,6 +213,23 @@ li a:hover{
   padding: 20px 40px;
   font-size: 28px;
 }
+.password-generator-readonly-box.expand {
+  animation: smoothExpand 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes smoothExpand {
+  0% {
+    transform: scale(1);
+    opacity: 0.95; /* Slightly fade in to smooth the start */
+  }
+  50% {
+    transform: scale(1.02); /* Reduced scale for subtler effect */
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .password-generator-btns{
   display: flex;
   margin: 0px auto;
