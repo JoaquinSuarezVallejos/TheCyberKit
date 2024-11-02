@@ -68,9 +68,7 @@ def generate_password_or_passphrase():
         if generation_type == "password":
             generated_string = handle_password_generation_request(request_data)
         elif generation_type == "passphrase":
-            generated_string = handle_passphrase_generation_request(
-                request_data
-            )
+            generated_string = handle_passphrase_generation_request(request_data)
         else:
             return jsonify({"error": "Invalid generation type"}), 400
 
@@ -85,6 +83,33 @@ def generate_password_or_passphrase():
     except Exception as e:  # Catch a broader range of exceptions
         app.logger.error(f"Error generating password/passphrase: {e}")
         return jsonify({"error": "An error occurred during generation"}), 500
+
+
+@app.route("/evaluate_password_generator", methods=["POST"])
+def evaluate_password_for_generator():
+    try:
+        # Call evaluate_password() to get the result from password_tester.py
+        response = evaluate_password()
+        data = response.get_json()
+
+        # Get the scenario parameter from the request (online or offline)
+        scenario = request.json.get("scenario", "online")
+
+        # Depending on the scenario, choose the appropriate crack time to display
+        if scenario == "offline":
+            data["crack_time"] = data["crack_time_offline"]
+        else:
+            data["crack_time"] = data["crack_time_online_throttled"]
+
+        # Remove the other crack time values from the response to avoid confusion
+        del data["crack_time_offline"]
+        del data["crack_time_online_throttled"]
+
+        # Return the modified JSON response
+        return jsonify(data)
+
+    except KeyError:
+        return jsonify({"error": "Missing password data"}), 400
 
 
 if __name__ == "__main__":

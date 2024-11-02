@@ -5,6 +5,8 @@ from cryptography.fernet import Fernet
 import os
 import hashlib
 
+# TODO: Implement the encryptor_decryptor back-end to the front-end
+
 # The text encryptor/decryptor uses symmetric encryption methods (the same key is used for both encryption and decryption)
 # Algorithms used: Fernet, Blowfish and AES.
 

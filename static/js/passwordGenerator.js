@@ -156,11 +156,9 @@ function generatePassword() {
           includeSymbols
         );
         outputField.innerHTML = formattedPassword; // Update using innerHTML
+        evaluatePasswordStrength(data.generated_string); // Call the evaluation function with the generated password
 
-        // Trigger the expand animation
-        outputField.classList.remove("expand");
-        void outputField.offsetWidth; // Trigger reflow to restart the animation
-        outputField.classList.add("expand");
+        expandAnimationOutputField(); // Trigger the expand animation
       }
     })
     .catch((error) => {
@@ -218,11 +216,9 @@ function generatePassphrase() {
           wordSeparator
         );
         outputField.innerHTML = formattedPassphrase;
+        evaluatePasswordStrength(data.generated_string); // Call the evaluation function with the generated passphrase
 
-        // Trigger the expand animation
-        outputField.classList.remove("expand");
-        void outputField.offsetWidth; // Trigger reflow to restart the animation
-        outputField.classList.add("expand");
+        expandAnimationOutputField(); // Trigger the expand animation
       }
     })
     .catch((error) => {
@@ -293,6 +289,80 @@ function preventDefaultForOneSecond(event) {
 }
 /* -------------------------------------------------------------------------- */
 
+/* EVALUATE PASSWORD/PASSPHRASE STRENGTH (PASSWORD TESTER) */
+/* -------------------------------------------------------------------------- */
+function evaluatePasswordStrength(password) {
+  // Get the selected scenario (online or offline)
+  const scenario = document.querySelector(
+    'input[name="scenario-online-offline"]:checked'
+  ).value;
+
+  fetch("/evaluate_password_generator", {
+    // Send a POST request to the Flask backend
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ password: password, scenario: scenario }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Get the elements by their IDs
+      const scoreResult = document.getElementById(
+        "password-generator-score-result"
+      );
+      const timeToCrack = document.getElementById(
+        "password-generator-crack-time"
+      );
+
+      // Set the text content for score and crack time
+      scoreResult.textContent = `${data.score}`;
+      timeToCrack.textContent = `${data.crack_time}`;
+
+      // Remove any existing score classes from both elements
+      for (let i = 1; i <= 5; i++) {
+        // Adjusted to loop from 1 to 5 based on score range
+        scoreResult.classList.remove(`score-${i}`);
+        timeToCrack.classList.remove(`score-${i}`);
+      }
+
+      // Extract the numeric score
+      const match = data.score.match(/^\d+/);
+      const numericScore = match ? parseInt(match[0]) : -1;
+
+      // Add the appropriate score class to both elements
+      if (numericScore >= 1 && numericScore <= 5) {
+        // Adjusted to reflect score range 1-5
+        scoreResult.classList.add(`score-${numericScore}`);
+        timeToCrack.classList.add(`score-${numericScore}`);
+      } else {
+        console.error("Invalid score received from backend:", data.score);
+      }
+    })
+    .catch((error) => {
+      console.error("Error evaluating password strength:", error);
+    });
+}
+
+/* UPDATE PASSWORD/PASSPHRASE STRENGTH WHEN CLICKING ANY OF THE RADIO BTNS (ONLINE OR OFFLINE) */
+const scenarioRadioButtons = document.querySelectorAll(
+  'input[name="scenario-online-offline"]'
+); // Get references to the radio buttons
+
+// Attach an event listener to each radio button
+scenarioRadioButtons.forEach((radioButton) => {
+  radioButton.addEventListener("change", () => {
+    // Get the current password displayed in the password generator
+    const currentPassword = document.querySelector(
+      ".password-generator-readonly-box"
+    ).textContent;
+
+    // Call the evaluatePasswordStrength function with the current password
+    evaluatePasswordStrength(currentPassword);
+  });
+});
+/* -------------------------------------------------------------------------- */
+
 /* PASSWORD COLORING */
 /* -------------------------------------------------------------------------- */
 function updatePasswordColors(password, includeNumbers, includeSymbols) {
@@ -358,5 +428,14 @@ function updatePassphraseColors(passphrase, separator) {
   });
 
   return formattedPassphrase;
+}
+/* -------------------------------------------------------------------------- */
+
+/* EXPAND ANIMATION WHEN A PASSWORD/PASSPHRASE IS GENERATED */
+/* -------------------------------------------------------------------------- */
+function expandAnimationOutputField() {
+  outputField.classList.remove("expand");
+  void outputField.offsetWidth; // Trigger reflow to restart the animation
+  outputField.classList.add("expand");
 }
 /* -------------------------------------------------------------------------- */

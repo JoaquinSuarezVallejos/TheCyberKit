@@ -322,6 +322,15 @@ li a:hover{
 .grey-letters{
   color: #C2C7D0;
 }
+#password-generator-score-result{
+  font-size: 22px;
+  font-weight: 500;
+}
+#password-generator-crack-time{
+  font-size: 22px;
+  font-weight: 500;
+}
+
 /* -------------------------------------------------------------------------- */
 
 /* PASSPHRASE GENERATOR */
@@ -408,6 +417,18 @@ li a:hover{
 #password-crack-time.score-3 { color: #F2DF0D; } /* Okay - Color Yellow 100 */
 #password-crack-time.score-4 { color: #82AB00; } /* Good - Lime 350 */
 #password-crack-time.score-5 { color: #018CD4; } /* Strong - Azure 450 */
+
+#password-generator-score-result.score-1 { color: #F06048; } /* Very Unsafe - Color Red 400 */
+#password-generator-score-result.score-2 { color: #FF9500; } /* Weak - Color Pumpkin 300 */
+#password-generator-score-result.score-3 { color: #F2DF0D; } /* Okay - Color Yellow 100 */
+#password-generator-score-result.score-4 { color: #82AB00; } /* Good - Lime 350 */
+#password-generator-score-result.score-5 { color: #018CD4; } /* Strong - Azure 450 */
+
+#password-generator-crack-time.score-1 { color: #F06048; } /* Very Unsafe - Color Red 400 */
+#password-generator-crack-time.score-2 { color: #FF9500; } /* Weak - Color Pumpkin 300 */
+#password-generator-crack-time.score-3 { color: #F2DF0D; } /* Okay - Color Yellow 100 */
+#password-generator-crack-time.score-4 { color: #82AB00; } /* Good - Lime 350 */
+#password-generator-crack-time.score-5 { color: #018CD4; } /* Strong - Azure 450 */
 /* -------------------------------------------------------------------------- */
 
 /* TEXT ENCRYPTOR/DECRYPTOR */
