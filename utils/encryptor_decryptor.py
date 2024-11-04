@@ -88,7 +88,7 @@ def main():
 
             user_key = ""
             while not user_key:
-                user_key = input("Enter your custom key: ").strip()
+                user_key = input("Encrypt with a custom secret key: ").strip()
                 if not user_key:
                     print("Key cannot be empty. Please provide a key.")
 
@@ -113,7 +113,7 @@ def main():
             
             user_key = ""
             while not user_key:
-                user_key = input("Enter your custom key: ").strip()
+                user_key = input("Decryption requires a custom secret key: ").strip()
                 if not user_key:
                     print("Key cannot be empty. Please provide a key.")
 

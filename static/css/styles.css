@@ -461,7 +461,8 @@ li a:hover{
 .encrypt-decrypt-submit-btn{
   display: flex;
   align-items: center;
-  margin-left: 2px;
+  margin-left: 1.5px;
+  margin-top: 10px;
   height: 50px;
   font-weight: 500;
 }
@@ -471,12 +472,21 @@ li a:hover{
   margin-left: 4px;
   font-size: 21px;
 }
+.encryption-decryption-input-label2{
+  font-family: 'Montserrat', sans-serif;
+  color: #E2E2E2;
+  margin-left: 4px;
+  font-size: 19px;
+}
 .encryption-decryption-output-label{
   font-family: 'Montserrat', sans-serif;
   color: #E2E2E2;
   margin-left: 4px;
   margin-top: 60px;
   font-size: 21px;
+}
+.custom-key-input-box{
+  background-color: #23262C;
 }
 /* -------------------------------------------------------------------------- */
 
