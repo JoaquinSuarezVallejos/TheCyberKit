@@ -2,8 +2,6 @@
 # Case types used: snake_case (for functions and variables)
 # and SCREAMING_SNAKE_CASE (for constants)
 
-# TODO: Change the "english_words" library for the "passphrase_generator_words" .txt file
-
 # Importing the necessary libraries and modules
 import random
 import string
