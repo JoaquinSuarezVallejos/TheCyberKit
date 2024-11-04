@@ -3,7 +3,6 @@ import sys
 import os
 import base64
 import hashlib
-from cryptography.fernet import Fernet
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.encryptor_decryptor import (
     encrypt_fernet,
