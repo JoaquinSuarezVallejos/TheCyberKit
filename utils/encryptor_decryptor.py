@@ -2,7 +2,6 @@ from Crypto.Cipher import Blowfish, AES
 from Crypto.Util.Padding import pad, unpad
 import base64
 from cryptography.fernet import Fernet
-import os
 import hashlib
 
 # TODO: Implement the encryptor_decryptor back-end to the front-end
