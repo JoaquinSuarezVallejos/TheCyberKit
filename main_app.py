@@ -34,11 +34,20 @@ from flask import Flask, render_template, jsonify, request
 
 # Flask: web framework for python, render_template: render HTML templates,
 # jsonify: return JSON responses, request: handle HTTP requests
+
 from utils.password_tester import evaluate_password
 from utils.password_generator import (
     handle_password_generation_request,
     handle_passphrase_generation_request,
 )
+
+# Flow between the front end and back end:
+# 1. Front End: Sends a JSON request using POST.
+# 2. Back End: Receives and processes the request, then responds with JSON.
+# 3. jsonify: Used to format the server’s response as JSON,
+# making it compatible with the client’s expectations.
+# 4. Front End: Receives and uses the JSON response.
+
 
 app = Flask(
     __name__, static_folder="static", static_url_path="/static"
