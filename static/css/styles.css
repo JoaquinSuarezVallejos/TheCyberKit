@@ -1,3 +1,4 @@
+/* STYLES (CSS file) */
 /* Case types used: flatcase and kebab-case */
 
 /* PICO CSS */
@@ -14,6 +15,8 @@
   
   - #E2E2E2 (Grey 100) - Titanium White
   - #F1F1F1 (Grey 50) - Snowflake
+
+  - #E48500 (Pumpkin 350) - Fulvous
 */
 
 /* Fonts used: 
@@ -201,10 +204,32 @@ li a:hover{
 }
 .card .password-generator-readonly-box{
   background-color: #23262C;
+  width: 100%;
+  height: auto;
+  field-sizing: content;
+  resize: none;
   text-align: center;
   margin-bottom: 22px;
-  height: 100px;
-  font-size: 34px;
+  padding: 20px 40px;
+  font-size: 28px;
+  text-decoration: none;
+}
+.password-generator-readonly-box.expand {
+  animation: smoothExpand 0.25s ease-in-out;
+}
+
+@keyframes smoothExpand {
+  0% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.02); /* Reduced scale for subtler effect */
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 .password-generator-btns{
   display: flex;
@@ -242,6 +267,8 @@ li a:hover{
 .type-radio-btns{
   display: flex;
   gap: 24px;
+  margin-top: 6px;
+  margin-bottom: 18px;
 }
 .type-radio-btns input{
   font-size: 18px;
@@ -253,7 +280,7 @@ li a:hover{
   margin-bottom: 0px;
   margin-top: 4.5px;
 }
-.characters-option span{
+.characters-option .password-char-length{
   font-size: 24px;
   font-weight: 500;
 }
@@ -266,14 +293,85 @@ li a:hover{
   margin-right: 3px;
   font-size: 18px;
 }
-.include-checkboxes input{
-  margin-right: 3px;
-  font-size: 18px;
-}
 .include-checkboxes label{
   font-size: 20px;
   margin-bottom: 0px;
-  margin-top: 4.75px;
+  margin-top: 4px;
+}
+.scenario-checkboxes{
+  display: flex;
+  gap: 24px;
+  margin-top: 18px;
+}
+.scenario-checkboxes input{
+  font-size: 18px;
+  margin-right: 2px;
+}
+.scenario-checkboxes label{
+  font-size: 20px;
+  height: 25px;
+  margin-bottom: 0px;
+  margin-top: 4.5px;
+}
+.blue-numbers{
+  color: #0172AD;
+}
+.orange-symbols{
+  color: #E48500;
+}
+.grey-letters{
+  color: #C2C7D0;
+}
+#password-generator-score-result{
+  font-size: 22px;
+  font-weight: 500;
+}
+#password-generator-crack-time{
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* PASSPHRASE GENERATOR */
+/* -------------------------------------------------------------------------- */
+.password-generator-components .hidden {
+  display: none;
+}
+.passphrase-word-length{
+  font-size: 24px;
+  font-weight: 500;
+}
+.passphrase-include-checkboxes{
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+}
+.passphrase-include-checkboxes input{
+  margin-right: 3px;
+  font-size: 18px;
+}
+.passphrase-include-checkboxes label{
+  font-size: 20px;
+  margin-bottom: 0px;
+  margin-top: 4px;
+}
+.word-separator-label{
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+#word-separator-input-box{
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 12px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
 }
 /* -------------------------------------------------------------------------- */
 
@@ -319,6 +417,18 @@ li a:hover{
 #password-crack-time.score-3 { color: #F2DF0D; } /* Okay - Color Yellow 100 */
 #password-crack-time.score-4 { color: #82AB00; } /* Good - Lime 350 */
 #password-crack-time.score-5 { color: #018CD4; } /* Strong - Azure 450 */
+
+#password-generator-score-result.score-1 { color: #F06048; } /* Very Unsafe - Color Red 400 */
+#password-generator-score-result.score-2 { color: #FF9500; } /* Weak - Color Pumpkin 300 */
+#password-generator-score-result.score-3 { color: #F2DF0D; } /* Okay - Color Yellow 100 */
+#password-generator-score-result.score-4 { color: #82AB00; } /* Good - Lime 350 */
+#password-generator-score-result.score-5 { color: #018CD4; } /* Strong - Azure 450 */
+
+#password-generator-crack-time.score-1 { color: #F06048; } /* Very Unsafe - Color Red 400 */
+#password-generator-crack-time.score-2 { color: #FF9500; } /* Weak - Color Pumpkin 300 */
+#password-generator-crack-time.score-3 { color: #F2DF0D; } /* Okay - Color Yellow 100 */
+#password-generator-crack-time.score-4 { color: #82AB00; } /* Good - Lime 350 */
+#password-generator-crack-time.score-5 { color: #018CD4; } /* Strong - Azure 450 */
 /* -------------------------------------------------------------------------- */
 
 /* TEXT ENCRYPTOR/DECRYPTOR */
@@ -330,43 +440,53 @@ li a:hover{
   font-size: 24px;
   text-decoration: underline;
 }
-.encryption-textarea{
+.encryption-decryption-radio-btns{
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.encryption-decryption-radio-btn-label{
+  font-weight: 600;
+  font-size: 22px;
+}
+.encryption-decryption-textarea{
   background-color: #23262C;
   border-radius: 8px;
   min-height: 150px;
   max-height: 300px;
   resize: none;
-  field-sizing: content; /* TODO: Check if compatible with all browsers (not compatible with Firefox) */
+  field-sizing: content;
 }
-.encryption-submit-btn{
+.encrypt-decrypt-submit-btn{
   display: flex;
   align-items: center;
-  margin-left: 2px;
+  margin-left: 1.5px;
+  margin-top: 10px;
   height: 50px;
   font-weight: 500;
 }
-.decryption-title{
+.encryption-decryption-input-label{
+  font-family: 'Montserrat', sans-serif;
+  color: #E2E2E2;
+  margin-left: 4px;
+  font-size: 21px;
+}
+.encryption-decryption-input-label2{
+  font-family: 'Montserrat', sans-serif;
+  color: #E2E2E2;
+  margin-left: 4px;
+  font-size: 19px;
+}
+.encryption-decryption-output-label{
   font-family: 'Montserrat', sans-serif;
   color: #E2E2E2;
   margin-left: 4px;
   margin-top: 60px;
-  font-size: 24px;
-  text-decoration: underline;
+  font-size: 21px;
 }
-.decryption-textarea{
+.custom-key-input-box{
   background-color: #23262C;
-  border-radius: 8px;
-  min-height: 150px;
-  max-height: 300px;
-  resize: none;
-  field-sizing: content; 
-}
-.decryption-submit-btn{
-  display: flex;
-  align-items: center;
-  margin-left: 2px;
-  height: 50px;
-  font-weight: 500;
 }
 /* -------------------------------------------------------------------------- */
 
