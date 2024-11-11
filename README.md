@@ -8,10 +8,7 @@
 
 **Project's Official Name:** TheCyberKit
 
-**Idea:** A cybersecurity-themed website with the following functionalities:
-+ **Secure password generator.** The user can also download a file (.txt / .json / .docx), with all the generated passwords.
-+ **Password tester / verifier.** Informs the user how strong the password is, and how long it would take to crack in a brute force attack.
-+ **Text encryptor and decryptor.** The user can choose between some encryption methods.
+**Description:** A cybersecurity-themed project with a secure password/passphrase generator, password tester, and text encryptor/decryptor.
 
 **Tools:**
 + Python
@@ -29,4 +26,5 @@
 + Regular expressions (regex)
 + Files
 + Exceptions
++ Unit tests
 + Git & GitHub
