@@ -54,8 +54,6 @@ passwordTesterInput.addEventListener('input', () => {
         if (numericScore >= 0 && numericScore <= 5) {
             scoreResult.classList.add(`score-${numericScore}`);
             timeToCrack.classList.add(`score-${numericScore}`); 
-        } else {
-            console.error("Invalid score received from backend:", data.score); 
         }
     })
     .catch(error => {
