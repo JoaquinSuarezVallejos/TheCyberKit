@@ -31,45 +31,45 @@ def encrypt_fernet(password, key):
 def decrypt_fernet(encrypted_password, key):
     fernet = Fernet(key) # Create a Fernet key
     decrypted = fernet.decrypt(encrypted_password.encode()).decode() # Decrypt the password
-    return decrypted # Return the decrypted password
+    return decrypted # Return the decrypted password as a string
 
 
 # Encrypt with Blowfish
 def encrypt_blowfish(password, key):
-    cipher = Blowfish.new(key, Blowfish.MODE_CBC)
-    padded_password = pad(password.encode(), Blowfish.block_size)
-    iv = cipher.iv
-    encrypted = cipher.encrypt(padded_password)
-    return base64.b64encode(iv + encrypted).decode()
+    cipher = Blowfish.new(key, Blowfish.MODE_CBC) # Create a Blowfish cipher
+    padded_password = pad(password.encode(), Blowfish.block_size) # Pad the password
+    iv = cipher.iv # Get the initialization vector
+    encrypted = cipher.encrypt(padded_password) # Encrypt the password
+    return base64.b64encode(iv + encrypted).decode() # Return the encrypted password as a string
 
 
 # Decrypt with Blowfish
 def decrypt_blowfish(encrypted_password, key):
-    encrypted_password = base64.b64decode(encrypted_password.encode())
-    iv = encrypted_password[: Blowfish.block_size]
-    cipher = Blowfish.new(key, Blowfish.MODE_CBC, iv)
-    decrypted_padded = cipher.decrypt(encrypted_password[Blowfish.block_size :])
-    decrypted = unpad(decrypted_padded, Blowfish.block_size).decode()
-    return decrypted
+    encrypted_password = base64.b64decode(encrypted_password.encode()) # Decode the encrypted password
+    iv = encrypted_password[: Blowfish.block_size] # Get the initialization vector
+    cipher = Blowfish.new(key, Blowfish.MODE_CBC, iv) # Create a Blowfish cipher
+    decrypted_padded = cipher.decrypt(encrypted_password[Blowfish.block_size :]) # Decrypt the password
+    decrypted = unpad(decrypted_padded, Blowfish.block_size).decode() # Unpad the decrypted password
+    return decrypted # Return the decrypted password as a string
 
 
 # Encrypt with AES
 def encrypt_aes(password, key):
-    cipher = AES.new(key, AES.MODE_CBC)
-    padded_password = pad(password.encode(), AES.block_size)
-    iv = cipher.iv
-    encrypted = cipher.encrypt(padded_password)
-    return base64.b64encode(iv + encrypted).decode()
+    cipher = AES.new(key, AES.MODE_CBC) # Create an AES cipher
+    padded_password = pad(password.encode(), AES.block_size) # Pad the password
+    iv = cipher.iv # Get the initialization vector
+    encrypted = cipher.encrypt(padded_password) # Encrypt the password
+    return base64.b64encode(iv + encrypted).decode() # Return the encrypted password as a string
 
 
 # Decrypt with AES
 def decrypt_aes(encrypted_password, key):
-    encrypted_password = base64.b64decode(encrypted_password.encode())
-    iv = encrypted_password[: AES.block_size]
-    cipher = AES.new(key, AES.MODE_CBC, iv)
-    decrypted_padded = cipher.decrypt(encrypted_password[AES.block_size :])
-    decrypted = unpad(decrypted_padded, AES.block_size).decode()
-    return decrypted
+    encrypted_password = base64.b64decode(encrypted_password.encode()) # Decode the encrypted password
+    iv = encrypted_password[: AES.block_size] # Get the initialization vector
+    cipher = AES.new(key, AES.MODE_CBC, iv) # Create an AES cipher
+    decrypted_padded = cipher.decrypt(encrypted_password[AES.block_size :]) # Decrypt the password
+    decrypted = unpad(decrypted_padded, AES.block_size).decode() # Unpad the decrypted password
+    return decrypted # Return the decrypted password as a string
 
 
 # Main logic
