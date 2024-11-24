@@ -34,7 +34,7 @@ from flask import Flask, render_template, jsonify, request
 # jsonify: return JSON responses, request: handle HTTP requests
 
 from utils.password_tester import evaluate_password
-from utils.password_generator import (
+from utils.password_passphrase_generator import (
     handle_password_generation_request,
     handle_passphrase_generation_request,
 )
