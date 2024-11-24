@@ -328,16 +328,17 @@
           <h4 class="encryption-decryption-input-label">Enter text to encrypt:</h4>
           <textarea
             class="encryption-decryption-textarea"
+            id="encryption-decryption-textarea-input"
             name="encryption-decryption-textarea-input"
             placeholder="[......]"
             aria-label="Encryption/Decryption text input"
           ></textarea>
           
-          <h4 class="encryption-decryption-input-label2">Encrypt with a custom secret key: </h4>
+          <h4 class="encryption-decryption-input-label2">Encrypt with a custom secret key:</h4>
           <input
             class="custom-key-input-box"
             type="text"
-            name="text"
+            name="custom-key-input-box"
             placeholder="{enter key}"
             aria-label="Custom key input box"
           />
@@ -347,6 +348,7 @@
           <h4 class="encryption-decryption-output-label">Encrypted text output:</h4>
           <textarea
             class="encryption-decryption-textarea"
+            id="encryption-decryption-textarea-output"
             name="encryption-decryption-textarea-output"
             placeholder="[......]"
             aria-label="Encrypted/Decrypted text output"
