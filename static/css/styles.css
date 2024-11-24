@@ -487,6 +487,10 @@ li a:hover{
 .custom-key-input-box{
   background-color: #23262C;
 }
+#encryption-method-select{
+  margin-top: 10px;
+  width: 38%;
+}
 /* -------------------------------------------------------------------------- */
 
 /* FOOTER */

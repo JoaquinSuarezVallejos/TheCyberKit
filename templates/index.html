@@ -324,7 +324,9 @@
             </label>
           </fieldset>
 
-          <h4 class="encryption-decryption-input-label">Enter text to encrypt:</h4>
+          <h4 class="encryption-decryption-input-label">
+            Enter text to encrypt:
+          </h4>
           <textarea
             class="encryption-decryption-textarea"
             id="encryption-decryption-textarea-input"
@@ -332,8 +334,10 @@
             placeholder="[......]"
             aria-label="Encryption/Decryption text input"
           ></textarea>
-          
-          <h4 class="encryption-decryption-input-label2">Encrypt with a custom secret key:</h4>
+
+          <h4 class="encryption-decryption-input-label2">
+            Encrypt with a custom secret key:
+          </h4>
           <input
             class="custom-key-input-box"
             type="text"
@@ -342,9 +346,18 @@
             aria-label="Custom key input box"
           />
 
+          <select id="encryption-method-select" name="select-encryption-method" aria-label="Select an encryption method" required>
+            <option selected disabled value="">Select an encryption method</option>
+            <option value="Fernet">Fernet</option>
+            <option value="AES">AES</option>
+            <option value="Blowfish">Blowfish</option>
+          </select>
+
           <button class="encrypt-decrypt-submit-btn">Encrypt</button>
 
-          <h4 class="encryption-decryption-output-label">Encrypted text output:</h4>
+          <h4 class="encryption-decryption-output-label">
+            Encrypted text output:
+          </h4>
           <textarea
             class="encryption-decryption-textarea"
             id="encryption-decryption-textarea-output"
