@@ -1,6 +1,4 @@
 # PASSWORD TESTER (Python file)
-# Case types used: snake_case (for functions and variables)
-# and SCREAMING_SNAKE_CASE (for constants)
 
 # Importing the necessary libraries and modules
 # Using the zxcvbn library: https://github.com/dwolfhub/zxcvbn-python

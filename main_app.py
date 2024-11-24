@@ -1,6 +1,4 @@
 # MAIN APP (Python file)
-# Case types used: snake_case (for functions and variables)
-# and SCREAMING_SNAKE_CASE (for constants)
 
 # Setup for Windows (use PowerShell or VS Code terminal):
 # 1. Clone the repository from GitHub: git clone

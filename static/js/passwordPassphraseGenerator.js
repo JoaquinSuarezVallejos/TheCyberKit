@@ -1,5 +1,4 @@
-// PASSWORD GENERATOR (JavaScript file)
-/* Case types used: camelCase (for functions and variables), and kebab-case (for CSS classes) */
+// PASSWORD/PASSPHRASE GENERATOR (JavaScript file)
 
 // Get references to password-related UI elements
 const outputField = document.querySelector(".password-generator-readonly-box"); // Single variable for the output field

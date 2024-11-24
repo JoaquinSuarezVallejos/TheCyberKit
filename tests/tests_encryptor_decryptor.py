@@ -1,3 +1,5 @@
+# UNIT TESTS FOR THE ENCRYPTOR/DECRYPTOR (Python file)
+
 import unittest
 import sys
 import os

@@ -1,6 +1,4 @@
-# PASSWORD GENERATOR (Python file)
-# Case types used: snake_case (for functions and variables)
-# and SCREAMING_SNAKE_CASE (for constants)
+# PASSWORD/PASSPHRASE GENERATOR (Python file)
 
 # Importing the necessary libraries and modules
 import random

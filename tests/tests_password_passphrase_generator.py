@@ -1,3 +1,5 @@
+# UNIT TESTS FOR THE PASSWORD/PASSPHRASE GENERATOR (Python file)
+
 import sys
 import os
 import unittest
@@ -5,7 +7,7 @@ import string
 
 # Add parent directory to the system path to import the password generator module
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from utils.password_generator import (
+from utils.password_passphrase_generator import (
     generate_passphrase,  # Import function for generating passphrases
     generate_password,  # Import function for generating passwords
     handle_password_generation_request,  # Import function to handle password requests
