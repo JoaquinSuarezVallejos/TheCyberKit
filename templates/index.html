@@ -84,9 +84,9 @@
       <section class="cards">
         <!-- Password Generator Section -->
         <article class="card" id="password-generator">
-          <h3 class="card-title">Password/Passphrase Generator</h3>
+          <h3 class="card-title">Password Generator</h3>
           <p class="card-description">
-            Create strong, unique passwords effortlessly.
+            Create strong, unique passwords and passphrases effortlessly.
           </p>
           <div class="password-generator-components">
             <div class="password-generator-score-and-crack-time">
@@ -302,7 +302,7 @@
 
         <!-- Text Encryptor / Decryptor Section -->
         <article class="card last-card" id="encryptor-decryptor">
-          <h3 class="card-title">Text Encryptor/Decryptor</h3>
+          <h3 class="card-title">Encryptor/Decryptor</h3>
           <p class="card-description">Securely encrypt and decrypt any text.</p>
           <fieldset class="encryption-decryption-radio-btns">
             <label class="encryption-decryption-radio-btn-label">
@@ -346,8 +346,11 @@
             aria-label="Custom key input box"
           />
 
-          <select id="encryption-method-select" name="select-encryption-method" aria-label="Select an encryption method" required>
-            <option selected disabled value="">Select an encryption method</option>
+          <h4 class="encryption-decryption-input-label3">
+            Select an encryption/decryption method:
+          </h4>
+          <select id="encryption-method-select" name="select-encryption-method" aria-label="Select an encryption/decryption method" required>
+            <option selected disabled value="">---</option>
             <option value="Fernet">Fernet</option>
             <option value="AES">AES</option>
             <option value="Blowfish">Blowfish</option>

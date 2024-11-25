@@ -55,11 +55,6 @@ function updateFieldsForEncryption() {
   inputLabel.textContent = "Enter text to encrypt:";
   inputLabel2.textContent = "Encrypt with a custom secret key:";
   outputLabel.textContent = "Encrypted text output:";
-
-  const placeholderOption =
-    encryptionMethodSelect.querySelector("option[disabled]");
-  placeholderOption.textContent = "Select an encryption method";
-
   resetTextFields();
 }
 
@@ -69,11 +64,6 @@ function updateFieldsForDecryption() {
   inputLabel.textContent = "Enter text to decrypt:";
   inputLabel2.textContent = "Decryption requires a custom secret key:";
   outputLabel.textContent = "Decrypted text output:";
-
-  const placeholderOption =
-    encryptionMethodSelect.querySelector("option[disabled]");
-  placeholderOption.textContent = "Select a decryption method";
-
   resetTextFields();
 }
 

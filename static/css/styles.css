@@ -469,20 +469,32 @@ li a:hover{
   font-family: 'Montserrat', sans-serif;
   color: #E2E2E2;
   margin-left: 4px;
-  font-size: 21px;
+  font-size: 19px;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 .encryption-decryption-input-label2{
   font-family: 'Montserrat', sans-serif;
   color: #E2E2E2;
   margin-left: 4px;
   font-size: 19px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.encryption-decryption-input-label3{
+  font-family: 'Montserrat', sans-serif;
+  color: #E2E2E2;
+  margin-left: 4px;
+  font-size: 19px;
+  margin-top: 32px;
+  margin-bottom: 10px;
 }
 .encryption-decryption-output-label{
   font-family: 'Montserrat', sans-serif;
   color: #E2E2E2;
   margin-left: 4px;
   margin-top: 60px;
-  font-size: 21px;
+  font-size: 19px;
 }
 .custom-key-input-box{
   background-color: #23262C;
