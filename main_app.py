@@ -39,7 +39,9 @@ from utils.password_passphrase_generator import (
     handle_password_generation_request,
     handle_passphrase_generation_request,
 )
-from utils.encryptor_decryptor import register_encrypt_route, register_decrypt_route
+from utils.encryptor_decryptor import (
+    register_encrypt_route, register_decrypt_route
+)
 
 # Flow between the front end and back end:
 # 1. Front End: Sends a JSON request using POST.
