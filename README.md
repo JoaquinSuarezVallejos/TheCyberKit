@@ -10,3 +10,5 @@
 + Pico CSS (microframework for CSS)
 + JavaScript
 + Font Awesome toolkit (for icons)
+
+![TheCyberKit_screencapture.png]([https://github.com/your-username/your-repository/assets/your-image.png](https://github.com/JoaquinSuarezVallejos/TheCyberKit/blob/main/static/images/TheCyberKit_screencapture.png))
