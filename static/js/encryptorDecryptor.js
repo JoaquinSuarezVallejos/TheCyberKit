@@ -117,3 +117,57 @@ encryptDecryptSubmitBtn.addEventListener("click", async () => {
 
 // Initialize fields based on default radio button (Encryption)
 updateFields();
+
+// COPY TO CLIPBOARD FOR ENCRYPTED TEXT OUTPUT
+/* -------------------------------------------------------------------------- */
+const copyToClipboardBtn2 = document.querySelector(".copy-to-clipboard-btn2");
+
+copyToClipboardBtn2.addEventListener("click", () => {
+  let encryptedTextToCopy = encryptionDecryptionTextAreaOutput.value.trim(); // Get the encrypted text from the output textarea
+
+  // If the text is empty, copy the placeholder "[.....]" instead
+  if (!encryptedTextToCopy) {
+    encryptedTextToCopy = "[.....]";
+  }
+
+  navigator.clipboard
+    .writeText(encryptedTextToCopy) // Copy the text to the clipboard (either the actual content or "[.....]")
+    .then(() => {
+      console.log("Encrypted/decrypted text copied to clipboard!");
+
+      // Store the original button text and color (excluding the font-awesome icon)
+      const originalText = copyToClipboardBtn2.childNodes[2].nodeValue.trim();
+      const originalColor = copyToClipboardBtn2.style.backgroundColor;
+
+      // Change the button text and color
+      copyToClipboardBtn2.childNodes[2].nodeValue = " Copied!";
+      copyToClipboardBtn2.style.backgroundColor = "#DAD4C2"; // Pico CSS color used: Sand 150 (Stonewashed)
+
+      // Prevent further clicks for 1 second
+      copyToClipboardBtn2.addEventListener(
+        "click",
+        preventDefaultForOneSecond,
+        true
+      );
+
+      // Change the text and color back after 1 second
+      setTimeout(() => {
+        copyToClipboardBtn2.childNodes[2].nodeValue = " " + originalText;
+        copyToClipboardBtn2.style.backgroundColor = originalColor;
+        copyToClipboardBtn2.removeEventListener(
+          "click",
+          preventDefaultForOneSecond,
+          true
+        );
+      }, 1000);
+    })
+    .catch((err) => {
+      console.error("Could not copy text: ", err);
+    });
+});
+
+function preventDefaultForOneSecond(event) {
+  event.preventDefault(); // Prevent the default click behavior
+  event.stopImmediatePropagation(); // Stop the event from bubbling up
+}
+/* -------------------------------------------------------------------------- */
