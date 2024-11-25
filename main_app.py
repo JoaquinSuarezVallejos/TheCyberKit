@@ -33,11 +33,13 @@ from flask import Flask, render_template, jsonify, request
 # Flask: web framework for python, render_template: render HTML templates,
 # jsonify: return JSON responses, request: handle HTTP requests
 
+# Importing the required functions
 from utils.password_tester import evaluate_password
 from utils.password_passphrase_generator import (
     handle_password_generation_request,
     handle_passphrase_generation_request,
 )
+from utils.encryptor_decryptor import register_encrypt_route, register_decrypt_route
 
 # Flow between the front end and back end:
 # 1. Front End: Sends a JSON request using POST.
@@ -150,6 +152,11 @@ def evaluate_password_for_generator():
     except KeyError:  # Handle the KeyError exception if the password
         # data is missing (no password provided)
         return jsonify({"error": "Missing password data"}), 400
+
+
+# Register Encryptor/Decryptor Routes
+register_encrypt_route(app)
+register_decrypt_route(app)
 
 
 if __name__ == "__main__":

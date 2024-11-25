@@ -28,13 +28,28 @@ const encryptionMethodSelect = document.getElementById(
 encryptRadioBtn.addEventListener("change", updateFields);
 decryptRadioBtn.addEventListener("change", updateFields);
 
+// Event listener for the textarea input and the custom key input
+encryptionDecryptionTextAreaInput.addEventListener("input", () => {
+  encryptionDecryptionTextAreaOutput.value = "";
+});
+customKeyInputBox.addEventListener("input", () => {
+  encryptionDecryptionTextAreaOutput.value = "";
+});
+
+// Event listener for the select combobox
+encryptionMethodSelect.addEventListener("change", () => {
+  encryptionDecryptionTextAreaOutput.value = "";
+});
+
+// Reset text fields and select dropdown
 function resetTextFields() {
   encryptionDecryptionTextAreaInput.value = "";
   encryptionDecryptionTextAreaOutput.value = "";
   customKeyInputBox.value = "";
+  encryptionMethodSelect.value = "";
 }
 
-// Reset text fields and update fields for encryption
+// Update fields for encryption
 function updateFieldsForEncryption() {
   encryptDecryptSubmitBtn.textContent = "Encrypt";
   inputLabel.textContent = "Enter text to encrypt:";
@@ -48,7 +63,7 @@ function updateFieldsForEncryption() {
   resetTextFields();
 }
 
-// Reset text fields and update fields for decryption
+// Update fields for decryption
 function updateFieldsForDecryption() {
   encryptDecryptSubmitBtn.textContent = "Decrypt";
   inputLabel.textContent = "Enter text to decrypt:";
@@ -62,36 +77,31 @@ function updateFieldsForDecryption() {
   resetTextFields();
 }
 
-// Update encrypt/decrypt button, labels, and placeholders based on the selected radio button ("Encryption" or "Decryption")
+// Update fields dynamically based on the selected radio button ("Encryption" or "Decryption")
 function updateFields() {
   if (encryptRadioBtn.checked) {
-    // Update fields for encryption
     updateFieldsForEncryption();
   } else if (decryptRadioBtn.checked) {
-    // Update fields for decryption
     updateFieldsForDecryption();
   } else {
-    // Default to encryption
     updateFieldsForEncryption();
   }
 }
 
-// Update the event listener for the Encrypt/Decrypt button
+// Handle encrypt/decrypt button click
 encryptDecryptSubmitBtn.addEventListener("click", async () => {
   const text = encryptionDecryptionTextAreaInput.value.trim();
   const key = customKeyInputBox.value.trim();
-  const method = document.querySelector(
-    'input[name="encryption-method"]:checked'
-  ).value; // e.g., "Fernet", "Blowfish", or "AES"
+  const method = encryptionMethodSelect.value; // Get selected method
 
   if (!text || !key || !method) {
     encryptionDecryptionTextAreaOutput.value =
-      "Please provide all inputs (text, key, method).";
+      "> All fields are required: please provide the text, a custom key, and select an encryption/decryption method before proceeding.";
     return;
   }
 
   const url = encryptRadioBtn.checked ? "/encrypt" : "/decrypt";
-  const action = encryptRadioBtn.checked ? "encrypt" : "decrypt";
+  const action = encryptRadioBtn.checked ? "encrypted_text" : "decrypted_text";
 
   try {
     const response = await fetch(url, {
@@ -105,11 +115,15 @@ encryptDecryptSubmitBtn.addEventListener("click", async () => {
     const result = await response.json();
 
     if (response.ok) {
-      encryptionDecryptionTextAreaOutput.value = result[`${action}ed_text`]; // Use "encrypted_text" or "decrypted_text"
+      encryptionDecryptionTextAreaOutput.value = result[action];
     } else {
-      encryptionDecryptionTextAreaOutput.value = `Error: ${result.error}`;
+      encryptionDecryptionTextAreaOutput.value =
+        result.error || "> An unknown error occurred.";
     }
   } catch (error) {
-    encryptionDecryptionTextAreaOutput.value = `Request failed: ${error.message}`;
+    encryptionDecryptionTextAreaOutput.value = `> Failed to connect to the server. Please try again.`;
   }
 });
+
+// Initialize fields based on default radio button (Encryption)
+updateFields();
